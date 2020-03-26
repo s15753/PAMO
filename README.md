@@ -1,8 +1,14 @@
 # PAMO
 PAMO project
 
-Temat projektu: aplikacja mobilna do obsługi systemu monitorowania warunków panujących w akwariach i wiwariach
+Project subject: Mobile application for the system of monitoring living conditions in aquariums and vivariums.
 
-Skład grupy: Agnieszka Rydzyk s15038, Robert Chojdak s15753
+A brief overview of the functionality:
+- login to the app using Zabbix Api login
+- displaying type and number of alerts
+- displaying recent values for sensors
+- multiple forms with data to send to Zabbix
 
-Narzędzie do śledznia postępów w projekcie: https://www.meistertask.com/
+Group: Agnieszka Rydzyk s15038, Robert Chojdak s15753
+
+Task management tool: https://www.meistertask.com/
