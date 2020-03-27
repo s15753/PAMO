@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.smartariumapp.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.smartariumapp.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery">
+        <action
+            android:id="@+id/action_nav_gallery_to_nav_no2fragment"
+            app:destination="@id/nav_no2fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_no2fragment"
+        android:name="com.example.smartariumapp.ui.gallery.NO2Fragment"
+        android:label="@string/NO2"
+        tools:layout="@layout/n_o2_fragment">
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_nav_no2fragment_to_nav_twardosc"
+            app:destination="@id/nav_twardosc" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_twardosc"
+        android:name="com.example.smartariumapp.ui.gallery.TwardoscWodyFragment"
+        android:label="@string/twardosc"
+        tools:layout="@layout/twardosc_wody_fragment"
+        />
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.smartariumapp.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+</navigation>

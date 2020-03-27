@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_filter"
+            android:title="@string/filter" />
+        <item
+            android:id="@+id/nav_food"
+            android:icon="@drawable/ic_food"
+            android:title="@string/food" />
+        <item
+            android:id="@+id/_water"
+            android:icon="@drawable/ic_water"
+            android:title="@string/water" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_water_param"
+            android:title="@string/water_parameters" />
+
+
+    </group>
+</menu>
