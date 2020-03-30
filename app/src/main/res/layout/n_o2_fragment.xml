@@ -33,7 +33,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="#fff7f5"
-            android:text="0 mg/l" />
+            android:text="" />
 
         <Button
             android:id="@+id/bt_NO2_0_5"
@@ -42,7 +42,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="#feeeef"
-            android:text="0.5 mg/l" />
+            android:text="" />
 
         <Button
             android:id="@+id/bt_NO2_2"
@@ -51,7 +51,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="#fbe7e9"
-            android:text="2 mg/l" />
+            android:text="" />
 
         <Button
             android:id="@+id/bt_NO2_5"
@@ -60,7 +60,7 @@
             android:background="#f9d0d4"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="5 mg/l" />
+            android:text="" />
 
         <Button
             android:id="@+id/bt_NO2_10"
@@ -69,7 +69,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="#f39faf"
-            android:text="10 mg/l" />
+            android:text="" />
 
         <Button
             android:id="@+id/bt_lack_of_data"

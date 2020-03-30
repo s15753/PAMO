@@ -37,4 +37,38 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="water_param_strings">
+        <item>"NO3 - Azotany"</item>
+        <item>"NO2 - Azotyny"</item>
+        <item>"Twardosc calkowita(GH)"</item>
+        <item>"Stabilnosc pH(KH)"</item>
+        <item>"Kwasowosc pH"</item>
+        <item>"Chlor"</item>
+    </string-array>
+
+    <!-- water parameters values-->
+    <string-array name="water_param_values_NO3">
+        <item>"0"</item>
+        <item>"10"</item>
+        <item>"25"</item>
+        <item>"50"</item>
+        <item>"100"</item>
+        <item>"250"</item>
+        <item>"500"</item>
+    </string-array>
+    <string-array name="water_param_values_NO2">
+        <item>"0"</item>
+        <item>"0.5"</item>
+        <item>"2"</item>
+        <item>"5"</item>
+        <item>"10"</item>
+    </string-array>
+    <string-array name="water_param_values_GH">
+        <item>"3"</item>
+        <item>"4"</item>
+        <item>"7"</item>
+        <item>"14"</item>
+        <item>"21"</item>
+    </string-array>
 </resources>

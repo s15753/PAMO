@@ -9,4 +9,7 @@ public class DataHolder {
         System.out.println("my val: "+value+" and key: "+key);
         DataHolder.myData.put(key,value);
     }
+    public static boolean isKeyIn(String key){
+        return myData.containsKey(key);
+    }
 }

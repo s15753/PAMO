@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
@@ -23,7 +24,9 @@ public class NO2Fragment extends Fragment {
 
     private GalleryViewModel galleryViewModel;
     private int identifier = 1;
-    private Button btn_NO2_0, btn_NO2_0_5, btn_NO2_2, btn_NO2_5, btn_NO2_10, btn_NO2_none;
+    private Button[] buttons;
+    private Button btn_NO2_none;
+    String[] my_Array;
     public static NO2Fragment newInstance() {
         return new NO2Fragment();
     }
@@ -41,47 +44,26 @@ public class NO2Fragment extends Fragment {
                 textView.setText(s);
             }
         });
-        btn_NO2_0 = root.findViewById(R.id.bt_NO2_0);
-        btn_NO2_0_5 = root.findViewById(R.id.bt_NO2_0_5);
-        btn_NO2_2 = root.findViewById(R.id.bt_NO2_2);
-        btn_NO2_5 = root.findViewById(R.id.bt_NO2_5);
-        btn_NO2_10 = root.findViewById(R.id.bt_NO2_10);
+        my_Array = getResources().getStringArray(R.array.water_param_values_NO2);
+        buttons = new Button[5];
+        buttons[0] = root.findViewById(R.id.bt_NO2_0);
+        buttons[1] = root.findViewById(R.id.bt_NO2_0_5);
+        buttons[2] = root.findViewById(R.id.bt_NO2_2);
+        buttons[3] = root.findViewById(R.id.bt_NO2_5);
+        buttons[4] = root.findViewById(R.id.bt_NO2_10);
+        int n = my_Array.length;
+        for(int i = 0; i < n; i++){
+            buttons[i].setText(my_Array[i] + " mg/l");
+            final String my_text = my_Array[i];
+            buttons[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    check_set_parameters(my_text, root, galleryViewModel, identifier);
+                }
+            });
+        }
+
         btn_NO2_none = root.findViewById(R.id.bt_lack_of_data);
-        btn_NO2_0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataHolder.setMyData(galleryViewModel.mListText.get(identifier), "0");
-                Navigation.findNavController(root).navigate(R.id.action_nav_no2fragment_to_nav_twardosc);
-            }
-        });
-        btn_NO2_0_5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataHolder.setMyData(galleryViewModel.mListText.get(identifier), "0.5");
-                Navigation.findNavController(root).navigate(R.id.action_nav_no2fragment_to_nav_twardosc);
-            }
-        });
-        btn_NO2_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataHolder.setMyData(galleryViewModel.mListText.get(identifier), "2");
-                Navigation.findNavController(root).navigate(R.id.action_nav_no2fragment_to_nav_twardosc);
-            }
-        });
-        btn_NO2_5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataHolder.setMyData(galleryViewModel.mListText.get(identifier), "5");
-                Navigation.findNavController(root).navigate(R.id.action_nav_no2fragment_to_nav_twardosc);
-            }
-        });
-        btn_NO2_10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataHolder.setMyData(galleryViewModel.mListText.get(identifier), "10");
-                Navigation.findNavController(root).navigate(R.id.action_nav_no2fragment_to_nav_twardosc);
-            }
-        });
         btn_NO2_none.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,5 +74,20 @@ public class NO2Fragment extends Fragment {
         return root;
 
     }
+    private void check_set_parameters(String ans, View root, GalleryViewModel galleryViewModel, int identifier){
+        if(DataHolder.isKeyIn(galleryViewModel.mListText.get(identifier))){
+            Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(root).navigate(R.id.nav_home);
+            try {
+                finalize();
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
+        }else{
+            DataHolder.setMyData(galleryViewModel.mListText.get(identifier), ans);
+            Toast.makeText(getActivity(), galleryViewModel.mListText.get(identifier)+ " "+ans, Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(root).navigate(R.id.action_nav_no2fragment_to_nav_twardosc);
+        }
 
+    }
 }

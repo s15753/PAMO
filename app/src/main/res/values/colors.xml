@@ -3,4 +3,31 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="GH_3_1">#54a77d</color>
+    <color name="GH_3_2">#54a77d</color>
+    <color name="GH_3_3">#54a77d</color>
+    <color name="GH_3_4">#54a77d</color>
+
+
+    <color name="GH_4_1">#c96887</color>
+    <color name="GH_4_2">#58a480</color>
+    <color name="GH_4_3">#58a480</color>
+    <color name="GH_4_4">#58a480</color>
+
+    <color name="GH_7_1">#c86987</color>
+    <color name="GH_7_2">#c86987</color>
+    <color name="GH_7_3">#59a37e</color>
+    <color name="GH_7_4">#59a37e</color>
+
+    <color name="GH_14_1">#ca6988</color>
+    <color name="GH_14_2">#ca6988</color>
+    <color name="GH_14_3">#ca6988</color>
+    <color name="GH_14_4">#5ba37e</color>
+
+    <color name="GH_21_1">#c86987</color>
+    <color name="GH_21_2">#c86987</color>
+    <color name="GH_21_3">#c86987</color>
+    <color name="GH_21_4">#c86987</color>
+
 </resources>
