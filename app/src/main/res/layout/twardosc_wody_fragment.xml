@@ -34,16 +34,21 @@
 
         <Button
             android:id="@+id/bt_GH_3"
-            android:layout_width="80dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="70dp"
             android:layout_height="500dp"
             android:layout_centerVertical="true"
             android:background="@color/GH_3_1"
+
             android:text=""
             android:textAlignment="center" />
 
         <Button
             android:id="@+id/bt_GH_4"
-            android:layout_width="80dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="70dp"
             android:layout_height="500dp"
             android:background="@drawable/twardosc_wody_butt4"
             android:text=""
@@ -51,7 +56,9 @@
 
         <Button
             android:id="@+id/bt_GH_7"
-            android:layout_width="80dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="70dp"
             android:layout_height="500dp"
             android:background="@drawable/twardosc_wody_butt7"
             android:text=""
@@ -59,15 +66,18 @@
 
         <Button
             android:id="@+id/bt_GH_14"
-
-            android:layout_width="80dp"
+            android:layout_width="59dp"
             android:layout_height="500dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:background="@drawable/twardosc_wody_butt14"
             android:text="" />
 
         <Button
             android:id="@+id/bt_GH_21"
-            android:layout_width="80dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="70dp"
             android:layout_height="500dp"
             android:background="@color/GH_21_4"
             android:text=""

@@ -39,8 +39,35 @@
         android:id="@+id/nav_twardosc"
         android:name="com.example.smartariumapp.ui.gallery.TwardoscWodyFragment"
         android:label="@string/twardosc"
-        tools:layout="@layout/twardosc_wody_fragment"
-        />
+        tools:layout="@layout/twardosc_wody_fragment">
+        <action
+            android:id="@+id/action_nav_twardosc_to_nav_stabilnosc_ph"
+            app:destination="@id/nav_stabilnosc_ph" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_stabilnosc_ph"
+        android:name="com.example.smartariumapp.ui.gallery.StabilnoscPH"
+        android:label="@string/stabilnosc"
+        tools:layout="@layout/fragment_stabilnosc_p_h">
+        <action
+            android:id="@+id/action_nav_stabilnosc_ph_to_nav_pH"
+            app:destination="@id/nav_pH" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_pH"
+        android:name="com.example.smartariumapp.ui.gallery.pHFragment"
+        android:label="@string/pH"
+        tools:layout="@layout/fragment_p_h">
+        <action
+            android:id="@+id/action_nav_pH_to_nav_Cl"
+            app:destination="@id/nav_Cl" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_Cl"
+        android:name="com.example.smartariumapp.ui.gallery.ClFragment"
+        android:label="@string/Cl"
+        tools:layout="@layout/fragment_cl"/>
+
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.smartariumapp.ui.slideshow.SlideshowFragment"

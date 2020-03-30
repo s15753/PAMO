@@ -12,4 +12,7 @@ public class DataHolder {
     public static boolean isKeyIn(String key){
         return myData.containsKey(key);
     }
+    public static void removeAll(){
+        myData.clear();
+    }
 }

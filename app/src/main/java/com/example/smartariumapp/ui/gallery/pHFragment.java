@@ -1,13 +1,12 @@
 package com.example.smartariumapp.ui.gallery;
 
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -20,44 +19,38 @@ import android.widget.Toast;
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
 
-public class TwardoscWodyFragment extends Fragment {
-
+public class pHFragment extends Fragment {
     private GalleryViewModel galleryViewModel;
-    private int identifier = 2;
+    private int identifier = 4;
     private Button[] buttons;
-    private Button btn_GH_none;
+    private Button btn_pH_none;
     String[] my_Array;
-
-    public static TwardoscWodyFragment newInstance() {
-        return new TwardoscWodyFragment();
-    }
-
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
                 ViewModelProviders.of(this).get(GalleryViewModel.class);
-        final View root = inflater.inflate(R.layout.twardosc_wody_fragment, container, false);
-        final TextView textView = root.findViewById(R.id.text_twardosc);
+        final View root = inflater.inflate(R.layout.fragment_p_h, container, false);
+        final TextView textView = root.findViewById(R.id.text_pH);
+
+        my_Array = getResources().getStringArray(R.array.water_param_values_pH);
         galleryViewModel.getText(identifier).observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
-        my_Array = getResources().getStringArray(R.array.water_param_values_GH);
-        buttons = new Button[5];
-        buttons[0] = root.findViewById(R.id.bt_GH_3);
-        buttons[1] = root.findViewById(R.id.bt_GH_4);
-        buttons[2] = root.findViewById(R.id.bt_GH_7);
-        buttons[3] = root.findViewById(R.id.bt_GH_14);
-        buttons[4] = root.findViewById(R.id.bt_GH_21);
-
-        btn_GH_none = root.findViewById(R.id.bt_lack_of_data);
+        buttons = new Button[7];
+        buttons[0] = root.findViewById(R.id.bt_pH_6_4);
+        buttons[1] = root.findViewById(R.id.bt_pH_6_8);
+        buttons[2] = root.findViewById(R.id.bt_pH_7_2);
+        buttons[3] = root.findViewById(R.id.bt_pH_7_6);
+        buttons[4] = root.findViewById(R.id.bt_pH_8);
+        buttons[5] = root.findViewById(R.id.bt_pH_8_4);
+        buttons[6] = root.findViewById(R.id.bt_pH_9);
+        btn_pH_none = root.findViewById(R.id.bt_lack_of_data);
         int n = buttons.length;
-
         for(int i = 0; i < n; i++){
-            buttons[i].setText(my_Array[i] + " d");
+            buttons[i].setText(my_Array[i]);
             final String my_text = my_Array[i];
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -66,14 +59,16 @@ public class TwardoscWodyFragment extends Fragment {
                 }
             });
         }
-        btn_GH_none.setOnClickListener(new View.OnClickListener() {
+        btn_pH_none.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(root).navigate(R.id.action_nav_twardosc_to_nav_stabilnosc_ph);
+                Navigation.findNavController(root).navigate(R.id.action_nav_pH_to_nav_Cl);
             }
         });
+
         return root;
     }
+
     private void check_set_parameters(String ans, View root, GalleryViewModel galleryViewModel, int identifier){
         if(DataHolder.isKeyIn(galleryViewModel.mListText.get(identifier))){
             Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
@@ -86,7 +81,7 @@ public class TwardoscWodyFragment extends Fragment {
         }else{
             DataHolder.setMyData(galleryViewModel.mListText.get(identifier), ans);
             Toast.makeText(getActivity(), galleryViewModel.mListText.get(identifier)+ " "+ans, Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(root).navigate(R.id.action_nav_twardosc_to_nav_stabilnosc_ph);
+            Navigation.findNavController(root).navigate(R.id.action_nav_pH_to_nav_Cl);
         }
 
     }

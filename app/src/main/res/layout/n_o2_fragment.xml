@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="#fff7f5"
+            android:background="@color/NO2_0"
             android:text="" />
 
         <Button
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="#feeeef"
+            android:background="@color/NO2_0_5"
             android:text="" />
 
         <Button
@@ -50,14 +50,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="#fbe7e9"
+            android:background="@color/NO2_2"
             android:text="" />
 
         <Button
             android:id="@+id/bt_NO2_5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#f9d0d4"
+            android:background="@color/NO2_5"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:text="" />
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="#f39faf"
+            android:background="@color/NO2_10"
             android:text="" />
 
         <Button
