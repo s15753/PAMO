@@ -17,6 +17,35 @@
         android:name="com.example.smartariumapp.ui.food.FoodFragment"
         android:label="@string/food"
         tools:layout="@layout/food_fragment">
+        <action
+            android:id="@+id/action_nav_food_to_nav_dry_food"
+            app:destination="@id/nav_dry_food" />
+        <action
+            android:id="@+id/action_nav_food_to_nav_frozen_food"
+            app:destination="@id/nav_frozen_food" />
+        <action
+            android:id="@+id/action_nav_food_to_nav_other_food"
+            app:destination="@id/nav_other_food" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_dry_food"
+        android:name="com.example.smartariumapp.ui.food.DryFoodFragment"
+        android:label="@string/food"
+        tools:layout="@layout/fragment_dry_food">
+
+    </fragment>
+    <fragment
+        android:id="@+id/nav_frozen_food"
+        android:name="com.example.smartariumapp.ui.food.FrozenFoodFragment"
+        android:label="@string/food"
+        tools:layout="@layout/fragment_frozen_food">
+
+    </fragment>
+    <fragment
+        android:id="@+id/nav_other_food"
+        android:name="com.example.smartariumapp.ui.food.OtherFoodFragment"
+        android:label="@string/food"
+        tools:layout="@layout/fragment_other_food">
 
     </fragment>
 
