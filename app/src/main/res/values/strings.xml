@@ -16,30 +16,21 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="back">Wróć</string>
 
 
-<!-- menu-->
+    <!-- menu-->
     <string name="menu_home">Home</string>
     <string name="water_parameters">Parametry wody</string>
     <string name="other">Inne</string>
     <string name="food">Food</string>
     <string name="water">Water</string>
 
-<!-- water nav-->
-    <string name="NO2">NO2 Azotyny</string>
-    <string name="NO3">NO3 Azotany</string>
-    <string name="pH">pH</string>
-    <string name="Cl">Cl</string>
-    <string name="GH">Twardosc wody</string>
-    <string name="KH">Stabilnosc pH</string>
-
-
 
     <string name="gather_data">Gather data</string>
     <string name="profile">My Profile</string>
     <string name="alerts">Alerts</string>
     <string name="title">Smartarium</string>
-
 
 
     <string name="home_second">Home Second</string>
@@ -49,6 +40,42 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+
+    <!-- Food possible values -->
+    <string-array name="food_main_strings">
+        <item>Suchy</item>
+        <item>Mrożony</item>
+        <item>Inny</item>
+        <item>Wróć</item>
+    </string-array>
+
+    <string-array name="food_dry_strings">
+        <item>Suszone stynki</item>
+        <item>Suszone krewetki</item>
+        <item>Gotowy pokarm suchy</item>
+    </string-array>
+
+    <string-array name="food_frozen_strings">
+        <item>Mrożone krewetki</item>
+        <item>Mrożone stynki</item>
+    </string-array>
+
+    <string-array name="food_other_strings">
+        <item>Żywe rybki</item>
+        <item>Martwe rybki</item>
+        <item>Moczarka</item>
+        <item>Inny</item>
+    </string-array>
+
+    <!-- water nav-->
+    <string name="NO2">NO2 Azotyny</string>
+    <string name="NO3">NO3 Azotany</string>
+    <string name="pH">pH</string>
+    <string name="Cl">Cl</string>
+    <string name="GH">Twardosc wody</string>
+    <string name="KH">Stabilnosc pH</string>
+
+    <!-- water parameters values-->
     <string-array name="water_param_strings">
         <item>"NO3 - Azotany"</item>
         <item>"NO2 - Azotyny"</item>
@@ -65,8 +92,6 @@
         <item>"Kwasowosc pH"</item>
         <item>"Chlor"</item>
     </string-array>
-
-    <!-- water parameters values-->
     <string-array name="water_param_values_NO3">
         <item>"0"</item>
         <item>"10"</item>

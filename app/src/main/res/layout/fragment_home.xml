@@ -26,6 +26,15 @@
             android:textAlignment="center"
             android:textSize="36sp" />
 
+        <TextView
+            android:id="@+id/text_data_to_send"
+            android:layout_width="match_parent"
+            android:layout_height="373dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="16sp" />
 
 
         <Button

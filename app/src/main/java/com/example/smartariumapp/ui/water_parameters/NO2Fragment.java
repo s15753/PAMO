@@ -27,10 +27,32 @@ public class NO2Fragment extends Fragment {
     private Button[] buttons;
     private Button btn_NO2_none;
     String[] my_Array;
+    /*private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;*/
     public static NO2Fragment newInstance() {
         return new NO2Fragment();
     }
 
+    /*public static NO2Fragment newInstance(String param1, String param2) {
+        NO2Fragment fragment = new NO2Fragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }*/
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {

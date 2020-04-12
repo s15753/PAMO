@@ -21,12 +21,15 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     Button bt_send;
+    TextView data_to_send;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
+        data_to_send = root.findViewById(R.id.text_data_to_send);
+
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -42,8 +45,11 @@ public class HomeFragment extends Fragment {
                 Navigation.findNavController(root).navigate(R.id.nav_home);
             }
         });
+
         if(DataHolder.checkLength() == 0){
             bt_send.setVisibility(View.INVISIBLE);
+        }else{
+            data_to_send.setText(DataHolder.myDataToString());
         }
 
         return root;
