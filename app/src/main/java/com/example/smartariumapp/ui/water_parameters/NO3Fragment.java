@@ -1,4 +1,4 @@
-package com.example.smartariumapp.ui.gallery;
+package com.example.smartariumapp.ui.water_parameters;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,22 +22,22 @@ import androidx.navigation.Navigation;
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
 
-public class GalleryFragment extends Fragment {
+public class NO3Fragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private WaterParametersViewModel waterParametersViewModel;
     private int identifier = 0;
     private Button[] buttons;
     private Button btn_NO3_none;
     String[] my_Array;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        final View root = inflater.inflate(R.layout.fragment_gallery, container, false);
+        waterParametersViewModel =
+                ViewModelProviders.of(this).get(WaterParametersViewModel.class);
+        final View root = inflater.inflate(R.layout.fragment_no3, container, false);
         final TextView textView = root.findViewById(R.id.text_no3);
 
         my_Array = getResources().getStringArray(R.array.water_param_values_NO3);
-        galleryViewModel.getText(identifier).observe(getViewLifecycleOwner(), new Observer<String>() {
+        waterParametersViewModel.getText(identifier).observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
@@ -59,22 +59,22 @@ public class GalleryFragment extends Fragment {
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    check_set_parameters(my_text, root, galleryViewModel, identifier);
+                    check_set_parameters(my_text, root, waterParametersViewModel, identifier);
                 }
             });
         }
         btn_NO3_none.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(root).navigate(R.id.action_nav_gallery_to_nav_no2fragment);
+                Navigation.findNavController(root).navigate(R.id.action_nav_no3_to_nav_no2);
             }
         });
 
         return root;
     }
 
-    private void check_set_parameters(String ans, View root, GalleryViewModel galleryViewModel, int identifier){
-        if(DataHolder.isKeyIn(galleryViewModel.mListText.get(identifier))){
+    private void check_set_parameters(String ans, View root, WaterParametersViewModel waterParametersViewModel, int identifier){
+        if(DataHolder.isKeyIn(waterParametersViewModel.mListText.get(identifier))){
             Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_home);
             try {
@@ -83,9 +83,9 @@ public class GalleryFragment extends Fragment {
                 throwable.printStackTrace();
             }
         }else{
-            DataHolder.setMyData(galleryViewModel.mListText.get(identifier), ans);
-            Toast.makeText(getActivity(), galleryViewModel.mListText.get(identifier)+ " "+ans, Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(root).navigate(R.id.action_nav_gallery_to_nav_no2fragment);
+            DataHolder.setMyData(waterParametersViewModel.mListText.get(identifier), ans);
+            Toast.makeText(getActivity(), waterParametersViewModel.mListText.get(identifier)+ " "+ans, Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(root).navigate(R.id.action_nav_no3_to_nav_no2);
         }
 
     }

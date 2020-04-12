@@ -1,4 +1,4 @@
-package com.example.smartariumapp.ui.gallery;
+package com.example.smartariumapp.ui.water_parameters;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -20,26 +20,26 @@ import android.widget.Toast;
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
 
-public class TwardoscWodyFragment extends Fragment {
+public class GHFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private WaterParametersViewModel waterParametersViewModel;
     private int identifier = 2;
     private Button[] buttons;
     private Button btn_GH_none;
     String[] my_Array;
 
-    public static TwardoscWodyFragment newInstance() {
-        return new TwardoscWodyFragment();
+    public static GHFragment newInstance() {
+        return new GHFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        final View root = inflater.inflate(R.layout.twardosc_wody_fragment, container, false);
+        waterParametersViewModel =
+                ViewModelProviders.of(this).get(WaterParametersViewModel.class);
+        final View root = inflater.inflate(R.layout.fragment_gh, container, false);
         final TextView textView = root.findViewById(R.id.text_twardosc);
-        galleryViewModel.getText(identifier).observe(getViewLifecycleOwner(), new Observer<String>() {
+        waterParametersViewModel.getText(identifier).observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
@@ -62,20 +62,20 @@ public class TwardoscWodyFragment extends Fragment {
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    check_set_parameters(my_text, root, galleryViewModel, identifier);
+                    check_set_parameters(my_text, root, waterParametersViewModel, identifier);
                 }
             });
         }
         btn_GH_none.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(root).navigate(R.id.action_nav_twardosc_to_nav_stabilnosc_ph);
+                Navigation.findNavController(root).navigate(R.id.action_nav_gh_to_nav_kh);
             }
         });
         return root;
     }
-    private void check_set_parameters(String ans, View root, GalleryViewModel galleryViewModel, int identifier){
-        if(DataHolder.isKeyIn(galleryViewModel.mListText.get(identifier))){
+    private void check_set_parameters(String ans, View root, WaterParametersViewModel waterParametersViewModel, int identifier){
+        if(DataHolder.isKeyIn(waterParametersViewModel.mListText.get(identifier))){
             Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_home);
             try {
@@ -84,9 +84,9 @@ public class TwardoscWodyFragment extends Fragment {
                 throwable.printStackTrace();
             }
         }else{
-            DataHolder.setMyData(galleryViewModel.mListText.get(identifier), ans);
-            Toast.makeText(getActivity(), galleryViewModel.mListText.get(identifier)+ " "+ans, Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(root).navigate(R.id.action_nav_twardosc_to_nav_stabilnosc_ph);
+            DataHolder.setMyData(waterParametersViewModel.mListText.get(identifier), ans);
+            Toast.makeText(getActivity(), waterParametersViewModel.mListText.get(identifier)+ " "+ans, Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(root).navigate(R.id.action_nav_gh_to_nav_kh);
         }
 
     }

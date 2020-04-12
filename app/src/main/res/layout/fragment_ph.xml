@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.StabilnoscPH">
+    tools:context=".ui.water_parameters.pHFragment">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/text_stabilnosc"
+            android:id="@+id/text_pH"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -27,57 +27,65 @@
             android:textSize="36sp" />
 
         <Button
-            android:id="@+id/bt_KH_0"
+            android:id="@+id/bt_pH_6_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/KH_0"
+            android:background="@color/pH_6_4"
             android:text="" />
 
         <Button
-            android:id="@+id/bt_KH_3"
+            android:id="@+id/bt_pH_6_8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/KH_3"
+            android:background="@color/pH_6_8"
             android:text="" />
 
         <Button
-            android:id="@+id/bt_KH_6"
+            android:id="@+id/bt_pH_7_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/KH_6"
+            android:background="@color/pH_7_2"
             android:text="" />
 
         <Button
-            android:id="@+id/bt_KH_10"
+            android:id="@+id/bt_pH_7_6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/KH_10"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:background="@color/pH_7_6"
             android:text="" />
 
         <Button
-            android:id="@+id/bt_KH_15"
+            android:id="@+id/bt_pH_8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/KH_15"
+            android:background="@color/pH_8"
             android:text="" />
 
         <Button
-            android:id="@+id/bt_KH_20"
+            android:id="@+id/bt_pH_8_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/KH_20"
+            android:background="@color/pH_8_4"
+            android:text="" />
+        <Button
+            android:id="@+id/bt_pH_9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/pH_9"
             android:text="" />
 
         <Button
@@ -86,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="@string/brak_danych"
+            android:text="@string/lack_of_data"
             />
     </LinearLayout>
 

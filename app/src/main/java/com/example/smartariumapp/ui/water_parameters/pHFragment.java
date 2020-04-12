@@ -1,4 +1,4 @@
-package com.example.smartariumapp.ui.gallery;
+package com.example.smartariumapp.ui.water_parameters;
 
 import android.os.Bundle;
 
@@ -20,20 +20,20 @@ import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
 
 public class pHFragment extends Fragment {
-    private GalleryViewModel galleryViewModel;
+    private WaterParametersViewModel waterParametersViewModel;
     private int identifier = 4;
     private Button[] buttons;
     private Button btn_pH_none;
     String[] my_Array;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        final View root = inflater.inflate(R.layout.fragment_p_h, container, false);
+        waterParametersViewModel =
+                ViewModelProviders.of(this).get(WaterParametersViewModel.class);
+        final View root = inflater.inflate(R.layout.fragment_ph, container, false);
         final TextView textView = root.findViewById(R.id.text_pH);
 
         my_Array = getResources().getStringArray(R.array.water_param_values_pH);
-        galleryViewModel.getText(identifier).observe(getViewLifecycleOwner(), new Observer<String>() {
+        waterParametersViewModel.getText(identifier).observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
@@ -55,7 +55,7 @@ public class pHFragment extends Fragment {
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    check_set_parameters(my_text, root, galleryViewModel, identifier);
+                    check_set_parameters(my_text, root, waterParametersViewModel, identifier);
                 }
             });
         }
@@ -69,8 +69,8 @@ public class pHFragment extends Fragment {
         return root;
     }
 
-    private void check_set_parameters(String ans, View root, GalleryViewModel galleryViewModel, int identifier){
-        if(DataHolder.isKeyIn(galleryViewModel.mListText.get(identifier))){
+    private void check_set_parameters(String ans, View root, WaterParametersViewModel waterParametersViewModel, int identifier){
+        if(DataHolder.isKeyIn(waterParametersViewModel.mListText.get(identifier))){
             Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_home);
             try {
@@ -79,8 +79,8 @@ public class pHFragment extends Fragment {
                 throwable.printStackTrace();
             }
         }else{
-            DataHolder.setMyData(galleryViewModel.mListText.get(identifier), ans);
-            Toast.makeText(getActivity(), galleryViewModel.mListText.get(identifier)+ " "+ans, Toast.LENGTH_SHORT).show();
+            DataHolder.setMyData(waterParametersViewModel.mListText.get(identifier), ans);
+            Toast.makeText(getActivity(), waterParametersViewModel.mListText.get(identifier)+ " "+ans, Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.action_nav_pH_to_nav_Cl);
         }
 

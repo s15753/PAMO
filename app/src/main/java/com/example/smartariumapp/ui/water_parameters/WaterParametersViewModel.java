@@ -1,4 +1,4 @@
-package com.example.smartariumapp.ui.gallery;
+package com.example.smartariumapp.ui.water_parameters;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-public class GalleryViewModel extends ViewModel {
+public class WaterParametersViewModel extends ViewModel {
 
     List<String> mListText = new ArrayList<>();
     MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public WaterParametersViewModel() {
         mListText.add("NO3 - Azotany");
         mListText.add("NO2 - Azotyny");
         mListText.add("Twardość całkowita (GH)");

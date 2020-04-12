@@ -17,31 +17,47 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+
+<!-- menu-->
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-
-
-    <string name="water_parameters">Water parameters</string>
-    <string name="filter">Filter</string>
+    <string name="water_parameters">Parametry wody</string>
+    <string name="other">Inne</string>
     <string name="food">Food</string>
     <string name="water">Water</string>
+
+<!-- water nav-->
+    <string name="NO2">NO2 Azotyny</string>
+    <string name="NO3">NO3 Azotany</string>
+    <string name="pH">pH</string>
+    <string name="Cl">Cl</string>
+    <string name="GH">Twardosc wody</string>
+    <string name="KH">Stabilnosc pH</string>
+
+
+
     <string name="gather_data">Gather data</string>
     <string name="profile">My Profile</string>
     <string name="alerts">Alerts</string>
     <string name="title">Smartarium</string>
-    <string name="NO2">NO2 Azotyny</string>
-    <string name="twardosc">Twardosc wody</string>
-    <string name="stabilnosc">Stabilnosc pH</string>
-    <string name="pH">pH</string>
-    <string name="Cl">Cl</string>
+
+
+
     <string name="home_second">Home Second</string>
-    <string name="brak_danych">Brak danych</string>
+    <string name="lack_of_data">Brak danych</string>
+    <string name="send">Wyślij</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="water_param_strings">
+        <item>"NO3 - Azotany"</item>
+        <item>"NO2 - Azotyny"</item>
+        <item>"Twardosc calkowita(GH)"</item>
+        <item>"Stabilnosc pH(KH)"</item>
+        <item>"Kwasowosc pH"</item>
+        <item>"Chlor"</item>
+    </string-array>
+    <string-array name="water_param_strings_zabbix_items">
         <item>"NO3 - Azotany"</item>
         <item>"NO2 - Azotyny"</item>
         <item>"Twardosc calkowita(GH)"</item>

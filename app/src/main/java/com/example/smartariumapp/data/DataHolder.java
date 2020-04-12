@@ -15,4 +15,7 @@ public class DataHolder {
     public static void removeAll(){
         myData.clear();
     }
+    public static int checkLength(){
+        return myData.size();
+    }
 }

@@ -5,7 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.pHFragment">
+    tools:context=".ui.water_parameters.NO3Fragment">
+
+
+
 
     <LinearLayout
         android:layout_width="0dp"
@@ -17,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/text_pH"
+            android:id="@+id/text_no3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -27,65 +30,66 @@
             android:textSize="36sp" />
 
         <Button
-            android:id="@+id/bt_pH_6_4"
+            android:id="@+id/bt_NO3_0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/pH_6_4"
+            android:background="@color/NO3_0"
             android:text="" />
 
         <Button
-            android:id="@+id/bt_pH_6_8"
+            android:id="@+id/bt_NO3_10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/pH_6_8"
+            android:background="@color/NO3_10"
             android:text="" />
 
         <Button
-            android:id="@+id/bt_pH_7_2"
+            android:id="@+id/bt_NO3_25"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/pH_7_2"
+            android:background="@color/NO3_25"
             android:text="" />
 
         <Button
-            android:id="@+id/bt_pH_7_6"
+            android:id="@+id/bt_NO3_50"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/NO3_50"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/pH_7_6"
             android:text="" />
 
         <Button
-            android:id="@+id/bt_pH_8"
+            android:id="@+id/bt_NO3_100"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/pH_8"
+            android:background="@color/NO3_100"
             android:text="" />
 
         <Button
-            android:id="@+id/bt_pH_8_4"
+            android:id="@+id/bt_NO3_250"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/pH_8_4"
+            android:background="@color/NO3_250"
             android:text="" />
+
         <Button
-            android:id="@+id/bt_pH_9"
+            android:id="@+id/bt_NO3_500"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/pH_9"
+            android:background="@color/NO3_500"
             android:text="" />
 
         <Button
@@ -94,8 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="@string/brak_danych"
+            android:text="@string/lack_of_data"
             />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
