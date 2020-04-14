@@ -39,6 +39,15 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- other possible values -->
+    <string-array name="other_main_strings">
+        <item>Filtr</item>
+        <item>Światło</item>
+        <item>Utrzymanie</item>
+        <item>Waga</item>
+        <item>Woda</item>
+        <item>Żarówka</item>
+    </string-array>
 
 
     <!-- Food possible values -->
@@ -50,8 +59,8 @@
     </string-array>
 
     <string-array name="food_dry_strings">
-        <item>Suszone stynki</item>
         <item>Suszone krewetki</item>
+        <item>Suszone stynki</item>
         <item>Gotowy pokarm suchy</item>
     </string-array>
 

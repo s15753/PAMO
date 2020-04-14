@@ -4,6 +4,14 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <!-- food colore-->
+    <color name="food_0">#f5edda</color>
+    <color name="food_1">#e9cba7</color>
+    <color name="food_2">#ca9e7b</color>
+    <color name="food_3">#98694f</color>
+    <color name="food_4">#66462f</color>
+
+
     <!-- NO3 -->
     <color name="NO3_0">#fff7f5</color>
     <color name="NO3_10">#fdefef</color>
