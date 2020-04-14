@@ -36,6 +36,7 @@ public class DryFoodFragment extends Fragment {
 
         my_Array = getResources().getStringArray(R.array.food_dry_strings);
         int n = my_Array.length;
+
         buttons = new Button[n];
         buttons[0] = root.findViewById(R.id.bt_dry_food_0);
         buttons[1] = root.findViewById(R.id.bt_dry_food_1);

@@ -26,25 +26,25 @@
         <action
             android:id="@+id/action_nav_food_to_nav_other_food"
             app:destination="@id/nav_other_food" />
+        <action
+            android:id="@+id/action_nav_other_to_nav_home"
+            app:destination="@+id/nav_home"/>
     </fragment>
     <fragment
         android:id="@+id/nav_dry_food"
         android:name="com.example.smartariumapp.ui.food.DryFoodFragment"
-        android:label="@string/food"
         tools:layout="@layout/fragment_dry_food">
 
     </fragment>
     <fragment
         android:id="@+id/nav_frozen_food"
         android:name="com.example.smartariumapp.ui.food.FrozenFoodFragment"
-        android:label="@string/food"
         tools:layout="@layout/fragment_frozen_food">
 
     </fragment>
     <fragment
         android:id="@+id/nav_other_food"
         android:name="com.example.smartariumapp.ui.food.OtherFoodFragment"
-        android:label="@string/food"
         tools:layout="@layout/fragment_other_food">
 
     </fragment>
@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_nav_no3_to_nav_no2"
             app:destination="@id/nav_no2" />
+        <action
+            android:id="@+id/action_nav_other_to_nav_home"
+            app:destination="@+id/nav_home"/>
     </fragment>
 
     <fragment
@@ -108,5 +111,53 @@
         android:id="@+id/nav_other"
         android:name="com.example.smartariumapp.ui.other.OtherFragment"
         android:label="@string/other"
-        tools:layout="@layout/fragment_other" />
+        tools:layout="@layout/fragment_other">
+        <action
+            android:id="@+id/action_nav_other_to_nav_other_filter"
+            app:destination="@id/nav_other_filter" />
+        <action
+            android:id="@+id/action_nav_other_to_nav_other_light"
+            app:destination="@id/nav_other_light" />
+        <action
+            android:id="@+id/action_nav_other_to_nav_other_maintenance"
+            app:destination="@id/nav_other_maintenance" />
+        <action
+            android:id="@+id/action_nav_other_to_nav_other_weight"
+            app:destination="@id/nav_other_weight"/>
+        <action
+            android:id="@+id/action_nav_other_to_nav_other_water"
+            app:destination="@id/nav_other_water"
+            />
+        <action
+            android:id="@+id/action_nav_other_to_nav_other_bulb"
+            app:destination="@id/nav_other_bulb"
+            />
+        <action
+            android:id="@+id/action_nav_other_to_nav_home"
+            app:destination="@+id/nav_home"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_other_filter"
+        android:name="com.example.smartariumapp.ui.other.FilterFragment"
+        tools:layout="@layout/fragment_filter"/>
+    <fragment
+        android:id="@+id/nav_other_light"
+        android:name="com.example.smartariumapp.ui.other.LightFragment"
+        tools:layout="@layout/fragment_light"/>
+    <fragment
+        android:id="@+id/nav_other_maintenance"
+        android:name="com.example.smartariumapp.ui.other.MaintenanceFragment"
+        tools:layout="@layout/fragment_maintenance"/>
+    <fragment
+        android:id="@+id/nav_other_weight"
+        android:name="com.example.smartariumapp.ui.other.WeightFragment"
+        tools:layout="@layout/fragment_weight"/>
+    <fragment
+        android:id="@+id/nav_other_water"
+        android:name="com.example.smartariumapp.ui.other.WaterFragment"
+        tools:layout="@layout/fragment_water"/>
+    <fragment
+        android:id="@+id/nav_other_bulb"
+        android:name="com.example.smartariumapp.ui.other.BulbFragment"
+        tools:layout="@layout/fragment_bulb"/>
 </navigation>
