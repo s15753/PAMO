@@ -1,5 +1,6 @@
 package com.example.smartariumapp.ui.food;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,9 +20,11 @@ import com.example.smartariumapp.data.DataHolder;
 
 
 public class FrozenFoodFragment extends Fragment {
-    private Button[] buttons;
-    private Button bt_back;
-    private String[] my_Array;
+    private int identifier = 1;
+    private Button[] myButtons;
+    private String[] myArray;
+    private int[] myColors;
+
 
     public FrozenFoodFragment() {
         // Required empty public constructor
@@ -29,50 +33,71 @@ public class FrozenFoodFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        final View root = inflater.inflate(R.layout.fragment_frozen_food, container, false);
-        final TextView textView = root.findViewById(R.id.text_frozen_food);
+        final View root = inflater.inflate(R.layout.food_fragment, container, false);
+        final TextView textView = root.findViewById(R.id.text_food);
+        final String title = getResources().getStringArray(R.array.food_main_strings)[identifier];
+        textView.setText(title);
+        LinearLayout layout = root.findViewById(R.id.linearLayout);
+        myArray = getResources().getStringArray(R.array.food_frozen_strings);
+        myColors = getResources().getIntArray(R.array.food_colors);
+        int n = myArray.length;
 
-        my_Array = getResources().getStringArray(R.array.food_frozen_strings);
-        int n = my_Array.length;
-        buttons = new Button[n];
-        buttons[0] = root.findViewById(R.id.bt_frozen_food_0);
-        buttons[1] = root.findViewById(R.id.bt_frozen_food_1);
-        bt_back = root.findViewById(R.id.bt_back);
+        myButtons = new Button[n];
 
         for(int i = 0; i < n; i++){
-            buttons[i].setText(my_Array[i]);
-            final String my_text = my_Array[i];
-            final int identifier = i;
-            buttons[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    check_set_parameters(my_Array, root, identifier);
-                }
-            });
-        }
-        bt_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(root).navigate(R.id.nav_food);
+            if(i == n-1){
+                myButtons[i] = setMyButton(i, layout.getContext());
+                final String ans = myArray[i];
+                myButtons[i].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Navigation.findNavController(root).navigate(R.id.nav_food);
+                    }
+                });
+            }else{
+                myButtons[i] = setMyButton(i, layout.getContext());
+                final String ans = myArray[i];
+                myButtons[i].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        check_set_parameters(ans, root);
+                    }
+                });
             }
-        });
+
+            layout.addView(myButtons[i]);
+        }
+
         return root;
     }
-    private void check_set_parameters(String[] my_Array, View root, int identifier){
-        if(DataHolder.isKeyIn(my_Array[identifier])){
-            DataHolder.removeByKey(my_Array[identifier]);
-            Toast.makeText(getActivity(), "Usunięto "+my_Array[identifier]+" z danych do wysłania!", Toast.LENGTH_SHORT).show();
+    private void check_set_parameters(String ans, View root){
+        if(DataHolder.isKeyIn(ans)){
+            DataHolder.removeByKey(ans);
+            Toast.makeText(getActivity(), "Usunięto "+ans+" z danych do wysłania!", Toast.LENGTH_SHORT).show();
 
         }else{
-            DataHolder.setMyData(my_Array[identifier], my_Array[identifier]);
-            Toast.makeText(getActivity(), "Dodano "+ my_Array[identifier] + " do danych do wyałania!", Toast.LENGTH_SHORT).show();
+            DataHolder.setMyData(ans, null);
+            Toast.makeText(getActivity(), "Dodano "+ ans + " do danych do wyałania!", Toast.LENGTH_SHORT).show();
         }
         try {
             finalize();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-        Navigation.findNavController(root).navigate(R.id.nav_home);
+        Navigation.findNavController(root).navigate(R.id.nav_food);
+
+    }
+    private Button setMyButton(int i, Context context){
+        Button button = new Button(context);
+        button.setBackgroundColor(this.myColors[i]);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(0, 10, 0, 10);
+        button.setLayoutParams(params);
+        button.setText(this.myArray[i]);
+        return button;
 
     }
 }

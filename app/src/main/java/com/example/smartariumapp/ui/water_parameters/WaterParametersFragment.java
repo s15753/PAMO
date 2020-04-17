@@ -1,31 +1,27 @@
-package com.example.smartariumapp.ui.other;
+package com.example.smartariumapp.ui.water_parameters;
 
 import android.content.Context;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.NavGraph;
+import androidx.navigation.Navigation;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavAction;
-import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
-import androidx.navigation.NavDirections;
-import androidx.navigation.NavGraph;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
+import android.widget.Toast;
 
 import com.example.smartariumapp.R;
+import com.example.smartariumapp.data.DataHolder;
 
-public class OtherFragment extends Fragment {
-
+public class WaterParametersFragment extends Fragment {
 
     private Button[] myButtons;
     private String[] myArray;
@@ -33,14 +29,14 @@ public class OtherFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        final View root = inflater.inflate(R.layout.fragment_other, container, false);
-        final TextView textView = root.findViewById(R.id.text_other);
+        final View root = inflater.inflate(R.layout.fragment_water_parameters, container, false);
+        final TextView textView = root.findViewById(R.id.text_water_parameter);
 
-        textView.setText(R.string.text_other);
+        textView.setText(R.string.water_string);
 
-        LinearLayout layout = root.findViewById(R.id.linearLayout);
+        LinearLayout layout = root.findViewById(R.id.water_layout);
         myColors = getResources().getIntArray(R.array.water_parameters_colors);
-        myArray = getResources().getStringArray(R.array.other_main_strings);
+        myArray = getResources().getStringArray(R.array.water_param_strings);
         int n = myArray.length;
         myButtons = new Button[n];
 
@@ -75,19 +71,19 @@ public class OtherFragment extends Fragment {
     private int setDestination(int i){
         switch (i){
             case 0:
-                return R.id.action_nav_other_to_nav_other_filter;
+                return R.id.action_nav_water_parameters_to_nav_no3;
             case 1:
-                return R.id.action_nav_other_to_nav_other_light;
+                return R.id.action_nav_water_parameters_to_nav_no2;
             case 2:
-                return R.id.action_nav_other_to_nav_other_maintenance;
+                return R.id.action_nav_water_parameters_to_nav_gh;
             case 3:
-                return R.id.action_nav_other_to_nav_other_weight;
+                return R.id.action_nav_water_parameters_to_nav_kh;
             case 4:
-                return R.id.action_nav_other_to_nav_other_water;
+                return R.id.action_nav_water_parameters_to_nav_ph;
             case 5:
-                return R.id.action_nav_other_to_nav_other_bulb;
+                return R.id.action_nav_water_parameters_to_nav_Cl;
             default:
-                return R.id.nav_home;
+                return R.id.action_nav_water_parameters_to_nav_home;
         }
     }
 }

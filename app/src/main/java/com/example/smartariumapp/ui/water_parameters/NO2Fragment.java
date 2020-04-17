@@ -3,6 +3,7 @@ package com.example.smartariumapp.ui.water_parameters;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,94 +24,65 @@ import com.example.smartariumapp.data.DataHolder;
 
 public class NO2Fragment extends Fragment {
 
-    private WaterParametersViewModel waterParametersViewModel;
     private int identifier = 1;
-    private Button[] buttons;
-    private Button btn_NO2_none;
-    String[] my_Array;
-    /*private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private Button[] myButtons;
+    private String[] myArray;
+    private int[] myColors;
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;*/
-    public static NO2Fragment newInstance() {
-        return new NO2Fragment();
-    }
+        final View root = inflater.inflate(R.layout.fragment_water_parameters, container, false);
+        final TextView textView = root.findViewById(R.id.text_water_parameter);
+        final String parameter = getResources().getStringArray(R.array.water_param_strings_zabbix_items)[identifier];
+        textView.setText(parameter);
+        LinearLayout layout = root.findViewById(R.id.water_layout);
+        myColors = getResources().getIntArray(R.array.no2_colors);
+        myArray = getResources().getStringArray(R.array.water_param_values_NO2);
+        int n = myArray.length;
+        myButtons = new Button[n];
 
-    /*public static NO2Fragment newInstance(String param1, String param2) {
-        NO2Fragment fragment = new NO2Fragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }*/
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        waterParametersViewModel =
-                ViewModelProviders.of(this).get(WaterParametersViewModel.class);
-        final View root = inflater.inflate(R.layout.fragment_no2, container, false);
-        final TextView textView = root.findViewById(R.id.text_no2);
-        waterParametersViewModel.getText(identifier).observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        my_Array = getResources().getStringArray(R.array.water_param_values_NO2);
-        buttons = new Button[5];
-        buttons[0] = root.findViewById(R.id.bt_NO2_0);
-        buttons[1] = root.findViewById(R.id.bt_NO2_0_5);
-        buttons[2] = root.findViewById(R.id.bt_NO2_2);
-        buttons[3] = root.findViewById(R.id.bt_NO2_5);
-        buttons[4] = root.findViewById(R.id.bt_NO2_10);
-        int n = my_Array.length;
         for(int i = 0; i < n; i++){
-            buttons[i].setText(my_Array[i] + " mg/l");
-            final String my_text = my_Array[i];
-            buttons[i].setOnClickListener(new View.OnClickListener() {
+            myButtons[i] = setMyButton(i, layout.getContext());
+            final String ans = myArray[i];
+            myButtons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    check_set_parameters(my_text, root, waterParametersViewModel, identifier);
+                    check_set_parameters(parameter, ans, root);
                 }
             });
+            layout.addView(myButtons[i]);
         }
 
-        btn_NO2_none = root.findViewById(R.id.bt_lack_of_data);
-        btn_NO2_none.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Navigation.findNavController(root).navigate(R.id.action_nav_no2_to_nav_gh);
-            }
-        });
         return root;
-
     }
-    private void check_set_parameters(String ans, View root, WaterParametersViewModel waterParametersViewModel, int identifier){
-        if(DataHolder.isKeyIn(waterParametersViewModel.mListText.get(identifier))){
+
+    private void check_set_parameters(String parameter, String ans, View root){
+        if(DataHolder.isKeyIn(parameter)){
             Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(root).navigate(R.id.nav_home);
+            Navigation.findNavController(root).navigate(R.id.nav_water_parameters);
             try {
                 finalize();
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
             }
         }else{
-            DataHolder.setMyData(waterParametersViewModel.mListText.get(identifier), ans);
-            Toast.makeText(getActivity(), waterParametersViewModel.mListText.get(identifier)+ " "+ans, Toast.LENGTH_SHORT).show();
+            DataHolder.setMyData(parameter, ans);
+            Toast.makeText(getActivity(), parameter+ " "+ans, Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.action_nav_no2_to_nav_gh);
         }
+
+    }
+    private Button setMyButton(int i, Context context){
+        Button button = new Button(context);
+        button.setBackgroundColor(this.myColors[i]);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(0, 10, 0, 10);
+        button.setLayoutParams(params);
+        button.setText(this.myArray[i]);
+        return button;
 
     }
 }

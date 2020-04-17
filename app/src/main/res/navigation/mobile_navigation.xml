@@ -13,6 +13,34 @@
 
     </fragment>
     <fragment
+        android:id="@+id/nav_water_parameters"
+        android:name="com.example.smartariumapp.ui.water_parameters.WaterParametersFragment"
+        android:label="@string/water_parameters"
+        tools:layout="@layout/fragment_water_parameters">
+        <action
+            android:id="@+id/action_nav_water_parameters_to_nav_no3"
+            app:destination="@id/nav_no3" />
+        <action
+            android:id="@+id/action_nav_water_parameters_to_nav_no2"
+            app:destination="@id/nav_no2" />
+        <action
+            android:id="@+id/action_nav_water_parameters_to_nav_gh"
+            app:destination="@id/nav_gh" />
+        <action
+            android:id="@+id/action_nav_water_parameters_to_nav_kh"
+            app:destination="@id/nav_kh" />
+        <action
+            android:id="@+id/action_nav_water_parameters_to_nav_ph"
+            app:destination="@id/nav_pH" />
+        <action
+            android:id="@+id/action_nav_water_parameters_to_nav_Cl"
+            app:destination="@id/nav_Cl" />
+        <action
+            android:id="@+id/action_nav_water_parameters_to_nav_home"
+            app:destination="@+id/nav_home"/>
+
+    </fragment>
+    <fragment
         android:id="@+id/nav_food"
         android:name="com.example.smartariumapp.ui.food.FoodFragment"
         android:label="@string/food"
@@ -33,19 +61,19 @@
     <fragment
         android:id="@+id/nav_dry_food"
         android:name="com.example.smartariumapp.ui.food.DryFoodFragment"
-        tools:layout="@layout/fragment_dry_food">
+        tools:layout="@layout/food_fragment">
 
     </fragment>
     <fragment
         android:id="@+id/nav_frozen_food"
         android:name="com.example.smartariumapp.ui.food.FrozenFoodFragment"
-        tools:layout="@layout/fragment_frozen_food">
+        tools:layout="@layout/food_fragment">
 
     </fragment>
     <fragment
         android:id="@+id/nav_other_food"
         android:name="com.example.smartariumapp.ui.food.OtherFoodFragment"
-        tools:layout="@layout/fragment_other_food">
+        tools:layout="@layout/food_fragment">
 
     </fragment>
 
@@ -53,20 +81,20 @@
         android:id="@+id/nav_no3"
         android:name="com.example.smartariumapp.ui.water_parameters.NO3Fragment"
         android:label="@string/NO3"
-        tools:layout="@layout/fragment_no3">
+        tools:layout="@layout/fragment_water_parameters">
         <action
             android:id="@+id/action_nav_no3_to_nav_no2"
             app:destination="@id/nav_no2" />
         <action
-            android:id="@+id/action_nav_other_to_nav_home"
-            app:destination="@+id/nav_home"/>
+            android:id="@+id/action_nav_no3_to_nav_water_parameters"
+            app:destination="@+id/nav_water_parameters"/>
     </fragment>
 
     <fragment
         android:id="@+id/nav_no2"
         android:name="com.example.smartariumapp.ui.water_parameters.NO2Fragment"
         android:label="@string/NO2"
-        tools:layout="@layout/fragment_no2">
+        tools:layout="@layout/fragment_water_parameters">
         <argument
             android:name="myArg"
             app:argType="string" />
@@ -87,7 +115,7 @@
         android:id="@+id/nav_kh"
         android:name="com.example.smartariumapp.ui.water_parameters.KHFragment"
         android:label="@string/KH"
-        tools:layout="@layout/fragment_kh">
+        tools:layout="@layout/fragment_water_parameters">
         <action
             android:id="@+id/action_nav_kh_to_nav_pH"
             app:destination="@id/nav_pH" />
@@ -96,7 +124,7 @@
         android:id="@+id/nav_pH"
         android:name="com.example.smartariumapp.ui.water_parameters.pHFragment"
         android:label="@string/pH"
-        tools:layout="@layout/fragment_ph">
+        tools:layout="@layout/fragment_water_parameters">
         <action
             android:id="@+id/action_nav_pH_to_nav_Cl"
             app:destination="@id/nav_Cl" />
@@ -105,7 +133,7 @@
         android:id="@+id/nav_Cl"
         android:name="com.example.smartariumapp.ui.water_parameters.ClFragment"
         android:label="@string/Cl"
-        tools:layout="@layout/fragment_cl"/>
+        tools:layout="@layout/fragment_water_parameters"/>
 
     <fragment
         android:id="@+id/nav_other"
@@ -160,4 +188,6 @@
         android:id="@+id/nav_other_bulb"
         android:name="com.example.smartariumapp.ui.other.BulbFragment"
         tools:layout="@layout/fragment_bulb"/>
+
+
 </navigation>

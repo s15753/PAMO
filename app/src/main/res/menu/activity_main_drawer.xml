@@ -21,7 +21,7 @@
             android:icon="@drawable/ic_water"
             android:title="@string/water" />-->
         <item
-            android:id="@+id/nav_no3"
+            android:id="@+id/nav_water_parameters"
             android:icon="@drawable/ic_water_param"
             android:title="@string/water_parameters" />
 

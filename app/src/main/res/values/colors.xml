@@ -5,6 +5,16 @@
     <color name="colorAccent">#03DAC5</color>
 
     <!-- food colore-->
+    <array name="food_colors">
+        <item>@color/food_0</item>
+        <item>@color/food_1</item>
+        <item>@color/food_2</item>
+        <item>@color/food_3</item>
+        <item>@color/food_4</item>
+        <item>@color/food_4</item>
+        <item>@color/back</item>
+
+    </array>
     <color name="food_0">#f5edda</color>
     <color name="food_1">#e9cba7</color>
     <color name="food_2">#ca9e7b</color>
@@ -12,7 +22,44 @@
     <color name="food_4">#66462f</color>
 
 
+
+    <color name="back">#ececec</color>
+
+
+
+    <!--water parameters colors-->
+    <array name="water_parameters_colors">
+        <item>@color/water_1</item>
+        <item>@color/water_2</item>
+        <item>@color/water_3</item>
+        <item>@color/water_4</item>
+        <item>@color/water_5</item>
+        <item>@color/water_6</item>
+        <item>@color/water_7</item>
+        <item>@color/back</item>
+    </array>
+
+    <color name="water_1">#e8ffff</color>
+    <color name="water_2">#d9f1ff</color>
+    <color name="water_3">#bfe6ff</color>
+    <color name="water_4">#8cd3ff</color>
+    <color name="water_5">#59bfff</color>
+    <color name="water_6">#26abff</color>
+    <color name="water_7">#0da2ff</color>
+    <color name="water_8">#009dff</color>
+
+
     <!-- NO3 -->
+    <array name="no3_colors">
+        <item>@color/NO3_0</item>
+        <item>@color/NO3_10</item>
+        <item>@color/NO3_25</item>
+        <item>@color/NO3_50</item>
+        <item>@color/NO3_100</item>
+        <item>@color/NO3_250</item>
+        <item>@color/NO3_500</item>
+        <item>@color/back</item>
+    </array>
     <color name="NO3_0">#fff7f5</color>
     <color name="NO3_10">#fdefef</color>
     <color name="NO3_25">#fce6e9</color>
@@ -22,6 +69,14 @@
     <color name="NO3_500">#de5291</color>
 
     <!-- NO2 -->
+    <array name="no2_colors">
+        <item>@color/NO2_0</item>
+        <item>@color/NO2_0_5</item>
+        <item>@color/NO2_2</item>
+        <item>@color/NO2_5</item>
+        <item>@color/NO2_10</item>
+
+    </array>
     <color name="NO2_0">#fff7f5</color>
     <color name="NO2_0_5">#feeeef</color>
     <color name="NO2_2">#fbe7e9</color>
@@ -29,6 +84,15 @@
     <color name="NO2_10">#f39faf</color>
 
     <!-- Stabilnosc pH -->
+    <array name="kh_colors">
+        <item>@color/KH_0</item>
+        <item>@color/KH_3</item>
+        <item>@color/KH_6</item>
+        <item>@color/KH_10</item>
+        <item>@color/KH_15</item>
+        <item>@color/KH_20</item>
+
+    </array>
     <color name="KH_0">#c4c02b</color>
     <color name="KH_3">#acb43a</color>
     <color name="KH_6">#7d9a1c</color>
@@ -37,12 +101,28 @@
     <color name="KH_20">#034464</color>
 
     <!-- Chlor -->
+    <array name="cl_colors">
+        <item>@color/Cl_0</item>
+        <item>@color/Cl_0_8</item>
+        <item>@color/Cl_1_5</item>
+        <item>@color/Cl_3</item>
+    </array>
+
     <color name="Cl_0">#e2d123</color>
     <color name="Cl_0_8">#dac500</color>
     <color name="Cl_1_5">#c3b703</color>
     <color name="Cl_3">#b2a80b</color>
 
     <!-- Kwasowosc (pH)-->
+<array name="ph_colors">
+    <item>@color/pH_6_4</item>
+    <item>@color/pH_6_8</item>
+    <item>@color/pH_7_2</item>
+    <item>@color/pH_7_6</item>
+    <item>@color/pH_8</item>
+    <item>@color/pH_8_4</item>
+    <item>@color/pH_9</item>
+</array>
 
     <color name="pH_6_4">#fbba00</color>
     <color name="pH_6_8">#ee9601</color>

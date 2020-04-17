@@ -40,6 +40,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- other possible values -->
+    <string name="text_other">Inne parametry</string>
     <string-array name="other_main_strings">
         <item>Filtr</item>
         <item>Światło</item>
@@ -47,10 +48,13 @@
         <item>Waga</item>
         <item>Woda</item>
         <item>Żarówka</item>
+        <item>"Wróć</item>
     </string-array>
 
 
     <!-- Food possible values -->
+    <string name="food_text">Pożywienie</string>
+
     <string-array name="food_main_strings">
         <item>Suchy</item>
         <item>Mrożony</item>
@@ -62,11 +66,13 @@
         <item>Suszone krewetki</item>
         <item>Suszone stynki</item>
         <item>Gotowy pokarm suchy</item>
+        <item>"Wróć</item>
     </string-array>
 
     <string-array name="food_frozen_strings">
         <item>Mrożone krewetki</item>
         <item>Mrożone stynki</item>
+        <item>"Wróć</item>
     </string-array>
 
     <string-array name="food_other_strings">
@@ -74,9 +80,14 @@
         <item>Martwe rybki</item>
         <item>Moczarka</item>
         <item>Inny</item>
+        <item>"Wróć</item>
     </string-array>
 
+
+
+
     <!-- water nav-->
+    <string name="water_string">Parametry wody</string>
     <string name="NO2">NO2 Azotyny</string>
     <string name="NO3">NO3 Azotany</string>
     <string name="pH">pH</string>
@@ -85,6 +96,7 @@
     <string name="KH">Stabilnosc pH</string>
 
     <!-- water parameters values-->
+
     <string-array name="water_param_strings">
         <item>"NO3 - Azotany"</item>
         <item>"NO2 - Azotyny"</item>
@@ -92,6 +104,7 @@
         <item>"Stabilnosc pH(KH)"</item>
         <item>"Kwasowosc pH"</item>
         <item>"Chlor"</item>
+        <item>"Wróć</item>
     </string-array>
     <string-array name="water_param_strings_zabbix_items">
         <item>"NO3 - Azotany"</item>
@@ -100,6 +113,7 @@
         <item>"Stabilnosc pH(KH)"</item>
         <item>"Kwasowosc pH"</item>
         <item>"Chlor"</item>
+
     </string-array>
     <string-array name="water_param_values_NO3">
         <item>"0"</item>
@@ -147,4 +161,5 @@
         <item>"1.5"</item>
         <item>"3.0"</item>
     </string-array>
+
 </resources>
