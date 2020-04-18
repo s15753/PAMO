@@ -42,14 +42,7 @@ public class NO2Fragment extends Fragment {
         myButtons = new Button[n];
 
         for(int i = 0; i < n; i++){
-            myButtons[i] = setMyButton(i, layout.getContext());
-            final String ans = myArray[i];
-            myButtons[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    check_set_parameters(parameter, ans, root);
-                }
-            });
+            myButtons[i] = setMyButton(i, layout.getContext(), root, parameter);
             layout.addView(myButtons[i]);
         }
 
@@ -72,9 +65,8 @@ public class NO2Fragment extends Fragment {
         }
 
     }
-    private Button setMyButton(int i, Context context){
+    private Button setMyButton(int i, Context context, final View root, final String parameter){
         Button button = new Button(context);
-        button.setBackgroundColor(this.myColors[i]);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -82,7 +74,24 @@ public class NO2Fragment extends Fragment {
         params.setMargins(0, 10, 0, 10);
         button.setLayoutParams(params);
         button.setText(this.myArray[i]);
+        if(this.myArray.length - 1 == i){
+            button.setBackgroundColor(getResources().getColor(R.color.back));
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Navigation.findNavController(root).navigate(R.id.nav_water_parameters);
+                }
+            });
+        }else {
+            button.setBackgroundColor(this.myColors[i]);
+            final String ans = myArray[i];
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    check_set_parameters(parameter, ans, root);
+                }
+            });
+        }
         return button;
-
     }
 }

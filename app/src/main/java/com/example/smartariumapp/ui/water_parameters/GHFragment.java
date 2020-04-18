@@ -25,7 +25,7 @@ public class GHFragment extends Fragment {
     private WaterParametersViewModel waterParametersViewModel;
     private int identifier = 2;
     private Button[] buttons;
-    private Button btn_GH_none;
+    private Button btn_GH_back;
     String[] my_Array;
 
     public static GHFragment newInstance() {
@@ -53,7 +53,7 @@ public class GHFragment extends Fragment {
         buttons[3] = root.findViewById(R.id.bt_GH_14);
         buttons[4] = root.findViewById(R.id.bt_GH_21);
 
-        btn_GH_none = root.findViewById(R.id.bt_lack_of_data);
+        btn_GH_back = root.findViewById(R.id.bt_lack_of_data);
         int n = buttons.length;
 
         for(int i = 0; i < n; i++){
@@ -66,10 +66,10 @@ public class GHFragment extends Fragment {
                 }
             });
         }
-        btn_GH_none.setOnClickListener(new View.OnClickListener() {
+        btn_GH_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(root).navigate(R.id.action_nav_gh_to_nav_kh);
+                Navigation.findNavController(root).navigate(R.id.nav_water_parameters);
             }
         });
         return root;

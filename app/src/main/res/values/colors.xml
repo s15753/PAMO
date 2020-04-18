@@ -36,7 +36,6 @@
         <item>@color/water_5</item>
         <item>@color/water_6</item>
         <item>@color/water_7</item>
-        <item>@color/back</item>
     </array>
 
     <color name="water_1">#e8ffff</color>
@@ -58,7 +57,6 @@
         <item>@color/NO3_100</item>
         <item>@color/NO3_250</item>
         <item>@color/NO3_500</item>
-        <item>@color/back</item>
     </array>
     <color name="NO3_0">#fff7f5</color>
     <color name="NO3_10">#fdefef</color>

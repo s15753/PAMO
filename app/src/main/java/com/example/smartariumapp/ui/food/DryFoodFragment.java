@@ -46,26 +46,7 @@ public class DryFoodFragment extends Fragment {
         myButtons = new Button[n];
 
         for(int i = 0; i < n; i++){
-            if(i == n-1){
-                myButtons[i] = setMyButton(i, layout.getContext());
-                final String ans = myArray[i];
-                myButtons[i].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Navigation.findNavController(root).navigate(R.id.nav_food);
-                    }
-                });
-            }else{
-                myButtons[i] = setMyButton(i, layout.getContext());
-                final String ans = myArray[i];
-                myButtons[i].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        check_set_parameters(ans, root);
-                    }
-                });
-            }
-
+            myButtons[i] = setMyButton(i, layout.getContext(), root);
             layout.addView(myButtons[i]);
         }
 
@@ -88,9 +69,8 @@ public class DryFoodFragment extends Fragment {
         Navigation.findNavController(root).navigate(R.id.nav_food);
 
     }
-    private Button setMyButton(int i, Context context){
+    private Button setMyButton(int i, Context context, final View root){
         Button button = new Button(context);
-        button.setBackgroundColor(this.myColors[i]);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -98,8 +78,25 @@ public class DryFoodFragment extends Fragment {
         params.setMargins(0, 10, 0, 10);
         button.setLayoutParams(params);
         button.setText(this.myArray[i]);
+        if(this.myArray.length - 1 == i){
+            button.setBackgroundColor(getResources().getColor(R.color.back));
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Navigation.findNavController(root).navigate(R.id.nav_food);
+                }
+            });
+        }else {
+            button.setBackgroundColor(this.myColors[i]);
+            final String ans = myArray[i];
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    check_set_parameters( ans, root);
+                }
+            });
+        }
         return button;
-
     }
 
 }

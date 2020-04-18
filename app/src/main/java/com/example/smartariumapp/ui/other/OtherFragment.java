@@ -61,7 +61,7 @@ public class OtherFragment extends Fragment {
 
     private Button setMyButton(int i, Context context){
         Button button = new Button(context);
-        button.setBackgroundColor(this.myColors[i]);
+
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -69,6 +69,11 @@ public class OtherFragment extends Fragment {
         params.setMargins(0, 10, 0, 10);
         button.setLayoutParams(params);
         button.setText(this.myArray[i]);
+        if(this.myArray.length - 1 == i){
+            button.setBackgroundColor(getResources().getColor(R.color.back));
+        }else {
+            button.setBackgroundColor(this.myColors[i]);
+        }
         return button;
 
     }

@@ -123,6 +123,7 @@
         <item>"100"</item>
         <item>"250"</item>
         <item>"500"</item>
+        <item>"Wróć</item>
     </string-array>
     <string-array name="water_param_values_NO2">
         <item>"0"</item>
@@ -130,6 +131,7 @@
         <item>"2"</item>
         <item>"5"</item>
         <item>"10"</item>
+        <item>"Wróć</item>
     </string-array>
     <string-array name="water_param_values_GH">
         <item>"3"</item>
@@ -137,6 +139,7 @@
         <item>"7"</item>
         <item>"14"</item>
         <item>"21"</item>
+        <item>"Wróć</item>
     </string-array>
     <string-array name="water_param_values_KH">
         <item>"0"</item>
@@ -145,6 +148,7 @@
         <item>"10"</item>
         <item>"15"</item>
         <item>"20"</item>
+        <item>"Wróć</item>
     </string-array>
     <string-array name="water_param_values_pH">
         <item>"6.4"</item>
@@ -154,12 +158,14 @@
         <item>"8"</item>
         <item>"8.4"</item>
         <item>"9"</item>
+        <item>"Wróć</item>
     </string-array>
     <string-array name="water_param_values_Cl">
         <item>"0"</item>
         <item>"0.8"</item>
         <item>"1.5"</item>
         <item>"3.0"</item>
+        <item>"Wróć</item>
     </string-array>
 
 </resources>
