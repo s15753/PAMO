@@ -12,7 +12,6 @@
         <item>@color/food_3</item>
         <item>@color/food_4</item>
         <item>@color/food_4</item>
-        <item>@color/back</item>
 
     </array>
     <color name="food_0">#f5edda</color>

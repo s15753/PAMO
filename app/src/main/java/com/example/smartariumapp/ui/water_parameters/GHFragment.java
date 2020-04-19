@@ -22,7 +22,6 @@ import com.example.smartariumapp.data.DataHolder;
 
 public class GHFragment extends Fragment {
 
-    private WaterParametersViewModel waterParametersViewModel;
     private int identifier = 2;
     private Button[] buttons;
     private Button btn_GH_back;
@@ -35,16 +34,11 @@ public class GHFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        waterParametersViewModel =
-                ViewModelProviders.of(this).get(WaterParametersViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_gh, container, false);
-        final TextView textView = root.findViewById(R.id.text_twardosc);
-        waterParametersViewModel.getText(identifier).observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        final String parameter = getResources().getStringArray(R.array.water_param_strings_zabbix_items)[identifier];
+        final TextView textView = root.findViewById(R.id.text_GH);
+        textView.setText(parameter);
+
         my_Array = getResources().getStringArray(R.array.water_param_values_GH);
         buttons = new Button[5];
         buttons[0] = root.findViewById(R.id.bt_GH_3);
@@ -62,7 +56,7 @@ public class GHFragment extends Fragment {
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    check_set_parameters(my_text, root, waterParametersViewModel, identifier);
+                    check_set_parameters(my_text, root, identifier, parameter);
                 }
             });
         }
@@ -74,8 +68,8 @@ public class GHFragment extends Fragment {
         });
         return root;
     }
-    private void check_set_parameters(String ans, View root, WaterParametersViewModel waterParametersViewModel, int identifier){
-        if(DataHolder.isKeyIn(waterParametersViewModel.mListText.get(identifier))){
+    private void check_set_parameters(String ans, View root, int identifier, final String parameter){
+        if(DataHolder.isKeyIn(parameter)){
             Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_home);
             try {
@@ -84,8 +78,8 @@ public class GHFragment extends Fragment {
                 throwable.printStackTrace();
             }
         }else{
-            DataHolder.setMyData(waterParametersViewModel.mListText.get(identifier), ans);
-            Toast.makeText(getActivity(), waterParametersViewModel.mListText.get(identifier)+ " "+ans, Toast.LENGTH_SHORT).show();
+            DataHolder.setMyData(parameter, ans);
+            Toast.makeText(getActivity(), parameter+ " "+ans, Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.action_nav_gh_to_nav_kh);
         }
 

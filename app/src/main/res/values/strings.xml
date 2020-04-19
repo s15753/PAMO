@@ -52,6 +52,24 @@
     </string-array>
 
 
+    <!-- Water fragment-->
+    <string name="water_title">Woda</string>
+    <string name="change">Wymiana</string>
+    <string name="refill">Dolanie</string>
+    <!--
+        <item>Wymiana</item>
+        <item>Dolanie</item>
+        <item>Wyślij</item>
+        <item>Wróć</item>-->
+    <string name="water_hint">Ilość dolanej wody w litrach</string>
+
+
+    <!-- Bulb fragment-->
+    <string-array name="bulb_strings">
+        <item>Wymiana</item>
+        <item>Wróć</item>
+    </string-array>
+
     <!-- Food possible values -->
     <string name="food_text">Pożywienie</string>
 
@@ -113,6 +131,7 @@
         <item>"Stabilnosc pH(KH)"</item>
         <item>"Kwasowosc pH"</item>
         <item>"Chlor"</item>
+
 
     </string-array>
     <string-array name="water_param_values_NO3">

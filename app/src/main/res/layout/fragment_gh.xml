@@ -8,7 +8,7 @@
     tools:context=".ui.water_parameters.GHFragment">
 
     <TextView
-        android:id="@+id/text_twardosc"
+        android:id="@+id/text_GH"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
