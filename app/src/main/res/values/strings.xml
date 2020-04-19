@@ -48,8 +48,34 @@
         <item>Waga</item>
         <item>Woda</item>
         <item>Żarówka</item>
-        <item>"Wróć</item>
+        <item>Wróć</item>
     </string-array>
+    <!-- Filtr fragment-->
+    <string name="cleaning">Czyszczenie</string>
+
+    <string-array name="filter_strings">
+        <item>Czyszcenie</item>
+        <item>Wymiana</item>
+        <item>Gąbka</item>
+        <item>Wata</item>
+        <item>Żwir</item>
+        <item>Ceramika</item>
+    </string-array>
+
+
+    <!-- Light fragment-->
+    <string-array name="light_strings">
+        <item>Zapalone</item>
+        <item>Warunkowo zapalone</item>
+        <item>Zgaszone</item>
+        <item>Wyślij</item>
+        <item>Wróć</item>
+    </string-array>
+    <string-array name="from_to_strings">
+        <item>od</item>
+        <item>do</item>
+    </string-array>
+
 
 
     <!-- Water fragment-->
