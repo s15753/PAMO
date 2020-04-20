@@ -1,14 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.other.LightFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_light_fragment" />
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+            <TextView
+                android:id="@+id/text_light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+            <TextView
+                android:id="@+id/text_light_on"
+                android:text="@string/light_on"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="@string/from"
+                    android:layout_weight="1"
+                    android:textSize="30sp">
+
+                </TextView>
+                <EditText
+                    android:id="@+id/light_on_from"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/light_hint"
+                    android:inputType="time"
+                    android:textSize="20dp"
+                    android:layout_weight="1">
+
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="@string/to"
+                    android:layout_weight="1"
+                    android:textSize="30sp">
+
+                </TextView>
+                <EditText
+                    android:id="@+id/light_on_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/light_hint"
+                    android:inputType="time"
+                    android:textSize="20dp"
+                    android:layout_weight="1">
+
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/text_light_conditional"
+                android:text="@string/light_conditional"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/from"
+                    android:textAlignment="center"
+                    android:textSize="30dp"
+                    android:layout_weight="1">
+
+                </TextView>
+                <EditText
+                    android:id="@+id/light_conditional_from"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/light_hint"
+                    android:inputType="time"
+                    android:textSize="20dp"
+                    android:layout_weight="1">
+
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="@string/to"
+                    android:layout_weight="1"
+                    android:textSize="30sp">
+
+                </TextView>
+                <EditText
+                    android:id="@+id/light_conditional_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/light_hint"
+                    android:inputType="time"
+                    android:textSize="20dp"
+                    android:layout_weight="1">
+
+                </EditText>
+            </LinearLayout>
+            <Button
+                android:id="@+id/bt_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/send"
+                android:background="@color/food_1"
+                />
+            <Button
+                android:id="@+id/bt_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/back"
+                />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -64,19 +64,26 @@
 
 
     <!-- Light fragment-->
-    <string-array name="light_strings">
-        <item>Zapalone</item>
-        <item>Warunkowo zapalone</item>
-        <item>Zgaszone</item>
-        <item>Wyślij</item>
-        <item>Wróć</item>
+
+    <string name="light_hint">godzina</string>
+    <string name="light_on">Zawsze włączone</string>
+    <string name="light_conditional">Włączone warunkowo</string>
+    <string name="from">od</string>
+    <string name="to">do</string>
+    <string-array name="light_ans_values">
+        <item>Zawsze włączone od</item>
+        <item>Zawsze włączone do</item>
+        <item>Włączone warunkowo od</item>
+        <item>Włączone warunkowo do</item>
     </string-array>
-    <string-array name="from_to_strings">
-        <item>od</item>
-        <item>do</item>
+    <!-- Maintenance fragment -->
+    <string-array name="maintenance_ans_values">
+        <item>Przerwa techniczna od</item>
+        <item>Przerwa techniczna do</item>
     </string-array>
 
-    <!--Weight fragment-->
+
+    <!-- Weight fragment-->
     <string name="matilda">Matylda</string>
     <string name="stefanie">Stefania</string>
     <string name="weight_hint">Waga w gramach</string>
