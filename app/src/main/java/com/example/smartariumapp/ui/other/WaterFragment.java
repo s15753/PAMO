@@ -23,7 +23,6 @@ import com.example.smartariumapp.data.DataHolder;
 
 public class WaterFragment extends Fragment {
     private int identifier = 4;
-    private String[] myArray;
     private  Button bt_change, bt_refill, bt_send, bt_back;
     private String ammountString;
     private EditText amount;
@@ -69,10 +68,9 @@ public class WaterFragment extends Fragment {
                 }
             }
         });
-        bt_send.setOnClickListener(new View.OnClickListener() {
+        bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataHolder.removeAll();
                 Navigation.findNavController(root).navigate(R.id.nav_other);
             }
         });

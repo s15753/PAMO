@@ -57,7 +57,7 @@ public class FilterFragment extends Fragment {
                           myButtons[k].setOnClickListener(new View.OnClickListener() {
                               @Override
                               public void onClick(View v) {
-                                  check_set_parameters(ans, root, main_button_string);
+                                  check_set_parameters(main_button_string, root, ans);
                               }
                           });
                            layout.addView(myButtons[k]);

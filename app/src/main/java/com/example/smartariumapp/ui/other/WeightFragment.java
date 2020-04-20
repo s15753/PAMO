@@ -1,65 +1,85 @@
 package com.example.smartariumapp.ui.other;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.smartariumapp.R;
+import com.example.smartariumapp.data.DataHolder;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link WeightFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class WeightFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    private int identifier = 3;
+    private Button bt_back, bt_send;
+    private String massString1, massString2;
+    private EditText mass1, mass2;
     public WeightFragment() {
         // Required empty public constructor
     }
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment WeightFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static WeightFragment newInstance(String param1, String param2) {
-        WeightFragment fragment = new WeightFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+        final View root = inflater.inflate(R.layout.fragment_weight, container, false);
+        final TextView textView = root.findViewById(R.id.text_weight);
+        final String title = getResources().getStringArray(R.array.other_main_strings)[identifier];
+        textView.setText(title);
+        bt_back = root.findViewById(R.id.bt_back);
+        bt_send = root.findViewById(R.id.bt_send);
+        mass1 = root.findViewById(R.id.matilda_mass);
+        mass2 = root.findViewById(R.id.stefanie_mass);
+
+        bt_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                massString1 = mass1.getText().toString();
+                massString2 = mass2.getText().toString();
+                if(massString1.isEmpty() && massString2.isEmpty()){
+                    Toast.makeText(getActivity(), "Nie podano wagi zwierzaków!", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (!massString1.isEmpty()) {
+                        check_set_parameters(getResources().getString(R.string.matilda), massString1, root);
+                    }
+                    if (!massString2.isEmpty()) {
+                        check_set_parameters(getResources().getString(R.string.stefanie), massString2, root);
+                    }
+                }
+            }
+        });
+
+        bt_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(root).navigate(R.id.nav_other);
+            }
+        });
+        return root;
     }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    private void check_set_parameters(String parameter, String ans, View root){
+        if(DataHolder.isKeyIn(parameter)){
+            Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(root).navigate(R.id.nav_other);
+            try {
+                finalize();
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
+        }else{
+            DataHolder.setMyData(parameter, ans);
+            Toast.makeText(getActivity(), parameter+ " "+ans, Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(root).navigate(R.id.nav_other);
         }
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_weight, container, false);
     }
 }
