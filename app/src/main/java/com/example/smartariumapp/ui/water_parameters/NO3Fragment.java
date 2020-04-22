@@ -1,6 +1,5 @@
 package com.example.smartariumapp.ui.water_parameters;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,21 +7,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
-import androidx.navigation.Navigation;
 
 
 import com.example.smartariumapp.R;
-import com.example.smartariumapp.data.DataHolder;
+import com.example.smartariumapp.data.model.LeafWaterFragmentButtonGenerator;
 
 public class NO3Fragment extends Fragment {
 
@@ -40,61 +32,11 @@ public class NO3Fragment extends Fragment {
         LinearLayout layout = root.findViewById(R.id.linearLayout);
         myColors = getResources().getIntArray(R.array.no3_colors);
         myArray = getResources().getStringArray(R.array.water_param_values_NO3);
-        int n = myArray.length;
-        myButtons = new Button[n];
-
-        for(int i = 0; i < n; i++){
-            myButtons[i] = setMyButton(i, layout.getContext(), root, parameter);
-            layout.addView(myButtons[i]);
+        LeafWaterFragmentButtonGenerator leafWaterFragmentButtonGenerator = new LeafWaterFragmentButtonGenerator(root, identifier, getActivity(), parameter);
+        myButtons = leafWaterFragmentButtonGenerator.leafFragmentButton(myArray, myColors);
+        for(Button button : myButtons){
+            layout.addView(button);
         }
-
         return root;
     }
-
-    private void check_set_parameters(String parameter, String ans, View root){
-        if(DataHolder.isKeyIn(parameter)){
-            Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(root).navigate(R.id.nav_water_parameters);
-            try {
-                finalize();
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-            }
-        }else{
-            DataHolder.setMyData(parameter, ans);
-            Toast.makeText(getActivity(), parameter+ " "+ans, Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(root).navigate(R.id.action_nav_no3_to_nav_no2);
-        }
-
-    }
-    private Button setMyButton(int i, Context context, final View root, final String parameter){
-        Button button = new Button(context);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        params.setMargins(0, 10, 0, 10);
-        button.setLayoutParams(params);
-        button.setText(this.myArray[i]);
-        if(this.myArray.length - 1 == i){
-            button.setBackgroundColor(getResources().getColor(R.color.back));
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Navigation.findNavController(root).navigate(R.id.nav_water_parameters);
-                }
-            });
-        }else {
-            button.setBackgroundColor(this.myColors[i]);
-            final String ans = myArray[i];
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    check_set_parameters(parameter, ans, root);
-                }
-            });
-        }
-        return button;
-    }
-
 }

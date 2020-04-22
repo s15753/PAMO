@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.smartariumapp.R;
-import com.example.smartariumapp.data.model.ButtonGenerator;
+import com.example.smartariumapp.data.model.MainButtonGenerator;
 
 public class WaterParametersFragment extends Fragment {
 
@@ -30,10 +30,10 @@ public class WaterParametersFragment extends Fragment {
         textView.setText(R.string.water_string);
 
         LinearLayout layout = root.findViewById(R.id.linearLayout);
-        ButtonGenerator buttonGenerator = new ButtonGenerator(root, identifier);
+        MainButtonGenerator mainButtonGenerator = new MainButtonGenerator(root, identifier);
         myColors = getResources().getIntArray(R.array.water_parameters_colors);
         myArray = getResources().getStringArray(R.array.water_param_strings);
-        myButtons = buttonGenerator.main_fragment_button(myArray, myColors);
+        myButtons = mainButtonGenerator.main_fragment_button(myArray, myColors);
         for(Button button: myButtons){
             layout.addView(button);
         }

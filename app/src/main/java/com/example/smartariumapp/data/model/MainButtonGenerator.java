@@ -9,14 +9,14 @@ import androidx.navigation.Navigation;
 
 import com.example.smartariumapp.R;
 
-public class ButtonGenerator {
+public class MainButtonGenerator {
     private View root;
     private int identifier;
-    public ButtonGenerator(View root, int identifier){
+    public MainButtonGenerator(View root, int identifier){
         this.root = root;
         this.identifier = identifier;
     }
-    public Button[] main_fragment_button(String[] myArray, int[] myColors ){
+    public Button[] main_fragment_button(String[] myArray, int[] myColors){
         int n = myArray.length;
         Button[] myButtons = new Button[n];
         LinearLayout layout = this.root.findViewById(R.id.linearLayout);
@@ -50,8 +50,8 @@ public class ButtonGenerator {
             button.setBackgroundColor(myColors[i]);
         }
         return button;
-
     }
+
     private int setDestination(int identifier, int i) {
         switch (identifier) {
             case 0:

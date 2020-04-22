@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 
 
 import com.example.smartariumapp.R;
-import com.example.smartariumapp.data.model.ButtonGenerator;
+import com.example.smartariumapp.data.model.MainButtonGenerator;
 
 public class OtherFragment extends Fragment {
 
@@ -28,13 +28,13 @@ public class OtherFragment extends Fragment {
 
         final View root = inflater.inflate(R.layout.fragment_other, container, false);
         final TextView textView = root.findViewById(R.id.text_other);
-        ButtonGenerator buttonGenerator = new ButtonGenerator(root, this.identifier);
+        MainButtonGenerator mainButtonGenerator = new MainButtonGenerator(root, this.identifier);
         textView.setText(R.string.text_other);
 
         LinearLayout layout = root.findViewById(R.id.linearLayout);
         myColors = getResources().getIntArray(R.array.water_parameters_colors);
         myArray = getResources().getStringArray(R.array.other_main_strings);
-        myButtons = buttonGenerator.main_fragment_button(myArray, myColors);
+        myButtons = mainButtonGenerator.main_fragment_button(myArray, myColors);
         for(Button button: myButtons){
             layout.addView(button);
         }
