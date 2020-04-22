@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
+import com.example.smartariumapp.data.model.LeafFoodFragmentButtonGenerator;
 
 public class DryFoodFragment extends Fragment {
     private int identifier = 0;
@@ -41,62 +42,13 @@ public class DryFoodFragment extends Fragment {
         LinearLayout layout = root.findViewById(R.id.linearLayout);
         myArray = getResources().getStringArray(R.array.food_dry_strings);
         myColors = getResources().getIntArray(R.array.food_colors);
-        int n = myArray.length;
-
-        myButtons = new Button[n];
-
-        for(int i = 0; i < n; i++){
-            myButtons[i] = setMyButton(i, layout.getContext(), root);
-            layout.addView(myButtons[i]);
+        LeafFoodFragmentButtonGenerator leafFoodFragmentButtonGenerator = new LeafFoodFragmentButtonGenerator(root, getActivity(),title);
+        myButtons = leafFoodFragmentButtonGenerator.leafFragmentButton(myArray, myColors);
+        for(Button button : myButtons){
+            layout.addView(button);
         }
-
         return root;
     }
-    private void check_set_parameters(String ans, View root){
-        if(DataHolder.isKeyIn(ans)){
-            DataHolder.removeByKey(ans);
-            Toast.makeText(getActivity(), "Usunięto "+ans+" z danych do wysłania!", Toast.LENGTH_SHORT).show();
 
-        }else{
-            DataHolder.setMyData(ans, null);
-            Toast.makeText(getActivity(), "Dodano "+ ans + " do danych do wyałania!", Toast.LENGTH_SHORT).show();
-        }
-        try {
-            finalize();
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-        Navigation.findNavController(root).navigate(R.id.nav_food);
-
-    }
-    private Button setMyButton(int i, Context context, final View root){
-        Button button = new Button(context);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        params.setMargins(0, 10, 0, 10);
-        button.setLayoutParams(params);
-        button.setText(this.myArray[i]);
-        if(this.myArray.length - 1 == i){
-            button.setBackgroundColor(getResources().getColor(R.color.back));
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Navigation.findNavController(root).navigate(R.id.nav_food);
-                }
-            });
-        }else {
-            button.setBackgroundColor(this.myColors[i]);
-            final String ans = myArray[i];
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    check_set_parameters( ans, root);
-                }
-            });
-        }
-        return button;
-    }
 
 }
