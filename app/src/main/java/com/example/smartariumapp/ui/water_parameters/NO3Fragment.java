@@ -37,7 +37,7 @@ public class NO3Fragment extends Fragment {
         final TextView textView = root.findViewById(R.id.text_water_parameter);
         final String parameter = getResources().getStringArray(R.array.water_param_strings_zabbix_items)[identifier];
         textView.setText(parameter);
-        LinearLayout layout = root.findViewById(R.id.water_layout);
+        LinearLayout layout = root.findViewById(R.id.linearLayout);
         myColors = getResources().getIntArray(R.array.no3_colors);
         myArray = getResources().getStringArray(R.array.water_param_values_NO3);
         int n = myArray.length;

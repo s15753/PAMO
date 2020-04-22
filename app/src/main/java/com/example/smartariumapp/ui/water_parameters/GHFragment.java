@@ -1,7 +1,5 @@
 package com.example.smartariumapp.ui.water_parameters;
 
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 
