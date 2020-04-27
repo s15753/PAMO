@@ -1,5 +1,6 @@
 package com.example.smartariumapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -23,11 +24,16 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private MutableLiveData<HashMap<String, String>> myDataHashMap;
+    private Intent intent = getIntent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String userName = intent.getStringExtra("userName");
+        String token = intent.getStringExtra("token");
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);

@@ -1,7 +1,5 @@
 package com.example.smartariumapp.data.model.pojo;
 
-import java.util.HashMap;
-
 public class UserRequest {
     private String jsonrpc;
     private String method;
@@ -13,5 +11,9 @@ public class UserRequest {
         this.method = "user.login";
         this.params = params;
         this.id = 1;
+    }
+
+    public String getUsername() {
+        return this.params.getUser();
     }
 }

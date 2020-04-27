@@ -18,6 +18,8 @@ public class LoginResponse {
     @SerializedName("error")
     private Error error;
 
+    private Boolean isResult = false;
+
     public String getJsonrpc() {
         return jsonrpc;
     }
@@ -53,4 +55,19 @@ public class LoginResponse {
     public String getErrorMessage() { return error.getMessage(); }
 
     public String getErrorData() { return error.getData(); }
+
+    public Boolean isResultSet() {
+        if(this.result != null) this.isResult = true;
+        return this.isResult;
+    }
+
+    @Override
+    public String toString() {
+        return "LoginResponse{" +
+                "jsonrpc='" + jsonrpc + '\'' +
+                ", result='" + result + '\'' +
+                ", id='" + id + '\'' +
+                ", error=" + error +
+                '}';
+    }
 }
