@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
     ZabbixRestService userService;
     ProgressBar loadingProgressBar;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.login);
         loadingProgressBar = findViewById(R.id.loading);
 
+        // Get ZabbixApiClient instance
         userService = RestUtils.getUserService();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -48,18 +49,20 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
+                loginButton.setEnabled(false);
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
 
                 if(validateLogin(username, password)) {
                     UserRequest userRequest = getRestData(username, password);
                     doLogin(userRequest);
-                    loadingProgressBar.setVisibility(View.GONE);
+
                 }
             }
         });
     }
 
+    // Validate username and password were provided
     private boolean validateLogin(String username, String password){
         if(username == null || username.trim().length() == 0){
             Toast.makeText(this, "Username is required", Toast.LENGTH_SHORT).show();
@@ -72,12 +75,14 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
+    // Create request object
     private UserRequest getRestData(String username, String password) {
         User user = new User(username, password);
         UserRequest userRequest= new UserRequest(user);
         return userRequest;
     }
 
+    // Send request to Zabbix, handle response and switch to MainActivity if token was returned
     private void doLogin(final UserRequest userRequest){
 
         Call call = userService.loginRequest(userRequest);
@@ -86,11 +91,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) {
                 if (response.isSuccessful()) {
                     LoginResponse loginResponse = (LoginResponse) response.body();
+                    loadingProgressBar.setVisibility(View.GONE);
+                    loginButton.setEnabled(true);
 
                     if(loginResponse.isResultSet()) {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra("token", loginResponse.getResult());
-                        intent.putExtra("userName", userRequest.getUsername());
+                        Bundle bundle = new Bundle();
+                        bundle.putString("token", loginResponse.getResult());
+                        bundle.putString("userName", userRequest.getUsername());
+                        intent.putExtras(bundle);
                         startActivity(intent);
                     } else {
                         Toast.makeText(LoginActivity.this, loginResponse.getErrorData(), Toast.LENGTH_SHORT).show();
@@ -101,6 +110,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call call, Throwable t) {
                 Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                loadingProgressBar.setVisibility(View.GONE);
+                loginButton.setEnabled(true);
             }
         });
     }
