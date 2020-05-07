@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/triggerHost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Host"
+        android:textSize="15sp" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/triggerDesc"
+        android:layout_width="267dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Desc"
+        android:textSize="15sp"></TextView>
+
+    <TextView
+        android:id="@+id/triggerSeverity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="severity
+"
+        android:textSize="15sp"></TextView>
+
+</LinearLayout>

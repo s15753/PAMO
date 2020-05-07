@@ -48,6 +48,26 @@
             android:layout_marginBottom="5dp"
             android:text="@string/send"
             />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">>
+
+            <ListView
+                android:id="@+id/triggerView"
+                android:layout_width="match_parent"
+                android:layout_height="541dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="8dp"
+                android:dividerHeight="1dp">
+
+            </ListView>
+    </LinearLayout>
     </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

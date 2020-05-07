@@ -1,16 +1,13 @@
 package com.example.smartariumapp.data.model.pojo;
 
 public class UserRequest {
-    private String jsonrpc;
-    private String method;
+    private final String jsonrpc = "2.0";
+    private final String method = "user.login";
     private User params;
-    private Integer id;
+    private Integer id = 1;
 
     public UserRequest (User params) {
-        this.jsonrpc = "2.0";
-        this.method = "user.login";
         this.params = params;
-        this.id = 1;
     }
 
     public String getUsername() {
