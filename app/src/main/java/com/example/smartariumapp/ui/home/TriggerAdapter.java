@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.smartariumapp.R;
-import com.example.smartariumapp.data.model.pojo.TriggerResponse;
 import com.example.smartariumapp.data.model.pojo.TriggerResult;
 
 import java.util.ArrayList;
@@ -45,11 +45,29 @@ public class TriggerAdapter  extends BaseAdapter {
         convertView = inflter.inflate(R.layout.trigger_view, null);
         TextView triggerHost = (TextView) convertView.findViewById(R.id.triggerHost);
         TextView triggerDesc = (TextView) convertView.findViewById(R.id.triggerDesc);
-        TextView triggerSeverity = (TextView) convertView.findViewById(R.id.triggerSeverity);
+        ImageView triggerSeverity = (ImageView) convertView.findViewById(R.id.triggerSeverity);
 
-        triggerHost.setText(triggerResults.get(position).getHosts().get(0).getHost());
+        triggerHost.setText(triggerResults.get(position).getHosts().get(0).getHost()
+                                            .replaceAll("_", " "));
         triggerDesc.setText(triggerResults.get(position).getDescription());
-        triggerSeverity.setText(triggerResults.get(position).getLastEvent().getSeverity());
+        switch (triggerResults.get(position).getLastEvent().getSeverity()) {
+            case "2":
+                convertView.setBackgroundColor(context.getColor(R.color.color_warning));
+                triggerSeverity.setImageResource(R.mipmap.ic_warning_alert);
+                break;
+            case "3":
+                convertView.setBackgroundColor(context.getColor(R.color.color_average));
+                triggerSeverity.setImageResource(R.drawable.ic_average_alert_background);
+                break;
+            case "4":
+                convertView.setBackgroundColor(context.getColor(R.color.color_high));
+                triggerSeverity.setImageResource(R.drawable.ic_high_alert_background);
+                break;
+            case "5":
+                convertView.setBackgroundColor(context.getColor(R.color.color_disaster));
+                triggerSeverity.setImageResource(R.mipmap.ic_disaster);
+                break;
+        }
 
         return convertView;
     }

@@ -157,4 +157,9 @@
     <color name="GH_21_3">#c86987</color>
     <color name="GH_21_4">#c86987</color>
 
+    <!-- Alerts-->
+    <color name="color_warning">#fff584</color>
+    <color name="color_average">#f0e507</color>
+    <color name="color_high">#f79609</color>
+    <color name="color_disaster">#f90000</color>
 </resources>
