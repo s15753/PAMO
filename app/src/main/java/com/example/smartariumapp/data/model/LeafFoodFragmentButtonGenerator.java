@@ -12,6 +12,9 @@ import androidx.navigation.Navigation;
 
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
+import com.example.smartariumapp.data.model.pojo.ZabbixData;
+
+import java.util.Map;
 
 public class LeafFoodFragmentButtonGenerator {
     private View root;
@@ -69,7 +72,15 @@ public class LeafFoodFragmentButtonGenerator {
             Toast.makeText(activity, "Usunięto "+ans+" z danych do wysłania!", Toast.LENGTH_SHORT).show();
 
         }else{
-            DataHolder.setMyData(ans, null);
+            String[] myFoodNames = root.getResources().getStringArray(R.array.food_zabbix_name);
+            int counter = 0;
+            for (int i = 0; i < myFoodNames.length; i++){
+                if (myFoodNames[i].equalsIgnoreCase(ans)){
+                    counter = i + 1;
+                    break;
+                }
+            }
+            DataHolder.setMyData(ans, new ZabbixData("Jedzenie", "food", ""+counter));
             Toast.makeText(activity, "Dodano "+ ans + " do danych do wyałania!", Toast.LENGTH_SHORT).show();
         }
         try {

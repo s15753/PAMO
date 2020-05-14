@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
+import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
 public class LeafWaterFragmentButtonGenerator {
     private View root;
@@ -74,7 +75,7 @@ public class LeafWaterFragmentButtonGenerator {
                 throwable.printStackTrace();
             }
         }else{
-            DataHolder.setMyData(parameter, ans);
+            DataHolder.setMyData(parameter, new ZabbixData("Woda", parameter.toUpperCase(), ans));
             Toast.makeText(this.activity, parameter+ " "+ans, Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(setDestination(this.identifier));
         }

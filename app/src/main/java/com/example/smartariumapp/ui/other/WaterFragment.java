@@ -84,7 +84,7 @@ public class WaterFragment extends Fragment {
             Toast.makeText(getActivity(), "Usunięto " + title +" z danych do wysłania!", Toast.LENGTH_SHORT).show();
 
         }else{
-            DataHolder.setMyData(title+"_"+ans, val);
+            //DataHolder.setMyData(title+"_"+ans, val);
             Toast.makeText(getActivity(), "Dodano "+ title + "_"+ ans + " do danych do wyałania!", Toast.LENGTH_SHORT).show();
         }
         try {

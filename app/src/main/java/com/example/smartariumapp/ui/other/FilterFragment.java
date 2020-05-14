@@ -91,7 +91,7 @@ public class FilterFragment extends Fragment {
             Toast.makeText(getActivity(), "Usunięto " + title + " "+ ans +" z danych do wysłania!", Toast.LENGTH_SHORT).show();
 
         }else{
-            DataHolder.setMyData(title, ans);
+            //DataHolder.setMyData(title, ans);
             Toast.makeText(getActivity(), "Dodano "+ title + " "+ ans + " do danych do wyałania!", Toast.LENGTH_SHORT).show();
         }
         try {

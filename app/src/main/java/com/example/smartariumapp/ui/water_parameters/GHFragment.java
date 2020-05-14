@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
+import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
 public class GHFragment extends Fragment {
 
@@ -54,7 +55,7 @@ public class GHFragment extends Fragment {
             buttons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    check_set_parameters(my_text, root, identifier, parameter);
+                    check_set_parameters(my_text, root, parameter);
                 }
             });
         }
@@ -66,7 +67,7 @@ public class GHFragment extends Fragment {
         });
         return root;
     }
-    private void check_set_parameters(String ans, View root, int identifier, final String parameter){
+    private void check_set_parameters(String ans, View root, final String parameter){
         if(DataHolder.isKeyIn(parameter)){
             Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_home);
@@ -76,7 +77,7 @@ public class GHFragment extends Fragment {
                 throwable.printStackTrace();
             }
         }else{
-            DataHolder.setMyData(parameter, ans);
+            DataHolder.setMyData(parameter, new ZabbixData("Woda", parameter.toUpperCase(), ans));
             Toast.makeText(getActivity(), parameter+ " "+ans, Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.action_nav_gh_to_nav_kh);
         }

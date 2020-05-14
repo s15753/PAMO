@@ -81,7 +81,7 @@ public class MaintenanceFragment extends Fragment {
                 throwable.printStackTrace();
             }
         }else{
-            DataHolder.setMyData(parameter, ans);
+            //DataHolder.setMyData(parameter, ans);
             Toast.makeText(getActivity(), parameter+ " "+ans, Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_other);
         }

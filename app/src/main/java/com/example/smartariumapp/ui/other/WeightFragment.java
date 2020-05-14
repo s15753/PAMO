@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
+import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
 
 public class WeightFragment extends Fragment {
@@ -49,10 +50,10 @@ public class WeightFragment extends Fragment {
                     Toast.makeText(getActivity(), "Nie podano wagi zwierzaków!", Toast.LENGTH_SHORT).show();
                 }else {
                     if (!massString1.isEmpty()) {
-                        check_set_parameters(getResources().getString(R.string.matilda), massString1, root);
+                        check_set_parameters(getResources().getString(R.string.matilda), massString1, root, getResources().getString(R.string.stefanie_key));
                     }
                     if (!massString2.isEmpty()) {
-                        check_set_parameters(getResources().getString(R.string.stefanie), massString2, root);
+                        check_set_parameters(getResources().getString(R.string.stefanie), massString2, root, getResources().getString(R.string.stefanie_key));
                     }
                 }
             }
@@ -66,7 +67,7 @@ public class WeightFragment extends Fragment {
         });
         return root;
     }
-    private void check_set_parameters(String parameter, String ans, View root){
+    private void check_set_parameters(String parameter, String ans, View root, String key){
         if(DataHolder.isKeyIn(parameter)){
             Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_other);
@@ -76,7 +77,7 @@ public class WeightFragment extends Fragment {
                 throwable.printStackTrace();
             }
         }else{
-            DataHolder.setMyData(parameter, ans);
+            DataHolder.setMyData(parameter, new ZabbixData("Zolwie", key, ans));
             Toast.makeText(getActivity(), parameter+ " "+ans, Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_other);
         }

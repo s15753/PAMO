@@ -25,7 +25,7 @@
     <string name="menu_home">Home</string>
     <string name="water_parameters">Parametry wody</string>
     <string name="other">Inne</string>
-    <string name="food">Food</string>
+    <string name="food">Pokarm</string>
     <string name="water">Water</string>
 
 
@@ -75,8 +75,8 @@
     <string-array name="light_ans_values">
         <item>Zawsze włączone od</item>
         <item>Zawsze włączone do</item>
-        <item>Włączone warunkowo od</item>
-        <item>Włączone warunkowo do</item>
+        <item>Zawsze wyłączone od</item>
+        <item>Zawsze wyłączone do</item>
     </string-array>
     <!-- Maintenance fragment -->
     <string-array name="maintenance_ans_values">
@@ -88,6 +88,8 @@
     <!-- Weight fragment-->
     <string name="matilda">Matylda</string>
     <string name="stefanie">Stefania</string>
+    <string name="matilda_key">mass_M</string>
+    <string name="stefanie_key">mass_M</string>
     <string name="weight_hint">Waga w gramach</string>
     <!-- Water fragment-->
     <string name="water_title">Woda</string>
@@ -138,6 +140,19 @@
         <item>"Wróć</item>
     </string-array>
 
+    <string-array name="food_zabbix_name">
+        <item>Żywe rybki</item>
+        <item>Martwe rybki</item>
+        <item>Mrożone stynki</item>
+        <item>Mrożone krewetki</item>
+        <item>Suszone stynki</item>
+        <item>Suszone krewetki</item>
+        <item>Gotowy pokarm suchy</item>
+        <item>Moczarka</item>
+        <item>Inny</item>
+    </string-array>
+
+
 
 
 
@@ -162,15 +177,14 @@
         <item>"Wróć</item>
     </string-array>
     <string-array name="water_param_strings_zabbix_items">
-        <item>"NO3 - Azotany"</item>
-        <item>"NO2 - Azotyny"</item>
-        <item>"Twardosc calkowita(GH)"</item>
-        <item>"Stabilnosc pH(KH)"</item>
-        <item>"Kwasowosc pH"</item>
-        <item>"Chlor"</item>
-
-
+        <item>"NO3"</item>
+        <item>"NO2"</item>
+        <item>"GH"</item>
+        <item>"KH"</item>
+        <item>"pH"</item>
+        <item>"Cl"</item>
     </string-array>
+
     <string-array name="water_param_values_NO3">
         <item>"0"</item>
         <item>"10"</item>
