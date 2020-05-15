@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
+import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
 
 public class FilterFragment extends Fragment {
@@ -44,26 +45,26 @@ public class FilterFragment extends Fragment {
 
         for(int i = 0; i < 2; i++){
             myButtons[i] = setMyButton(i, layout.getContext(), root, title);
-            final int my_val = i;
+            final int key_val = i;
             final String main_button_string = myArray[i];
             myButtons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    myButtons[1 - my_val].setVisibility(View.INVISIBLE);
+                    myButtons[1 - key_val].setVisibility(View.INVISIBLE);
                    if (myButtons[2] == null) {
                        for(int k = 2; k < myArray.length; k++){
                           myButtons[k] = setMyButton(k, layout.getContext(), root, title);
-                          final String ans = myArray[k];
+                          final int value = k;
                           myButtons[k].setOnClickListener(new View.OnClickListener() {
                               @Override
                               public void onClick(View v) {
-                                  check_set_parameters(main_button_string, root, ans);
+                                  check_set_parameters(key_val, root, value);
                               }
                           });
                            layout.addView(myButtons[k]);
                        }
                    }else{
-                       myButtons[1 - my_val].setVisibility(View.VISIBLE);
+                       myButtons[1 - key_val].setVisibility(View.VISIBLE);
                        for(int k = 2; k < myArray.length; k++){
                            layout.removeView(myButtons[k]);
                            myButtons[k] = null;
@@ -85,14 +86,14 @@ public class FilterFragment extends Fragment {
         layout.addView(bt_back);
         return root;
     }
-    private void check_set_parameters(String ans, View root, String title){
-        if(DataHolder.isKeyIn(title)){
-            DataHolder.removeByKey(title);
-            Toast.makeText(getActivity(), "Usunięto " + title + " "+ ans +" z danych do wysłania!", Toast.LENGTH_SHORT).show();
+    private void check_set_parameters(int key_val, View root, int value){
+        if(DataHolder.isKeyIn(myArray[value])){
+            DataHolder.removeByKey(myArray[value]);
+            Toast.makeText(getActivity(), "Usunięto " + myArray[value] + " "+ myArray[key_val] +" z danych do wysłania!", Toast.LENGTH_SHORT).show();
 
         }else{
-            //DataHolder.setMyData(title, ans);
-            Toast.makeText(getActivity(), "Dodano "+ title + " "+ ans + " do danych do wyałania!", Toast.LENGTH_SHORT).show();
+            DataHolder.setMyData(myArray[value], new ZabbixData("Filtr", key_val != 1 ? "change":"replace", ""+(value-1) ));
+            Toast.makeText(getActivity(), "Dodano "+ myArray[value] + " "+ myArray[key_val] + " do danych do wyałania!", Toast.LENGTH_SHORT).show();
         }
         try {
             finalize();
@@ -121,12 +122,6 @@ public class FilterFragment extends Fragment {
             button.setText(ans);
             button.setBackgroundColor(this.myColors[i]);
         }
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                check_set_parameters(ans, root, title);
-            }
-        });
         return button;
     }
 
