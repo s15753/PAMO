@@ -1,6 +1,8 @@
 package com.example.smartariumapp.data.model;
 
 import com.example.smartariumapp.data.model.pojo.LoginResponse;
+import com.example.smartariumapp.data.model.pojo.SendData;
+import com.example.smartariumapp.data.model.pojo.SendDataResponse;
 import com.example.smartariumapp.data.model.pojo.TriggerRequest;
 import com.example.smartariumapp.data.model.pojo.TriggerResponse;
 import com.example.smartariumapp.data.model.pojo.UserRequest;
@@ -16,5 +18,8 @@ public interface ZabbixRestService {
 
     @POST("/zabbix/api_jsonrpc.php")
     Call<TriggerResponse> triggerRequest(@Body TriggerRequest triggerRequest);
+
+    @POST("/android_request.php")
+    Call<SendDataResponse> sendData(@Body SendData sendData);
 
 }

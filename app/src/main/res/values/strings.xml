@@ -17,9 +17,10 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="back">Wróć</string>
+    <string name="alert_title_text">Alerty</string>
 
     <!-- login -->
-    <string name="base_url">https://zolw.tk</string>
+    <string name="base_url">https://zolwik.tk</string>
 
     <!-- menu-->
     <string name="menu_home">Home</string>
