@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
+import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
 
 public class WaterFragment extends Fragment {
@@ -26,6 +27,8 @@ public class WaterFragment extends Fragment {
     private  Button bt_change, bt_refill, bt_send, bt_back;
     private String ammountString;
     private EditText amount;
+    private int change_action = 1;
+
     public WaterFragment() {
         // Required empty public constructor
     }
@@ -42,13 +45,34 @@ public class WaterFragment extends Fragment {
         bt_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                check_set_parameters(bt_change.getText().toString(), bt_refill.getText().toString(), root, title, "all");
+                if(amount.getVisibility() == View.GONE) {
+                    bt_refill.setVisibility(View.INVISIBLE);
+                    amount.setVisibility(View.VISIBLE);
+                    bt_send.setVisibility(View.VISIBLE);
+                    bt_send.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ammountString = amount.getText().toString();
+                            if(ammountString.equals(null) || ammountString.isEmpty()){
+                                Toast.makeText(getActivity(), "Nie podano ilości wody!", Toast.LENGTH_SHORT).show();
+                            }else{
+                                check_set_parameters(change_action, root, title, ammountString);
+                            }
+                        }
+                    });
+                }else {
+                    amount.setVisibility(View.GONE);
+                    bt_send.setVisibility(View.GONE);
+                    bt_refill.setVisibility(View.VISIBLE);
+                }
+                //check_set_parameters(bt_change.getText().toString(), bt_refill.getText().toString(), root, title, "all");
             }
         });
         bt_refill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(amount.getVisibility() == View.GONE) {
+                    bt_change.setVisibility(View.INVISIBLE);
                     amount.setVisibility(View.VISIBLE);
                     bt_send.setVisibility(View.VISIBLE);
                     bt_send.setOnClickListener(new View.OnClickListener() {
@@ -58,13 +82,14 @@ public class WaterFragment extends Fragment {
                             if(ammountString.equals(null) || ammountString.isEmpty()){
                                 Toast.makeText(getActivity(), "Nie podano ilości wymienionej wody!", Toast.LENGTH_SHORT).show();
                             }else{
-                                check_set_parameters(bt_refill.getText().toString(), bt_change.getText().toString(), root, title, ammountString);
+                                check_set_parameters(change_action-1, root, title, ammountString);
                             }
                         }
                     });
                 }else {
                     amount.setVisibility(View.GONE);
                     bt_send.setVisibility(View.GONE);
+                    bt_change.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -77,15 +102,15 @@ public class WaterFragment extends Fragment {
 
         return root;
     }
-    private void check_set_parameters(String ans, String other, View root, final String title, String val){
-        if(DataHolder.isKeyIn(title+"_"+ans) || DataHolder.isKeyIn(title+"_"+other)){
-            DataHolder.removeByKey(title+"_"+ans);
-            DataHolder.removeByKey(title+"_"+other);
+    private void check_set_parameters(int action, View root, final String title, String val){
+        if(DataHolder.isKeyIn(title+"_0") || DataHolder.isKeyIn(title+"_1")){
+            DataHolder.removeByKey(title+"_0");
+            DataHolder.removeByKey(title+"_1");
             Toast.makeText(getActivity(), "Usunięto " + title +" z danych do wysłania!", Toast.LENGTH_SHORT).show();
 
         }else{
-            //DataHolder.setMyData(title+"_"+ans, val);
-            Toast.makeText(getActivity(), "Dodano "+ title + "_"+ ans + " do danych do wyałania!", Toast.LENGTH_SHORT).show();
+            DataHolder.setMyData(title, new ZabbixData("Woda", action != 1 ? "add":"replace", val ));
+            Toast.makeText(getActivity(), "Dodano "+ title + " "+ val+ "l do danych do wyałania!", Toast.LENGTH_SHORT).show();
         }
         try {
             finalize();
