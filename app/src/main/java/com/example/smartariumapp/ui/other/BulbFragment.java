@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
+import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
 public class BulbFragment extends Fragment {
     private int identifier = 5;
@@ -55,7 +56,7 @@ public class BulbFragment extends Fragment {
 
         }else{
 
-            //DataHolder.setMyData(title, null);
+            DataHolder.setMyData(title, new ZabbixData("Oswietlenie", "replace", "1"));
             Toast.makeText(getActivity(), "Dodano "+ title + " "+ ans + " do danych do wyałania!", Toast.LENGTH_SHORT).show();
         }
         try {

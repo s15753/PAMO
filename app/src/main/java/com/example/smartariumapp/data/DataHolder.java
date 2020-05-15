@@ -36,8 +36,13 @@ public class DataHolder {
     public static String myDataToString(){
         StringBuilder my_string = new StringBuilder();
         for(Map.Entry<String, ZabbixData> entry: myData.entrySet()){
-            my_string.append(entry.getKey() + ": "+entry.getValue().getValue()+"\n");
-            System.out.println(my_string);
+             if(entry.getValue().getHost().equalsIgnoreCase("Jedzenie")){
+                my_string.append(entry.getKey() + "\n");
+                System.out.println(my_string);
+            }else{
+                my_string.append(entry.getKey() + ": " + entry.getValue().getValue() + "\n");
+                System.out.println(my_string);
+            }
         }
         return my_string.toString();
     }
