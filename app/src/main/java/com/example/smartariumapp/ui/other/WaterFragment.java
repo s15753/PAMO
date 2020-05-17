@@ -110,7 +110,7 @@ public class WaterFragment extends Fragment {
 
         }else{
             DataHolder.setMyData(title, new ZabbixData("Woda", action != 1 ? "add":"replace", val ));
-            Toast.makeText(getActivity(), "Dodano "+ title + " "+ val+ "l do danych do wyałania!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Dodano "+ title + " "+ val+ "l do danych do wysłania!", Toast.LENGTH_SHORT).show();
         }
         try {
             finalize();
