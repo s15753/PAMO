@@ -44,12 +44,17 @@ public class LightFragment extends Fragment {
         myStrings = new String[4];
 
 
+
         bt_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean check_status = true;
                 for(int k = 0; k < myEditText.length; k++){
-                    myStrings[k] = myEditText[k].getText().toString();
+                    if(hourFilter(myEditText[k].getText().toString())) {
+                        myStrings[k] = myEditText[k].getText().toString();
+                    }else{
+                        myStrings[k] = "";
+                    }
                 }
                 for(int k = 0; k < myEditText.length; k += 2){
                     if(!myStrings[k].isEmpty() && !myStrings[k+1].isEmpty()){
@@ -85,6 +90,26 @@ public class LightFragment extends Fragment {
             //DataHolder.setMyData(parameter, ans);
             Toast.makeText(getActivity(), parameter+ " "+ans, Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_other);
+        }
+    }
+    private boolean hourFilter(String source){
+        if(source.length() > 5 || source.length() < 4){
+            return false;
+        }
+        else {
+            String substringHours = source.subSequence(0, source.length()-3).toString();
+            String substringMinutes = source.subSequence(source.length()-2, source.length()).toString();
+            try{
+                int hours = Integer.parseInt(substringHours);
+                int minutes = Integer.parseInt(substringMinutes);
+                if(minutes >= 0 && minutes < 60 && hours >= 0 && hours < 24){
+                    return true;
+                }else{
+                    return false;
+                }
+            }catch(NumberFormatException err){
+                return false;
+            }
         }
     }
 }
