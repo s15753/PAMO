@@ -21,4 +21,13 @@ public class SendData {
     public void setData(ArrayList<ZabbixData> data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        String string = "";
+        for(ZabbixData value: data) {
+            string += value.getHost() + " " + value.getItem() + " " + value.getValue() + "   ";
+        }
+        return string;
+    }
 }

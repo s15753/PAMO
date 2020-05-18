@@ -9,6 +9,7 @@ import com.example.smartariumapp.data.model.pojo.UserRequest;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface ZabbixRestService {
@@ -19,7 +20,7 @@ public interface ZabbixRestService {
     @POST("/zabbix/api_jsonrpc.php")
     Call<TriggerResponse> triggerRequest(@Body TriggerRequest triggerRequest);
 
-    @POST("/android_request.php")
+    @POST("/app/scripts/android_request.php")
     Call<SendDataResponse> sendData(@Body SendData sendData);
 
 }

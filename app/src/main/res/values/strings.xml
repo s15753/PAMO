@@ -18,6 +18,7 @@
     <string name="action_settings">Settings</string>
     <string name="back">Wróć</string>
     <string name="alert_title_text">Alerty</string>
+    <string name="send_data_error_msg">Coś poszło nie tak. Kod błędu: </string>
 
     <!-- login -->
     <string name="base_url">https://zolwik.tk</string>

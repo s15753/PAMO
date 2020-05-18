@@ -9,19 +9,15 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
-
 import com.example.smartariumapp.MainActivity;
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
 import com.example.smartariumapp.data.model.pojo.SendDataResponse;
 import com.example.smartariumapp.data.model.pojo.TriggerResponse;
-import com.example.smartariumapp.data.model.pojo.TriggerResult;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,14 +56,16 @@ public class HomeFragment extends Fragment {
                     public void onResponse(Call call, Response response) {
                         if (response.isSuccessful()) {
                             SendDataResponse zabbixResponse = (SendDataResponse) response.body();
-
-                            Log.v("SUCCESS", zabbixResponse.getResponseMsg());
+                            Toast.makeText(getActivity(), zabbixResponse.getResponseMsg(),
+                                                                        Toast.LENGTH_SHORT).show();
                         }
+                        else Toast.makeText(getActivity(),
+                                getString(R.string.send_data_error_msg) + response.code(),
+                                Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onFailure(Call call, Throwable t) {
-                        Log.v("ONFAILURE", t.getMessage());
                         Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
