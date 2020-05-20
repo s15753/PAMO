@@ -1,14 +1,11 @@
 package com.example.smartariumapp.ui.home;
 
 import android.content.Context;
-import android.provider.SyncStateContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.smartariumapp.R;
@@ -73,24 +70,5 @@ public class TriggerAdapter  extends BaseAdapter {
         }
 
         return convertView;
-    }
-
-    public static int getListViewHeightBasedOnChildren(ListView listView)
-    {
-        TriggerAdapter listAdapter = (TriggerAdapter) listView.getAdapter();
-        if (listAdapter != null)
-        {
-            int totalHeight = 0;
-            int size = listAdapter.getCount();
-            for (int i = 0; i < size; i++)
-            {
-                View listItem = listAdapter.getView(i, null, listView);
-                listItem.measure(0, 0);
-                totalHeight += listItem.getMeasuredHeight();
-            }
-            totalHeight = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
-            return totalHeight;
-        }
-        return 0;
     }
 }

@@ -1,8 +1,5 @@
 package com.example.smartariumapp.data.model.pojo;
 
-import androidx.annotation.NonNull;
-
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class LoginResponse {

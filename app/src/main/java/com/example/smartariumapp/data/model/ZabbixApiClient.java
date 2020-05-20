@@ -8,7 +8,7 @@ public class ZabbixApiClient {
     public static Retrofit retrofit;
     /*
     This public static method will return Retrofit client
-    anywhere in the appplication
+    anywhere in the application
     */
     public static Retrofit getRetrofitClient(String url) {
         if (retrofit == null) {
