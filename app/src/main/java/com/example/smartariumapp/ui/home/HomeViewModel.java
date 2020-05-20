@@ -1,6 +1,5 @@
 package com.example.smartariumapp.ui.home;
 
-import android.util.Log;
 import androidx.lifecycle.ViewModel;
 import com.example.smartariumapp.data.DataHolder;
 import com.example.smartariumapp.data.model.RestUtils;
@@ -20,10 +19,11 @@ public class HomeViewModel extends ViewModel {
     public HomeViewModel() {
     }
 
-    public Call sendDataInstance() {
+    public Call sendDataInstance(String user) {
         SendData sendData = new SendData();
         sendData.setData(getRequests());
-        Log.v("REQUEST", sendData.toString());
+        sendData.setUser(user);
+
         Call call = requestSevice.sendData(sendData);
 
         return call;
@@ -47,5 +47,4 @@ public class HomeViewModel extends ViewModel {
 
         return data;
     }
-
 }

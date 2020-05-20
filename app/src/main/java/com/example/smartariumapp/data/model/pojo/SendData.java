@@ -10,9 +10,9 @@ public class SendData {
     @Expose
     private ArrayList<ZabbixData> data = null;
 
-//    @SerializedName("user")
-//    @Expose
-//    private String user = "robert";
+    @SerializedName("user")
+    @Expose
+    private String user;
 
     public ArrayList<ZabbixData> getData() {
         return data;
@@ -22,9 +22,11 @@ public class SendData {
         this.data = data;
     }
 
+    public void setUser(String user) { this.user = user; }
+
     @Override
     public String toString() {
-        String string = "";
+        String string = this.user + " ";
         for(ZabbixData value: data) {
             string += value.getHost() + " " + value.getItem() + " " + value.getValue() + "   ";
         }

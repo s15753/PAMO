@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
     public Bundle getLoginData() {
         Bundle loginData = new Bundle();
-        loginData.putString("username", userName);
+        loginData.putString("userName", userName);
         loginData.putString("token", token);
         return loginData;
     }

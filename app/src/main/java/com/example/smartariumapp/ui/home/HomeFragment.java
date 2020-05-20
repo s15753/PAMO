@@ -1,7 +1,6 @@
 package com.example.smartariumapp.ui.home;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +25,7 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     Button bt_send;
-    TextView data_to_send, alert_title;
+    TextView data_to_send;
     ListView list ;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -39,7 +38,7 @@ public class HomeFragment extends Fragment {
         // get token from MainActivity
         Bundle bundleResult = activity.getLoginData();
         String token = bundleResult.getString("token");
-        String user = bundleResult.getString("user");
+        final String user = bundleResult.getString("userName");
 
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -50,7 +49,7 @@ public class HomeFragment extends Fragment {
         bt_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call sendData = homeViewModel.sendDataInstance();
+                Call sendData = homeViewModel.sendDataInstance(user);
                 sendData.enqueue(new Callback() {
                     @Override
                     public void onResponse(Call call, Response response) {
@@ -70,15 +69,13 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-
                 DataHolder.removeAll();
                 Navigation.findNavController(root).navigate(R.id.nav_home);
             }
         });
 
         if(DataHolder.checkLength() == 0){
-            bt_send.setVisibility(View.GONE);
-            data_to_send.setVisibility(View.GONE);
+            root.findViewById(R.id.send_values_display).setVisibility(View.GONE);
         }else{
             data_to_send.setText(DataHolder.myDataToString());
         }
@@ -93,24 +90,18 @@ public class HomeFragment extends Fragment {
                     TriggerResponse triggerResponse = (TriggerResponse) response.body();
 
                     if(triggerResponse.isResultSet()) {
-                        alert_title = root.findViewById(R.id.alert_title);
-                        alert_title.setVisibility(View.VISIBLE);
+                        root.findViewById(R.id.trigger_values_display).setVisibility(View.VISIBLE);
 
                         // set alerts in ListView
                         list = (ListView) root.findViewById(R.id.triggerView);
                         TriggerAdapter triggerAdapter = new TriggerAdapter(root.getContext(), triggerResponse.getResult());
                         list.setAdapter(triggerAdapter);
-                        ViewGroup.LayoutParams params = list.getLayoutParams();
-                        params.height = triggerAdapter.getListViewHeightBasedOnChildren(list);
-                        list.setLayoutParams(params);
-
                     }
                 }
             }
 
             @Override
             public void onFailure(Call call, Throwable t) {
-                Log.v("ONFAILURE", t.getMessage());
                 Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
