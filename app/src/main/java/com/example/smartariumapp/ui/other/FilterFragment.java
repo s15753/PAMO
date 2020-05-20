@@ -15,11 +15,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.smartariumapp.R;
+import com.example.smartariumapp.*;
 import com.example.smartariumapp.data.DataHolder;
 import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
-
+/**
+ * Fragment for filter.
+ *
+ * This fragment is used to notice actions performed by user concern filter in monitored tank.
+ *
+ * @author Agnieszka Rydzyk
+ * @version 2020.1505
+ * @since 1.0
+ */
 public class FilterFragment extends Fragment {
     private int identifier = 0;
     private Button[] myButtons;

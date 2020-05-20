@@ -21,6 +21,15 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.HashMap;
 
+/**
+ * Fragment for bulb.
+ *
+ * This fragment is used to notice bulb replacement in monitored tank.
+ *
+ * @author Agnieszka Rydzyk
+ * @version 2020.1505
+ * @since 1.0
+ */
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -70,7 +79,11 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
+    /**
+     * Method where base on data stored in DataHolder value with title as a key is removed or add to data to send.
+     * If attempt to finalize() fail method can throw exception
+     *
+     */
     public Bundle getLoginData() {
         Bundle loginData = new Bundle();
         loginData.putString("username", userName);

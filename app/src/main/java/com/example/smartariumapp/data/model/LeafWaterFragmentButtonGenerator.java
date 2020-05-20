@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
 
-import com.example.smartariumapp.R;
+import com.example.smartariumapp.*;
 import com.example.smartariumapp.data.DataHolder;
 import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
