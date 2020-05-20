@@ -10,23 +10,41 @@ import android.widget.Toast;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
 
-import com.example.smartariumapp.R;
+import com.example.smartariumapp.*;
 import com.example.smartariumapp.data.DataHolder;
 import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
-import java.util.Map;
 
+/**
+ * Auxiliary class simplifying creation of long list of buttons use to gather data concerning food.
+ *
+ *
+ * @author Agnieszka Rydzyk
+ * @version 2020.05
+ * @since 1.0
+ */
 public class LeafFoodFragmentButtonGenerator {
     private View root;
     private Activity activity;
-    private final String parameter;
 
-    public LeafFoodFragmentButtonGenerator(View root, FragmentActivity activity, String parameter){
+    /**
+     * Public constructor
+     *
+     * @param root View on which created buttons will be display
+     * @param activity FragmentActivity to show response to user actions
+     * @return Construct instance of LeafFoodFragmentButtonGenerator
+     */
+    public LeafFoodFragmentButtonGenerator(View root, FragmentActivity activity){
         this.root = root;
         this.activity = activity;
-        this.parameter = parameter;
     }
-
+    /**
+     * Method creating list of buttons that will be visible on one of the food fragments
+     *
+     * @param myArray array of strings use to create button in certain text
+     * @param myColors array of strings use to create button witch certain background color
+     * @return Fully functional list of buttons
+     */
     public Button[] leafFragmentButton(String[] myArray, int[] myColors){
         int n = myArray.length;
         Button[] myButtons = new Button[n];
@@ -36,6 +54,14 @@ public class LeafFoodFragmentButtonGenerator {
         }
         return myButtons;
     }
+    /**
+     * Auxiliary method use to create Button witch values base on button index in list
+     *
+     * @param i index of button which is base to select appropriate values of text and color
+     * @param myArray array of strings use to create button witch certain text
+     * @param myColors array of strings use to create button witch certain background color
+     * @return Fully functional button with working on-click listener
+     */
     private Button setMyButton(int i, Context context, final String[] myArray, int[] myColors){
         Button button = new Button(context);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -65,7 +91,11 @@ public class LeafFoodFragmentButtonGenerator {
         }
         return button;
     }
-
+    /**
+     * Auxiliary method used to define actions caused by onclick action
+     *
+     * @param ans text visible on the button
+     */
     private void check_set_parameters(String ans){
         if(DataHolder.isKeyIn(ans)){
             DataHolder.removeByKey(ans);

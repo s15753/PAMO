@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 
 import androidx.navigation.Navigation;
 
-import com.example.smartariumapp.R;
+import com.example.smartariumapp.*;
 
 public class MainButtonGenerator {
     private View root;

@@ -19,7 +19,17 @@ import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
 import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
+/**
+ * Fragment for bulb.
+ *
+ * This fragment is used to notice bulb replacement in monitored tank.
+ *
+ * @author Agnieszka Rydzyk
+ * @version 2020.1505
+ * @since 1.0
+ */
 public class BulbFragment extends Fragment {
+
     private int identifier = 5;
     private Button[] myButtons;
     private String[] myArray;
@@ -28,6 +38,7 @@ public class BulbFragment extends Fragment {
     public BulbFragment() {
         // Required empty public constructor
     }
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -49,13 +60,14 @@ public class BulbFragment extends Fragment {
 
         return root;
     }
+
+
     private void check_set_parameters(String ans, View root, String title){
         if(DataHolder.isKeyIn(title)){
             DataHolder.removeByKey(title);
             Toast.makeText(getActivity(), "Usunięto " + title + " "+ ans +" z danych do wysłania!", Toast.LENGTH_SHORT).show();
 
         }else{
-
             DataHolder.setMyData(title, new ZabbixData("Oswietlenie", "replace", "1"));
             Toast.makeText(getActivity(), "Dodano "+ title + " "+ ans + " do danych do wyałania!", Toast.LENGTH_SHORT).show();
         }
@@ -67,6 +79,17 @@ public class BulbFragment extends Fragment {
         Navigation.findNavController(root).navigate(R.id.nav_other);
 
     }
+
+    /**
+     * Method that create button with correct parameters like color and text base on its index
+     * and call a method to set appropriate action on click
+     *
+     * @param i index of button
+     * @param context context
+     * @param root view of fragment
+     * @param title key for ZabbixData in DataHolder
+     * @return Fully functional button ready to be added to layout
+     */
     private Button setMyButton(int i, Context context, final View root, final  String title){
         Button button = new Button(context);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -98,3 +121,4 @@ public class BulbFragment extends Fragment {
     }
 
 }
+
