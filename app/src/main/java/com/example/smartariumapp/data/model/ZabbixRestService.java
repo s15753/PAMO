@@ -11,14 +11,40 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
+/**
+ *  Interfaces that define the possible HTTP operations via Retrofit client
+ *
+ * @author Robert Chojdak
+ * @version 2020.05
+ * @since 1.0
+ */
+
 public interface ZabbixRestService {
 
+    /**
+     * Method for login purposes.
+     *
+     * @param userRequest JSON body with POST request
+     * @return Response mapped into POJO classes.
+     */
     @POST("/zabbix/api_jsonrpc.php")
     Call<LoginResponse> loginRequest(@Body UserRequest userRequest);
 
+    /**
+     * Method for login purposes.
+     *
+     * @param triggerRequest JSON body with POST request
+     * @return Response mapped into POJO classes.
+     */
     @POST("/zabbix/api_jsonrpc.php")
     Call<TriggerResponse> triggerRequest(@Body TriggerRequest triggerRequest);
 
+    /**
+     * Method for login purposes.
+     *
+     * @param sendData JSON body with POST request
+     * @return Response mapped into POJO classes.
+     */
     @POST("/app/scripts/android_request.php")
     Call<SendDataResponse> sendData(@Body SendData sendData);
 

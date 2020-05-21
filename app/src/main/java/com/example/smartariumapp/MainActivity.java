@@ -26,7 +26,7 @@ import java.util.HashMap;
  *
  * This fragment is used to notice bulb replacement in monitored tank.
  *
- * @author Agnieszka Rydzyk
+ * @author Agnieszka Rydzyk, Robert Chojdak
  * @version 2020.1505
  * @since 1.0
  */
@@ -79,9 +79,11 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
     /**
-     * Method where base on data stored in DataHolder value with title as a key is removed or add to data to send.
-     * If attempt to finalize() fail method can throw exception
+     * Method used to pass userName and token to fragments.
+     *
+     * @return Bundle object with passed userName and token.
      *
      */
     public Bundle getLoginData() {
