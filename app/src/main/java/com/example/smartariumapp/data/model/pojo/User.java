@@ -1,10 +1,22 @@
 package com.example.smartariumapp.data.model.pojo;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+/**
+ *  Class used by Retrofit. Contain authentication parameters.
+ *
+ * @author Robert Chojdak
+ * @version 2020.05
+ * @since 1.0
+ */
 
 public class User {
+    /**
+     * User name for authentication
+     */
     private String user;
+
+    /**
+     * Password for authentication
+     */
     private String password;
 
     public User(String user, String password) {

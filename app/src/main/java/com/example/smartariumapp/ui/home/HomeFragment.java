@@ -21,6 +21,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ *  Home fragment. Responsible for displaying alerts.
+ *
+ * @author Robert Chojdak
+ * @version 2020.05
+ * @since 1.0
+ */
+
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
@@ -35,7 +43,9 @@ public class HomeFragment extends Fragment {
 
         MainActivity activity = (MainActivity) getActivity();
 
-        // get token from MainActivity
+        /*
+        get token and username from MainActivity
+        */
         Bundle bundleResult = activity.getLoginData();
         String token = bundleResult.getString("token");
         final String user = bundleResult.getString("userName");
@@ -49,6 +59,10 @@ public class HomeFragment extends Fragment {
         bt_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                /*
+                send user data to server
+                */
                 Call sendData = homeViewModel.sendDataInstance(user);
                 sendData.enqueue(new Callback() {
                     @Override
@@ -74,6 +88,9 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        /*
+        display data or hide layout
+        */
         if(DataHolder.checkLength() == 0){
             root.findViewById(R.id.send_values_display).setVisibility(View.GONE);
         }else{
@@ -82,7 +99,9 @@ public class HomeFragment extends Fragment {
 
         Call getAlerts= homeViewModel.getAlertInstance(token);
 
-        // get alerts using Rest request
+        /*
+        get alerts using Rest request
+         */
         getAlerts.enqueue(new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
@@ -92,7 +111,9 @@ public class HomeFragment extends Fragment {
                     if(triggerResponse.isResultSet()) {
                         root.findViewById(R.id.trigger_values_display).setVisibility(View.VISIBLE);
 
-                        // set alerts in ListView
+                        /*
+                        set alerts in ListView
+                         */
                         list = (ListView) root.findViewById(R.id.triggerView);
                         TriggerAdapter triggerAdapter = new TriggerAdapter(root.getContext(), triggerResponse.getResult());
                         list.setAdapter(triggerAdapter);

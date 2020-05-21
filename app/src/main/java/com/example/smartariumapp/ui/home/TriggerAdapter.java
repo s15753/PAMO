@@ -13,8 +13,20 @@ import com.example.smartariumapp.data.model.pojo.TriggerResult;
 
 import java.util.ArrayList;
 
-public class TriggerAdapter  extends BaseAdapter {
+/**
+ *  TriggerAdapter class is a ListView adapter. Retrieves the data and forwards it to ListView.
+ *  Class inherits BaseAdapter class.
+ *  Single list row will have a color depending on alert severity.
+ *
+ * @author Robert Chojdak
+ * @version 2020.05
+ * @since 1.0
+ */
 
+public class TriggerAdapter  extends BaseAdapter {
+    /**
+     * Array with data returned by trigger request
+     */
     ArrayList<TriggerResult> triggerResults;
     Context context;
     LayoutInflater inflter;
@@ -40,6 +52,16 @@ public class TriggerAdapter  extends BaseAdapter {
         return 0;
     }
 
+    /**
+     * Method used to build ListView. Provide data into each list row. Set color and adds icon
+     * depending on alert severity.
+     *
+     * @param position possition in ArrayList
+     * @parm convertView view for single row
+     * @parm parent parent ViewGroup
+     *
+     * @return convertView single row view with values and proper color
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = inflter.inflate(R.layout.trigger_view, null);

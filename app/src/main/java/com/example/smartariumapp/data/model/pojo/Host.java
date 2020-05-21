@@ -3,6 +3,14 @@ package com.example.smartariumapp.data.model.pojo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ *  Class used by Retrofit to store keys returned for "host" key.
+ *
+ * @author Robert Chojdak
+ * @version 2020.04
+ * @since 1.0
+ */
+
 public class Host {
     @SerializedName("hostid")
     @Expose

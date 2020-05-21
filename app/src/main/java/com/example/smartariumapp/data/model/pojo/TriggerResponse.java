@@ -5,13 +5,32 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
+/**
+ *  Class used by Retrofit to get response from Zabbix. Handle JSON response for triggers.
+ *
+ * @author Robert Chojdak
+ * @version 2020.05
+ * @since 1.0
+ */
+
 public class TriggerResponse {
+    /**
+     * jsonrpc version
+     */
     @SerializedName("jsonrpc")
     @Expose
     private String jsonrpc;
+
+    /**
+     * Trigger results returned from Zabbix
+     */
     @SerializedName("result")
     @Expose
     private ArrayList<TriggerResult> result = null;
+
+    /**
+     * Call id
+     */
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -42,6 +61,10 @@ public class TriggerResponse {
         this.id = id;
     }
 
+    /**
+     * Method checks if returned json contain result key
+     * @return TRUE if key result "was" find in response
+     */
     public Boolean isResultSet() {
         if(this.result != null) this.isResult = true;
         return this.isResult;

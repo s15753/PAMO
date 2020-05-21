@@ -23,6 +23,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Login activity.
+ * This activity is responsible for user authentication.
+ *
+ * @author Robert Chojdak
+ * @version 2020.04
+ * @since 1.0
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText usernameEditText;
@@ -61,7 +70,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // Validate username and password were provided
+    /**
+     * Method used for validation login values provided by user.
+     *
+     * @return Bundle object with passed userName and token.
+     *
+     */
     private boolean validateLogin(String username, String password){
         if(username == null || username.trim().length() == 0){
             Toast.makeText(this, "Username is required", Toast.LENGTH_SHORT).show();
@@ -74,7 +88,14 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-    // Create request object
+    /**
+     * Method that creates object needed for JSON request.
+     *
+     * @param username login user name provided by user
+     * @param password password provided by user
+     *
+     * @return UserRequest object with JSON authorization data.
+     */
     private UserRequest getRestData(String username, String password) {
         User user = new User(username, password);
         UserRequest userRequest= new UserRequest(user);
@@ -82,6 +103,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // Send request to Zabbix, handle response and switch to MainActivity if token was returned
+    /**
+     * This method send login request to ZabbixApi, then handle response.
+     * If response contain token method move user to MainActivity.
+     * If request is valid but response doesn't contain token, Toast displays error message.
+     * If request fail, Toast displays error message.
+     *
+     * @param userRequest object used to build JSON request for login purposes
+     */
     private void doLogin(final UserRequest userRequest){
         // send request
         Call call = userService.loginRequest(userRequest);
