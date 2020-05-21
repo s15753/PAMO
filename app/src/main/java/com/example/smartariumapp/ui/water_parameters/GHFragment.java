@@ -19,6 +19,16 @@ import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
 import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
+/**
+ * Fragment allowing user to choose value for GH water parameter
+ * This parameter can occur only once in gathered data before send (only one value allowed)
+ *
+ * This fragment use fragment_gh.xml layout. 
+ *
+ * @author Agnieszka Rydzyk
+ * @version 2020.05
+ * @since 1.0
+ */
 public class GHFragment extends Fragment {
 
     private int identifier = 2;
@@ -67,6 +77,12 @@ public class GHFragment extends Fragment {
         });
         return root;
     }
+    /**
+     * Auxiliary method used to define actions caused by onclick action
+     *
+     * @param parameter parameter that we set
+     * @param ans text visible on the button (value for this water parameter)
+     */
     private void check_set_parameters(String ans, View root, final String parameter){
         if(DataHolder.isKeyIn(parameter)){
             Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();

@@ -15,6 +15,17 @@ import android.widget.TextView;
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.model.MainButtonGenerator;
 
+
+/**
+ * Main fragment for food.
+ * It allows user to navigate to one of food category like dry or frozen
+ *
+ * This fragment use food_fragment.xml layout and MainButtonGenerator to generate appropriate buttons.
+ *
+ * @author Agnieszka Rydzyk
+ * @version 2020.05
+ * @since 1.0
+ */
 public class FoodFragment extends Fragment {
 
     private Button[] myButtons;

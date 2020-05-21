@@ -15,6 +15,17 @@ import android.widget.TextView;
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.model.LeafWaterFragmentButtonGenerator;
 
+
+/**
+ * Fragment allowing user to choose value for NO2 water parameter
+ * This parameter can occur only once in gathered data before send (only one value allowed)
+ *
+ * This fragment use fragment_water_parameters.xml layout and LeafWaterFragmentButtonGenerator to generate appropriate buttons.
+ *
+ * @author Agnieszka Rydzyk
+ * @version 2020.05
+ * @since 1.0
+ */
 public class NO2Fragment extends Fragment {
 
     private int identifier = 1;

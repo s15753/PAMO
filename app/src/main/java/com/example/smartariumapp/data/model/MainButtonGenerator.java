@@ -9,13 +9,37 @@ import androidx.navigation.Navigation;
 
 import com.example.smartariumapp.*;
 
+
+/**
+ * Auxiliary class simplifying creation of long list of buttons allow users to navigate through
+ *  main fragments like food or water parameters and gather suitable data.
+ *
+ *
+ * @author Agnieszka Rydzyk
+ * @version 2020.05
+ * @since 1.0
+ */
 public class MainButtonGenerator {
     private View root;
     private int identifier;
+    /**
+     * Public constructor
+     *
+     * @param root View on which created buttons will be display
+     * @param identifier value use to determent fragment we are in and suitable course of action.
+     */
     public MainButtonGenerator(View root, int identifier){
         this.root = root;
         this.identifier = identifier;
     }
+
+    /**
+     * Method creating list of buttons that will be visible on one of the food fragments
+     *
+     * @param myArray array of strings use to create button in certain text
+     * @param myColors array of strings use to create button witch certain background color
+     * @return Fully functional list of buttons
+     */
     public Button[] main_fragment_button(String[] myArray, int[] myColors){
         int n = myArray.length;
         Button[] myButtons = new Button[n];
@@ -34,6 +58,15 @@ public class MainButtonGenerator {
         return myButtons;
     }
 
+    /**
+     * Auxiliary method use to create Button witch values base on button index in list
+     *
+     * @param i index of button which is base to select appropriate values of text and color
+     * @param context context concern our fragment
+     * @param myArray array of strings use to create button witch certain text
+     * @param myColors array of strings use to create button witch certain background color
+     * @return Fully functional button with working on-click listener
+     */
     private Button setMyButton(int i, Context context, String[] myArray, int[] myColors){
         Button button = new Button(context);
 
@@ -51,7 +84,12 @@ public class MainButtonGenerator {
         }
         return button;
     }
-
+    /**
+     * Auxiliary method used to define actions caused by onclick action
+     *
+     * @param identifier value use to determent fragment we are in and suitable course of action.
+     * @param i button identification use to determent destination fragment
+     */
     private int setDestination(int identifier, int i) {
         switch (identifier) {
             case 0:
