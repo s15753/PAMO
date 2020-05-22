@@ -24,6 +24,8 @@ import com.example.smartariumapp.data.model.pojo.ZabbixData;
  *
  * This fragment is used to notice bulb replacement in monitored tank.
  *
+ * If action is chosen twice instead of adding it to data to send we remove it from that list.
+ *
  * @author Agnieszka Rydzyk
  * @version 2020.1505
  * @since 1.0
@@ -61,7 +63,14 @@ public class BulbFragment extends Fragment {
         return root;
     }
 
-
+    /**
+     * Auxiliary method used to define actions caused by onclick action.
+     *
+     *
+     * @param title parameter that we set
+     * @param ans text visible on the button (value for this water parameter)
+     * @param root current View
+     */
     private void check_set_parameters(String ans, View root, String title){
         if(DataHolder.isKeyIn(title)){
             DataHolder.removeByKey(title);

@@ -1,27 +1,33 @@
 package com.example.smartariumapp.ui.other;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
 import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
-
+/**
+ * Fragment for water.
+ *
+ * This fragment is used to record water replacement or addition in monitored tank.
+ *
+ * If action is chosen twice instead of adding it to data to send we remove it from that list.
+ *
+ * @author Agnieszka Rydzyk
+ * @version 2020.1505
+ * @since 1.0
+ */
 public class WaterFragment extends Fragment {
     private int identifier = 4;
     private  Button bt_change, bt_refill, bt_send, bt_back;
@@ -102,6 +108,14 @@ public class WaterFragment extends Fragment {
 
         return root;
     }
+    /**
+     * Auxiliary method used to define actions caused by onclick action.
+     *
+     * @param title base for key in DataHolder
+     * @param val how much water had been added or replaced
+     * @param action action that is performed on parameter (0 - add, 1 - replace)
+     * @param root current View
+     */
     private void check_set_parameters(int action, View root, final String title, String val){
         if(DataHolder.isKeyIn(title+"_0") || DataHolder.isKeyIn(title+"_1")){
             DataHolder.removeByKey(title+"_0");

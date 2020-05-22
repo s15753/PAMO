@@ -1,6 +1,5 @@
 package com.example.smartariumapp.ui.other;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +18,17 @@ import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
 import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
-
+/**
+ * Fragment for animals weight.
+ *
+ * This fragment is used to record animals weight.
+ *
+ * For each animal this parameter can occur only once in gathered data before send (only one value allowed)
+ *
+ * @author Agnieszka Rydzyk
+ * @version 2020.1505
+ * @since 1.0
+ */
 public class WeightFragment extends Fragment {
     private int identifier = 3;
     private Button bt_back, bt_send;
@@ -67,6 +75,14 @@ public class WeightFragment extends Fragment {
         });
         return root;
     }
+    /**
+     * Auxiliary method used to define actions caused by onclick action.
+     *
+     * @param parameter parameter that we set (animal)
+     * @param ans weight of an animal
+     * @param key value to determent which animal weight is this.
+     * @param root current View
+     */
     private void check_set_parameters(String parameter, String ans, View root, String key){
         if(DataHolder.isKeyIn(parameter)){
             Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();

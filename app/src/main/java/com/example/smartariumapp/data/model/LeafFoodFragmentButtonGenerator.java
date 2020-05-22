@@ -16,7 +16,7 @@ import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
 
 /**
- * Auxiliary class simplifying creation of long list of buttons use to gather data concerning food.
+ * Auxiliary class simplifying creation long list of buttons use to gather data concerning food.
  *
  *
  * @author Agnieszka Rydzyk
@@ -32,7 +32,6 @@ public class LeafFoodFragmentButtonGenerator {
      *
      * @param root View on which created buttons will be display
      * @param activity FragmentActivity to show response to user actions
-     * @return Construct instance of LeafFoodFragmentButtonGenerator
      */
     public LeafFoodFragmentButtonGenerator(View root, FragmentActivity activity){
         this.root = root;
@@ -58,6 +57,7 @@ public class LeafFoodFragmentButtonGenerator {
      * Auxiliary method use to create Button witch values base on button index in list
      *
      * @param i index of button which is base to select appropriate values of text and color
+     * @param context context concern our fragment
      * @param myArray array of strings use to create button witch certain text
      * @param myColors array of strings use to create button witch certain background color
      * @return Fully functional button with working on-click listener
@@ -76,7 +76,7 @@ public class LeafFoodFragmentButtonGenerator {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Navigation.findNavController(root).navigate(R.id.nav_water_parameters);
+                    Navigation.findNavController(root).navigate(R.id.nav_food);
                 }
             });
         }else {

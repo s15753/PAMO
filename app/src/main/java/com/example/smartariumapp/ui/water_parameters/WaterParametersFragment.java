@@ -15,6 +15,16 @@ import android.widget.TextView;
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.model.MainButtonGenerator;
 
+/**
+ * Main fragment for water parameters.
+ * It allows user to navigate to one of water parameters fragments like NO3 or Cl.
+ *
+ * This fragment use fragment_water_parameters.xml layout and MainButtonGenerator to generate appropriate buttons.
+ *
+ * @author Agnieszka Rydzyk
+ * @version 2020.05
+ * @since 1.0
+ */
 public class WaterParametersFragment extends Fragment {
 
     private Button[] myButtons;

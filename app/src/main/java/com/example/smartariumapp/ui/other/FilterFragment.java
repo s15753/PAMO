@@ -23,9 +23,12 @@ import com.example.smartariumapp.data.model.pojo.ZabbixData;
  * Fragment for filter.
  *
  * This fragment is used to notice actions performed by user concern filter in monitored tank.
+ * User can replace or change filter element
+ * If action is chosen twice instead of adding it to data to send we remove it from that list.
+ *
  *
  * @author Agnieszka Rydzyk
- * @version 2020.1505
+ * @version 2020.05
  * @since 1.0
  */
 public class FilterFragment extends Fragment {
@@ -52,7 +55,7 @@ public class FilterFragment extends Fragment {
         myButtons = new Button[n];
 
         for(int i = 0; i < 2; i++){
-            myButtons[i] = setMyButton(i, layout.getContext(), root, title);
+            myButtons[i] = setMyButton(i, layout.getContext());
             final int key_val = i;
             final String main_button_string = myArray[i];
             myButtons[i].setOnClickListener(new View.OnClickListener() {
@@ -61,7 +64,7 @@ public class FilterFragment extends Fragment {
                     myButtons[1 - key_val].setVisibility(View.INVISIBLE);
                    if (myButtons[2] == null) {
                        for(int k = 2; k < myArray.length; k++){
-                          myButtons[k] = setMyButton(k, layout.getContext(), root, title);
+                          myButtons[k] = setMyButton(k, layout.getContext());
                           final int value = k;
                           myButtons[k].setOnClickListener(new View.OnClickListener() {
                               @Override
@@ -84,7 +87,7 @@ public class FilterFragment extends Fragment {
             });
             layout.addView(myButtons[i]);
         }
-        bt_back = setMyButton(myArray.length, layout.getContext(),root, title);
+        bt_back = setMyButton(myArray.length, layout.getContext());
         bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,13 +97,22 @@ public class FilterFragment extends Fragment {
         layout.addView(bt_back);
         return root;
     }
+
+    /**
+     * Auxiliary method used to define actions caused by onclick action.
+     *
+     *
+     * @param value parameter that we set (part of a filter)
+     * @param key_val action that is performed on parameter (0 - clean, 1 - replace)
+     * @param root current View
+     */
     private void check_set_parameters(int key_val, View root, int value){
         if(DataHolder.isKeyIn(myArray[value])){
             DataHolder.removeByKey(myArray[value]);
             Toast.makeText(getActivity(), "Usunięto " + myArray[value] + " "+ myArray[key_val] +" z danych do wysłania!", Toast.LENGTH_SHORT).show();
 
         }else{
-            DataHolder.setMyData(myArray[value], new ZabbixData("Filtr", key_val != 1 ? "change":"replace", ""+(value-1) ));
+            DataHolder.setMyData(myArray[value], new ZabbixData("Filtr", key_val != 1 ? "clean":"replace", ""+(value-1) ));
             Toast.makeText(getActivity(), "Dodano "+ myArray[value] + " "+ myArray[key_val] + " do danych do wyałania!", Toast.LENGTH_SHORT).show();
         }
         try {
@@ -111,7 +123,14 @@ public class FilterFragment extends Fragment {
         Navigation.findNavController(root).navigate(R.id.nav_other);
 
     }
-    private Button setMyButton(int i, Context context, final View root, final  String title){
+    /**
+     * Auxiliary method use to create Button witch values base on button index in list
+     *
+     * @param i index of button which is base to select appropriate values of text and color
+     * @param context context concern our fragment
+     * @return Partially functional button without working on-click listener
+     */
+    private Button setMyButton(int i, Context context){
         Button button = new Button(context);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
