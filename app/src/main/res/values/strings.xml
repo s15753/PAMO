@@ -40,6 +40,7 @@
 
     <string name="home_second">Home Second</string>
     <string name="lack_of_data">Brak danych</string>
+    <string name="data_to_send">Dane do wysłania</string>
     <string name="clean">Wyczyść</string>
     <string name="send">Wyślij</string>
 

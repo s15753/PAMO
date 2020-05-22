@@ -161,7 +161,11 @@
     <fragment
         android:id="@+id/nav_other_filter"
         android:name="com.example.smartariumapp.ui.other.FilterFragment"
-        tools:layout="@layout/fragment_filter"/>
+        tools:layout="@layout/fragment_filter">
+        <action
+            android:id="@+id/action_nav_filter_to_nav_filter"
+            app:destination="@id/nav_other_filter" />
+    </fragment>
     <fragment
         android:id="@+id/nav_other_light"
         android:name="com.example.smartariumapp.ui.maintenance.LightFragment"

@@ -39,8 +39,24 @@ public class DataHolder {
              if(entry.getValue().getHost().equalsIgnoreCase("Jedzenie")){
                 my_string.append(entry.getKey() + "\n");
                 System.out.println(my_string);
-            }else{
+            }
+        }
+        for(Map.Entry<String, ZabbixData> entry: myData.entrySet()) {
+            if (entry.getValue().getHost().equalsIgnoreCase("Woda")) {
                 my_string.append(entry.getKey() + ": " + entry.getValue().getValue() + "\n");
+                System.out.println(my_string);
+            }
+        }
+        for(Map.Entry<String, ZabbixData> entry: myData.entrySet()) {
+            if (entry.getValue().getHost().equalsIgnoreCase("Zolwie")) {
+                my_string.append(entry.getKey() + ": " + entry.getValue().getValue() + "\n");
+                System.out.println(my_string);
+            }
+        }
+        for(Map.Entry<String, ZabbixData> entry: myData.entrySet()) {
+            if (entry.getValue().getHost().equalsIgnoreCase("Oswietlenie") ||
+                    entry.getValue().getHost().equalsIgnoreCase("Filtr")) {
+                my_string.append(entry.getKey() + ": " + (entry.getValue().getItem().equalsIgnoreCase("replace") ? "wymiana":"czyszczenie") + "\n");
                 System.out.println(my_string);
             }
         }

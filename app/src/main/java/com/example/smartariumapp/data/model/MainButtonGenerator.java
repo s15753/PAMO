@@ -102,7 +102,8 @@ public class MainButtonGenerator {
                         return R.id.action_nav_other_to_nav_other_water;
                     case 3:
                         return R.id.action_nav_other_to_nav_other_bulb;
-
+                    default:
+                        return R.id.nav_home;
                 }
             case 1:
                 switch (i){
@@ -118,6 +119,8 @@ public class MainButtonGenerator {
                         return R.id.action_nav_water_parameters_to_nav_ph;
                     case 5:
                         return R.id.action_nav_water_parameters_to_nav_Cl;
+                    default:
+                        return R.id.nav_home;
                 }
             case 2:
                 switch (i) {
@@ -127,6 +130,8 @@ public class MainButtonGenerator {
                         return R.id.action_nav_food_to_nav_frozen_food;
                     case 2:
                         return R.id.action_nav_food_to_nav_other_food;
+                    default:
+                        return R.id.nav_home;
                 }
             case 3:
                 switch (i){
@@ -134,6 +139,8 @@ public class MainButtonGenerator {
                         return R.id.action_nav_maintenance_main_to_nav_light;
                     case 1:
                         return R.id.action_nav_maintenance_main_to_nav_maintenance;
+                    default:
+                        return R.id.nav_home;
                 }
         }
         return R.id.nav_home;
