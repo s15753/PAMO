@@ -50,7 +50,9 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.login);
         loadingProgressBar = findViewById(R.id.loading);
 
-        // Get ZabbixApiClient instance
+        /*
+        Get ZabbixApiClient instance
+         */
         userService = RestUtils.getUserService();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +60,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
-                loginButton.setEnabled(false);
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
 
@@ -78,13 +79,18 @@ public class LoginActivity extends AppCompatActivity {
      */
     private boolean validateLogin(String username, String password){
         if(username == null || username.trim().length() == 0){
-            Toast.makeText(this, "Username is required", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.invalid_username), Toast.LENGTH_SHORT).show();
             return false;
         }
         if(password == null || password.trim().length() == 0){
-            Toast.makeText(this, "Password is required", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.invalid_password), Toast.LENGTH_SHORT).show();
             return false;
         }
+        if(password.trim().length() < 5){
+            Toast.makeText(this, getString(R.string.invalid_password_short), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         return true;
     }
 
