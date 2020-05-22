@@ -16,6 +16,17 @@ import androidx.fragment.app.Fragment;
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.model.MainButtonGenerator;
 
+
+/**
+ * Main fragment for other parameters.
+ * It allows user to navigate to one of other category like bulb or filter
+ *
+ * This fragment use fragment_other.xml layout and MainButtonGenerator to generate appropriate buttons.
+ *
+ * @author Agnieszka Rydzyk
+ * @version 2020.05
+ * @since 1.0
+ */
 public class OtherFragment extends Fragment {
 
 

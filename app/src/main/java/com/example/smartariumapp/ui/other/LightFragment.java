@@ -17,7 +17,18 @@ import android.widget.Toast;
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
 
-
+/**
+ * Fragment for filter.
+ *
+ * This fragment is used to set light intervals in tank.
+ * System allows user to set two intervals - when light is turn on and off all the time.
+ * Between this intervals are areas when light will be turn on if animal is under the light bulb.
+ *
+ *
+ * @author Agnieszka Rydzyk
+ * @version 2020.05
+ * @since 1.0
+ */
 public class LightFragment extends Fragment {
     private int identifier = 1;
     private Button bt_back, bt_send;
@@ -77,6 +88,14 @@ public class LightFragment extends Fragment {
         });
         return root;
     }
+    /**
+     * Auxiliary method used to define actions caused by onclick action.
+     *
+     *
+     * @param parameter parameter that we want to set
+     * @param ans value of hour
+     * @param root current View
+     */
     private void check_set_parameters(String parameter, String ans, View root){
         if(DataHolder.isKeyIn(parameter)){
             Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
@@ -92,6 +111,11 @@ public class LightFragment extends Fragment {
             Navigation.findNavController(root).navigate(R.id.nav_other);
         }
     }
+    /**
+     * Auxiliary method used to examine correctness of hour
+     *
+     * @param source value of hour set by user
+     */
     private boolean hourFilter(String source){
         if(source.length() > 5 || source.length() < 4){
             return false;
