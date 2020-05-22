@@ -32,7 +32,7 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    Button bt_send;
+    Button bt_send, bt_clean;
     TextView data_to_send;
     ListView list ;
 
@@ -52,10 +52,17 @@ public class HomeFragment extends Fragment {
 
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        final TextView textView = root.findViewById(R.id.text_home);
-        data_to_send = root.findViewById(R.id.text_data_to_send);
 
+        data_to_send = root.findViewById(R.id.text_data_to_send);
+        bt_clean = root.findViewById(R.id.bt_clean);
         bt_send = root.findViewById(R.id.bt_send);
+        bt_clean.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataHolder.removeAll();
+                Navigation.findNavController(root).navigate(R.id.nav_home);
+            }
+        });
         bt_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +100,7 @@ public class HomeFragment extends Fragment {
         */
         if(DataHolder.checkLength() == 0){
             root.findViewById(R.id.send_values_display).setVisibility(View.GONE);
+
         }else{
             data_to_send.setText(DataHolder.myDataToString());
         }

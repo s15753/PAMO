@@ -32,7 +32,7 @@ import com.example.smartariumapp.data.model.pojo.ZabbixData;
  */
 public class BulbFragment extends Fragment {
 
-    private int identifier = 5;
+    private int identifier = 3;
     private Button[] myButtons;
     private String[] myArray;
     private int[] myColors;

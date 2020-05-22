@@ -112,7 +112,7 @@ public class FilterFragment extends Fragment {
             Toast.makeText(getActivity(), "Usunięto " + myArray[value] + " "+ myArray[key_val] +" z danych do wysłania!", Toast.LENGTH_SHORT).show();
 
         }else{
-            DataHolder.setMyData(myArray[value], new ZabbixData("Filtr", key_val != 1 ? "clean":"replace", ""+(value-1) ));
+            DataHolder.setMyData(myArray[value], new ZabbixData("Filtr", key_val != 1 ? "clean":"replace", ""+(value-1)));
             Toast.makeText(getActivity(), "Dodano "+ myArray[value] + " "+ myArray[key_val] + " do danych do wyałania!", Toast.LENGTH_SHORT).show();
         }
         try {
@@ -120,7 +120,7 @@ public class FilterFragment extends Fragment {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-        Navigation.findNavController(root).navigate(R.id.nav_other);
+        Navigation.findNavController(root).navigate(R.id.action_nav_filter_to_nav_filter);
 
     }
     /**

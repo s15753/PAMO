@@ -29,7 +29,7 @@ import com.example.smartariumapp.data.model.pojo.ZabbixData;
  * @since 1.0
  */
 public class WaterFragment extends Fragment {
-    private int identifier = 4;
+    private int identifier = 2;
     private  Button bt_change, bt_refill, bt_send, bt_back;
     private String ammountString;
     private EditText amount;
@@ -71,7 +71,6 @@ public class WaterFragment extends Fragment {
                     bt_send.setVisibility(View.GONE);
                     bt_refill.setVisibility(View.VISIBLE);
                 }
-                //check_set_parameters(bt_change.getText().toString(), bt_refill.getText().toString(), root, title, "all");
             }
         });
         bt_refill.setOnClickListener(new View.OnClickListener() {
@@ -117,9 +116,8 @@ public class WaterFragment extends Fragment {
      * @param root current View
      */
     private void check_set_parameters(int action, View root, final String title, String val){
-        if(DataHolder.isKeyIn(title+"_0") || DataHolder.isKeyIn(title+"_1")){
-            DataHolder.removeByKey(title+"_0");
-            DataHolder.removeByKey(title+"_1");
+        if(DataHolder.isKeyIn(title)){
+            DataHolder.removeByKey(title);
             Toast.makeText(getActivity(), "Usunięto " + title +" z danych do wysłania!", Toast.LENGTH_SHORT).show();
 
         }else{
@@ -132,6 +130,5 @@ public class WaterFragment extends Fragment {
             throwable.printStackTrace();
         }
         Navigation.findNavController(root).navigate(R.id.nav_other);
-
     }
 }
