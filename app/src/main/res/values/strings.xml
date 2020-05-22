@@ -15,7 +15,7 @@
     <string name="nav_header_title">Żólw+</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+<!--    <string name="action_settings">Settings</string>-->
     <string name="back">Wróć</string>
     <string name="alert_title_text">Alerty</string>
     <string name="send_data_error_msg">Coś poszło nie tak. Kod błędu: </string>
@@ -27,7 +27,7 @@
     <string name="base_url">https://zolwik.tk</string>
 
     <!-- menu-->
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Alerty</string>
     <string name="water_parameters">Parametry wody</string>
     <string name="other">Inne</string>
     <string name="food">Pokarm</string>
