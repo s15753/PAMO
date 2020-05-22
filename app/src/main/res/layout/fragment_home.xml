@@ -44,7 +44,13 @@
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
-
+            <Button
+                android:id="@+id/bt_clean"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/clean" />
             <Button
                 android:id="@+id/bt_send"
                 android:layout_width="match_parent"
