@@ -144,12 +144,6 @@
             android:id="@+id/action_nav_other_to_nav_other_filter"
             app:destination="@id/nav_other_filter" />
         <action
-            android:id="@+id/action_nav_other_to_nav_other_light"
-            app:destination="@id/nav_other_light" />
-        <action
-            android:id="@+id/action_nav_other_to_nav_other_maintenance"
-            app:destination="@id/nav_other_maintenance" />
-        <action
             android:id="@+id/action_nav_other_to_nav_other_weight"
             app:destination="@id/nav_other_weight"/>
         <action
@@ -170,11 +164,11 @@
         tools:layout="@layout/fragment_filter"/>
     <fragment
         android:id="@+id/nav_other_light"
-        android:name="com.example.smartariumapp.ui.other.LightFragment"
+        android:name="com.example.smartariumapp.ui.maintenance.LightFragment"
         tools:layout="@layout/fragment_light"/>
     <fragment
         android:id="@+id/nav_other_maintenance"
-        android:name="com.example.smartariumapp.ui.other.MaintenanceFragment"
+        android:name="com.example.smartariumapp.ui.maintenance.MaintenanceFragment"
         tools:layout="@layout/fragment_maintenance"/>
     <fragment
         android:id="@+id/nav_other_weight"
@@ -188,6 +182,19 @@
         android:id="@+id/nav_other_bulb"
         android:name="com.example.smartariumapp.ui.other.BulbFragment"
         tools:layout="@layout/fragment_bulb"/>
-
+    <fragment
+        android:id="@+id/nav_main_maintenance"
+        android:name="com.example.smartariumapp.ui.maintenance.MaintenanceMainFragment"
+        tools:layout="@layout/fragment_maintenance_main">
+        <action
+            android:id="@+id/action_nav_maintenance_main_to_nav_light"
+            app:destination="@id/nav_other_light" />
+        <action
+            android:id="@+id/action_nav_maintenance_main_to_nav_maintenance"
+            app:destination="@id/nav_other_maintenance" />
+        <action
+            android:id="@+id/action_nav_maintenance_main_to_nav_home"
+            app:destination="@+id/nav_home"/>
+    </fragment>
 
 </navigation>

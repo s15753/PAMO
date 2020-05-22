@@ -21,6 +21,10 @@ import com.example.smartariumapp.data.model.MainButtonGenerator;
  *
  * This fragment use fragment_water_parameters.xml layout and MainButtonGenerator to generate appropriate buttons.
  *
+ * Resources:
+ * water_parameters_colors
+ * water_param_strings
+ *
  * @author Agnieszka Rydzyk
  * @version 2020.05
  * @since 1.0

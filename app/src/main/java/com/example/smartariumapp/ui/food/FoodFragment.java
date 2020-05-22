@@ -22,6 +22,10 @@ import com.example.smartariumapp.data.model.MainButtonGenerator;
  *
  * This fragment use food_fragment.xml layout and MainButtonGenerator to generate appropriate buttons.
  *
+ * Resources:
+ * food_colors
+ * food_main_strings
+ *
  * @author Agnieszka Rydzyk
  * @version 2020.05
  * @since 1.0

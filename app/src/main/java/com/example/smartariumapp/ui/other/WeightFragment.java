@@ -30,7 +30,7 @@ import com.example.smartariumapp.data.model.pojo.ZabbixData;
  * @since 1.0
  */
 public class WeightFragment extends Fragment {
-    private int identifier = 3;
+    private int identifier = 1;
     private Button bt_back, bt_send;
     private String massString1, massString2;
     private EditText mass1, mass2;

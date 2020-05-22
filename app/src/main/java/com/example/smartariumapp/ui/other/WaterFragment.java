@@ -29,7 +29,7 @@ import com.example.smartariumapp.data.model.pojo.ZabbixData;
  * @since 1.0
  */
 public class WaterFragment extends Fragment {
-    private int identifier = 4;
+    private int identifier = 2;
     private  Button bt_change, bt_refill, bt_send, bt_back;
     private String ammountString;
     private EditText amount;

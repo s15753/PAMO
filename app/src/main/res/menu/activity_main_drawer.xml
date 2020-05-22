@@ -6,24 +6,24 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_water_parameters"
+            android:icon="@drawable/ic_water_param"
+            android:title="@string/water_parameters" />
+        <item
+            android:id="@+id/nav_food"
+            android:icon="@drawable/ic_restaurant_black_24dp"
+            android:title="@string/food" />
         <item
             android:id="@+id/nav_other"
             android:icon="@drawable/ic_filter"
             android:title="@string/other" />
         <item
-            android:id="@+id/nav_food"
-            android:icon="@drawable/ic_food"
-            android:title="@string/food" />
-        <!--<item
-            android:id="@+id/_water"
-            android:icon="@drawable/ic_water"
-            android:title="@string/water" />-->
-        <item
-            android:id="@+id/nav_water_parameters"
-            android:icon="@drawable/ic_water_param"
-            android:title="@string/water_parameters" />
+            android:id="@+id/nav_main_maintenance"
+            android:icon="@drawable/ic_gavel_black_24dp"
+            android:title="@string/text_maintenance" />
 
 
     </group>

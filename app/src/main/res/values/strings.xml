@@ -29,6 +29,7 @@
     <string name="other">Inne</string>
     <string name="food">Pokarm</string>
     <string name="water">Water</string>
+    <string name="maintenance">Utrzymanie</string>
 
 
     <string name="gather_data">Gather data</string>
@@ -41,14 +42,37 @@
     <string name="lack_of_data">Brak danych</string>
     <string name="send">Wyślij</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- maintenance possible values -->
+    <string name="text_maintenance">Utrzymanie</string>
+    <string-array name="maintenance_main_strings">
+        <item>Światło</item>
+        <item>Utrzymanie</item>
+        <item>Wróć</item>
+    </string-array>
+
+    <!-- Light fragment-->
+    <string name="light_hint">godzina</string>
+    <string name="light_on">Zawsze włączone</string>
+    <string name="light_conditional">Włączone warunkowo</string>
+    <string name="from">od</string>
+    <string name="to">do</string>
+    <string-array name="light_ans_values">
+        <item>Zawsze włączone od</item>
+        <item>Zawsze włączone do</item>
+        <item>Zawsze wyłączone od</item>
+        <item>Zawsze wyłączone do</item>
+    </string-array>
+
+    <!-- Maintenance fragment -->
+    <string-array name="maintenance_ans_values">
+        <item>Przerwa techniczna od</item>
+        <item>Przerwa techniczna do</item>
+    </string-array>
+
     <!-- other possible values -->
     <string name="text_other">Inne parametry</string>
     <string-array name="other_main_strings">
         <item>Filtr</item>
-        <item>Światło</item>
-        <item>Utrzymanie</item>
         <item>Waga</item>
         <item>Woda</item>
         <item>Żarówka</item>
@@ -64,26 +88,6 @@
         <item>Wata</item>
         <item>Żwir</item>
         <item>Ceramika</item>
-    </string-array>
-
-
-    <!-- Light fragment-->
-
-    <string name="light_hint">godzina</string>
-    <string name="light_on">Zawsze włączone</string>
-    <string name="light_conditional">Włączone warunkowo</string>
-    <string name="from">od</string>
-    <string name="to">do</string>
-    <string-array name="light_ans_values">
-        <item>Zawsze włączone od</item>
-        <item>Zawsze włączone do</item>
-        <item>Zawsze wyłączone od</item>
-        <item>Zawsze wyłączone do</item>
-    </string-array>
-    <!-- Maintenance fragment -->
-    <string-array name="maintenance_ans_values">
-        <item>Przerwa techniczna od</item>
-        <item>Przerwa techniczna do</item>
     </string-array>
 
 
