@@ -1,4 +1,4 @@
-package com.example.smartariumapp;
+package com.example.smartariumapp.ui.fragments;
 
 import android.content.Context;
 
@@ -10,6 +10,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.android21buttons.fragmenttestrule.FragmentTestRule;
+import com.example.smartariumapp.R;
 import com.example.smartariumapp.ui.food.FoodFragment;
 
 import org.junit.Rule;
