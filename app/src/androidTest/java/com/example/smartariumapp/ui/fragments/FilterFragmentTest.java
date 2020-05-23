@@ -1,4 +1,4 @@
-package com.example.smartariumapp;
+package com.example.smartariumapp.ui.fragments;
 
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.assertion.ViewAssertions;
@@ -6,6 +6,7 @@ import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.android21buttons.fragmenttestrule.FragmentTestRule;
+import com.example.smartariumapp.R;
 import com.example.smartariumapp.ui.other.FilterFragment;
 
 import org.junit.Rule;
@@ -29,7 +30,7 @@ public class FilterFragmentTest {
             FragmentTestRule.create(FilterFragment.class);
     @Test
     public void linearLayoutDisplayed(){
-        Espresso.onView(withId(R.id.linearLayout)).check(matches(isDisplayed()));
+        Espresso.onView(ViewMatchers.withId(R.id.linearLayout)).check(matches(isDisplayed()));
     }
     @Test
     public void textTitleDisplayed(){
