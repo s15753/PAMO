@@ -43,6 +43,11 @@ public class DataHolder {
         }
         for(Map.Entry<String, ZabbixData> entry: myData.entrySet()) {
             if (entry.getValue().getHost().equalsIgnoreCase("Woda")) {
+                if(entry.getValue().getItem().equalsIgnoreCase("GH2") ||
+                        entry.getValue().getItem().equalsIgnoreCase("GH3") ||
+                        entry.getValue().getItem().equalsIgnoreCase("GH4")){
+                    continue;
+                }
                 my_string.append(entry.getKey() + ": " + entry.getValue().getValue() + "\n");
                 System.out.println(my_string);
             }
