@@ -69,4 +69,12 @@ public class TriggerResponse {
         if(this.result != null) this.isResult = true;
         return this.isResult;
     }
+
+    /**
+     * Method checks if returned json contain result key
+     * @return numbers of alerts
+     */
+    public Integer countResults() {
+        return this.result.size();
+    }
 }

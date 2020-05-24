@@ -1,4 +1,4 @@
-package com.example.smartariumapp.ui.fragments;
+package com.example.smartariumapp.ui.login;
 
 import android.content.Context;
 
