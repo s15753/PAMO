@@ -108,7 +108,6 @@ public class LoginActivity extends AppCompatActivity {
         return userRequest;
     }
 
-    // Send request to Zabbix, handle response and switch to MainActivity if token was returned
     /**
      * This method send login request to ZabbixApi, then handle response.
      * If response contain token method move user to MainActivity.
