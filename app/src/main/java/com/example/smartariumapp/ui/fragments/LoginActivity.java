@@ -1,4 +1,4 @@
-package com.example.smartariumapp.ui.login;
+package com.example.smartariumapp.ui.fragments;
 import com.example.smartariumapp.*;
 
 import android.content.Intent;
