@@ -1,4 +1,4 @@
-package com.example.smartariumapp.ui.fragments;
+package com.example.smartariumapp;
 
 import androidx.navigation.Navigation;
 import androidx.test.espresso.Espresso;
