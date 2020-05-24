@@ -1,4 +1,4 @@
-package com.example.smartariumapp.ui.fragments;
+package com.example.smartariumapp.ui.login;
 
 
 import android.os.SystemClock;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.assertion.ViewAssertions;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
@@ -35,6 +37,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 
 @LargeTest
@@ -267,7 +270,21 @@ public class LoginAndWaterParametersTest {
                                     7)));
             SystemClock.sleep(150);
             button7.perform(scrollTo(), click());
+            onView(allOf(withText(containsString("NO3: " + NO3Values.get(i-1))))).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+            onView(allOf(withText(containsString("pH: " + PHValues.get(i-1))))).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+            onView(allOf(withText(containsString("Cl: " + CLValues.get(i/2))))).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+            onView(allOf(withText(containsString("GH1: 3")))).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+            if(i > 5){
+                onView(allOf(withText(containsString("NO2: 0")))).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
 
+            }else{
+                onView(allOf(withText(containsString("NO2: " + NO2Values.get(i-1))))).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+            }
+            if(i > 6){
+                onView(allOf(withText(containsString("KH: 0")))).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+            }else{
+                onView(allOf(withText(containsString("KH: " + KHValues.get(i-1))))).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+            }
             ViewInteraction appCompatButton3 = onView(
                     allOf(withId(R.id.bt_clean), withText("Wyczyść"),
                             childAtPosition(
