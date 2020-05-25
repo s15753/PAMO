@@ -69,4 +69,8 @@ public class TriggerResponse {
         if(this.result != null) this.isResult = true;
         return this.isResult;
     }
+
+    public Integer resultSize() {
+        return result.size();
+    }
 }
