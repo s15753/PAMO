@@ -23,7 +23,7 @@
     <!-- menu-->
     <string name="menu_home">Strona główna</string>
     <string name="water_parameters">Parametry wody</string>
-    <string name="other">Inne</string>
+    <string name="other">Inne parametry</string>
     <string name="food">Pokarm</string>
     <string name="water">Water</string>
     <string name="maintenance">Utrzymanie</string>
@@ -45,7 +45,7 @@
     <string name="text_maintenance">Utrzymanie</string>
     <string-array name="maintenance_main_strings">
         <item>Światło</item>
-        <item>Utrzymanie</item>
+        <item>Przerwa techniczna</item>
         <item>Wróć</item>
     </string-array>
 
