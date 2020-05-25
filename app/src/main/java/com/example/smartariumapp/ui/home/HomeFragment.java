@@ -53,7 +53,6 @@ public class HomeFragment extends Fragment {
 
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-
         data_to_send = root.findViewById(R.id.text_data_to_send);
         bt_clean = root.findViewById(R.id.bt_clean);
         bt_send = root.findViewById(R.id.bt_send);
@@ -96,48 +95,56 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        /*
-        display data or hide layout
-        */
-        if(DataHolder.checkLength() == 0){
-            root.findViewById(R.id.send_values_display).setVisibility(View.GONE);
-
-        }else{
-            data_to_send.setText(DataHolder.myDataToString());
-        }
-
         Call getAlerts= homeViewModel.getAlertInstance(token);
 
         /*
-        get alerts using Rest request
-         */
-        getAlerts.enqueue(new Callback() {
-            @Override
-            public void onResponse(Call call, Response response) {
-                if (response.isSuccessful()) {
-                    TriggerResponse triggerResponse = (TriggerResponse) response.body();
+        display data or hide layout
+        */
+        if(DataHolder.checkLength() == 0) {
+            root.findViewById(R.id.send_values_display).setVisibility(View.GONE);
 
-                    if(triggerResponse.isResultSet()) {
-                        root.findViewById(R.id.trigger_values_display).setVisibility(View.VISIBLE);
+            /*
+            get alerts using Rest request
+            */
+            getAlerts.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    if (response.isSuccessful()) {
+                        TriggerResponse triggerResponse = (TriggerResponse) response.body();
+
+                        if (triggerResponse.isResultSet() && triggerResponse.resultSize() > 0) {
+                            root.findViewById(R.id.trigger_values_display).setVisibility(View.VISIBLE);
 
                         /*
                         set alerts in ListView
                          */
-                        list = (ListView) root.findViewById(R.id.triggerView);
-                        TriggerAdapter triggerAdapter = new TriggerAdapter(root.getContext(), triggerResponse.getResult());
-                        list.setAdapter(triggerAdapter);
+                            list = (ListView) root.findViewById(R.id.triggerView);
+                            TriggerAdapter triggerAdapter = new TriggerAdapter(root.getContext(), triggerResponse.getResult());
+                            list.setAdapter(triggerAdapter);
+                        }
+                        else {
+                            root.findViewById(R.id.no_alert_layout).setVisibility(View.VISIBLE);
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else{
+            data_to_send.setText(DataHolder.myDataToString());
+            root.findViewById(R.id.send_values_display).setVisibility(View.VISIBLE);
+            root.findViewById(R.id.trigger_values_display).setVisibility(View.GONE);
+            root.findViewById(R.id.no_alert_layout).setVisibility(View.GONE);
+        }
 
         return root;
     }
 
+    private void getAlerts() {
+
+    }
 
 }
