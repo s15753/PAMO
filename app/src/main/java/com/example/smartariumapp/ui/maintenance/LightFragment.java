@@ -16,6 +16,10 @@ import android.widget.Toast;
 
 import com.example.smartariumapp.R;
 import com.example.smartariumapp.data.DataHolder;
+import com.example.smartariumapp.data.model.pojo.ZabbixData;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  * Fragment for light settings.
@@ -32,7 +36,7 @@ import com.example.smartariumapp.data.DataHolder;
 public class LightFragment extends Fragment {
     private int identifier = 0;
     private Button bt_back, bt_send;
-    private String[] myStrings, lightAnsValues;
+    private String[] myStrings, lightKeysValues, lightReadable;
     private EditText[] myEditText;
     public LightFragment() {
         // Required empty public constructor
@@ -44,39 +48,59 @@ public class LightFragment extends Fragment {
         final TextView textView = root.findViewById(R.id.text_light);
         final String title = getResources().getStringArray(R.array.maintenance_main_strings)[identifier];
         textView.setText(title);
-        lightAnsValues = getResources().getStringArray(R.array.light_ans_values);
+        lightKeysValues = getResources().getStringArray(R.array.light_keys_values);
+        lightReadable = getResources().getStringArray(R.array.light_ans_values);
         bt_back = root.findViewById(R.id.bt_back);
         bt_send = root.findViewById(R.id.bt_send);
         myEditText = new EditText[4];
-        myEditText[0] = root.findViewById(R.id.light_on_from);
+        myEditText[0] = root.findViewById(R.id.light_on_since);
         myEditText[1] = root.findViewById(R.id.light_on_to);
-        myEditText[2] = root.findViewById(R.id.light_conditional_from);
-        myEditText[3] = root.findViewById(R.id.light_conditional_to);
+        myEditText[2] = root.findViewById(R.id.light_off_since);
+        myEditText[3] = root.findViewById(R.id.light_off_to);
+
         myStrings = new String[4];
-
-
 
         bt_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean check_status = true;
+                boolean check_status = false;
                 for(int k = 0; k < myEditText.length; k++){
                     if(hourFilter(myEditText[k].getText().toString())) {
                         myStrings[k] = myEditText[k].getText().toString();
                     }else{
                         myStrings[k] = "";
+                        check_status = true;
                     }
                 }
-                for(int k = 0; k < myEditText.length; k += 2){
-                    if(!myStrings[k].isEmpty() && !myStrings[k+1].isEmpty()){
-                        check_status = false;
-                        check_set_parameters(lightAnsValues[k], myStrings[k], root);
-                        check_set_parameters(lightAnsValues[k + 1], myStrings[k + 1], root);
+                SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+                if(!check_status){
+                    try {
+                        if(dateFormat.parse(myStrings[3]).before(dateFormat.parse(myStrings[0])) &&
+                                dateFormat.parse(myStrings[0]).before(dateFormat.parse(myStrings[1])) &&
+                                dateFormat.parse(myStrings[1]).before(dateFormat.parse(myStrings[2])) &&
+                                dateFormat.parse(myStrings[2]).after(dateFormat.parse(myStrings[3]))) {
+                            for(int k = 0; k < myEditText.length; k += 2){
+                                check_set_parameters(k, myStrings[k], root);
+                                check_set_parameters(k+1, myStrings[k + 1], root);
+                            }
+                            Toast.makeText(getActivity(), "Jupi!", Toast.LENGTH_SHORT).show();
+                            Navigation.findNavController(root).navigate(R.id.nav_main_maintenance);
+                            finalize();
+                        }else{
+                            check_status = true;
+                        }
+                    } catch (ParseException e) {
+                        Toast.makeText(getActivity(), "Coś poszło nie tak!", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+
+                    } catch (Throwable throwable) {
+                        throwable.printStackTrace();
                     }
                 }
                 if(check_status){
-                    Toast.makeText(getActivity(), "Brak wystaraczającej ilości danych", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Niepoprawny format!", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 
@@ -92,12 +116,12 @@ public class LightFragment extends Fragment {
      * Auxiliary method used to define actions caused by onclick action.
      *
      *
-     * @param parameter parameter that we want to set
-     * @param ans value of hour
+     * @param key index of readable and key string value
+     * @param ans hour value
      * @param root current View
      */
-    private void check_set_parameters(String parameter, String ans, View root){
-        if(DataHolder.isKeyIn(parameter)){
+    private void check_set_parameters(int key, String ans, View root){
+        if(DataHolder.isKeyIn(this.lightReadable[key])){
             Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_main_maintenance);
             try {
@@ -106,8 +130,8 @@ public class LightFragment extends Fragment {
                 throwable.printStackTrace();
             }
         }else{
-            //DataHolder.setMyData(parameter, ans);
-            Toast.makeText(getActivity(), parameter+ " "+ans, Toast.LENGTH_SHORT).show();
+            DataHolder.setMyData(this.lightReadable[key], new ZabbixData("Oswietlenie", this.lightKeysValues[key], ans));
+            Toast.makeText(getActivity(), this.lightReadable[key]+ " "+ans, Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_main_maintenance);
         }
     }
