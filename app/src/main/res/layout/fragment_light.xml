@@ -56,7 +56,7 @@
 
                 </TextView>
                 <EditText
-                    android:id="@+id/light_on_from"
+                    android:id="@+id/light_on_since"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/light_hint"
@@ -120,7 +120,7 @@
 
                 </TextView>
                 <EditText
-                    android:id="@+id/light_conditional_from"
+                    android:id="@+id/light_off_since"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/light_hint"
@@ -148,7 +148,7 @@
 
                 </TextView>
                 <EditText
-                    android:id="@+id/light_conditional_to"
+                    android:id="@+id/light_off_to"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/light_hint"

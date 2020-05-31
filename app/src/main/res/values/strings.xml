@@ -52,7 +52,7 @@
     <!-- Light fragment-->
     <string name="light_hint">godzina</string>
     <string name="light_on">Zawsze włączone</string>
-    <string name="light_conditional">Włączone warunkowo</string>
+    <string name="light_conditional">Zawsze wyłączone</string>
     <string name="from">od</string>
     <string name="to">do</string>
     <string-array name="light_ans_values">
@@ -60,6 +60,13 @@
         <item>Zawsze włączone do</item>
         <item>Zawsze wyłączone od</item>
         <item>Zawsze wyłączone do</item>
+    </string-array>
+
+    <string-array name="light_keys_values">
+        <item>light_on_since</item>
+        <item>light_on_to</item>
+        <item>light_off_since</item>
+        <item>light_off_to</item>
     </string-array>
 
     <!-- Maintenance fragment -->

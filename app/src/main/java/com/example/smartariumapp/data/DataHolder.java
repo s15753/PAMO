@@ -61,8 +61,12 @@ public class DataHolder {
         for(Map.Entry<String, ZabbixData> entry: myData.entrySet()) {
             if (entry.getValue().getHost().equalsIgnoreCase("Oswietlenie") ||
                     entry.getValue().getHost().equalsIgnoreCase("Filtr")) {
-                my_string.append(entry.getKey() + ": " + (entry.getValue().getItem().equalsIgnoreCase("replace") ? "wymiana":"czyszczenie") + "\n");
-                System.out.println(my_string);
+                if(entry.getKey().contains("Zawsze")){
+                    my_string.append(entry.getKey() + ": " + (entry.getValue().getValue()) + "\n");
+                }else {
+                    my_string.append(entry.getKey() + ": " + (entry.getValue().getItem().equalsIgnoreCase("replace") ? "wymiana" : "czyszczenie") + "\n");
+                    System.out.println(my_string);
+                }
             }
         }
         return my_string.toString();
