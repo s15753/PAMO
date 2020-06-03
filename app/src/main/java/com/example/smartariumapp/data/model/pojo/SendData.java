@@ -29,6 +29,13 @@ public class SendData {
     @Expose
     private String user;
 
+    /**
+     * Token
+     */
+    @SerializedName("token")
+    @Expose
+    private String token;
+
     public ArrayList<ZabbixData> getData() {
         return data;
     }
@@ -38,6 +45,8 @@ public class SendData {
     }
 
     public void setUser(String user) { this.user = user; }
+
+    public void setToken(String token) { this.token = token; }
 
     @Override
     public String toString() {

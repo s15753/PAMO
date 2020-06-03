@@ -58,7 +58,7 @@ public class WeightFragment extends Fragment {
                     Toast.makeText(getActivity(), "Nie podano wagi zwierzaków!", Toast.LENGTH_SHORT).show();
                 }else {
                     if (!massString1.isEmpty()) {
-                        check_set_parameters(getResources().getString(R.string.matilda), massString1, root, getResources().getString(R.string.stefanie_key));
+                        check_set_parameters(getResources().getString(R.string.matilda), massString1, root, getResources().getString(R.string.matilda_key));
                     }
                     if (!massString2.isEmpty()) {
                         check_set_parameters(getResources().getString(R.string.stefanie), massString2, root, getResources().getString(R.string.stefanie_key));

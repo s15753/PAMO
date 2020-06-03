@@ -101,7 +101,7 @@
     <string name="matilda">Matylda</string>
     <string name="stefanie">Stefania</string>
     <string name="matilda_key">mass_M</string>
-    <string name="stefanie_key">mass_M</string>
+    <string name="stefanie_key">mass_S</string>
     <string name="weight_hint">Waga w gramach</string>
     <!-- Water fragment-->
     <string name="water_title">Woda</string>

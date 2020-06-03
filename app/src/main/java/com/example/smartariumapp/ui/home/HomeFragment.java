@@ -48,7 +48,7 @@ public class HomeFragment extends Fragment {
         get token and username from MainActivity
         */
         Bundle bundleResult = activity.getLoginData();
-        String token = bundleResult.getString("token");
+        final String token = bundleResult.getString("token");
         final String user = bundleResult.getString("userName");
 
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -70,7 +70,7 @@ public class HomeFragment extends Fragment {
                 /*
                 send user data to server
                 */
-                Call sendData = homeViewModel.sendDataInstance(user);
+                Call sendData = homeViewModel.sendDataInstance(user, token);
                 sendData.enqueue(new Callback() {
                     @Override
                     public void onResponse(Call call, Response response) {
