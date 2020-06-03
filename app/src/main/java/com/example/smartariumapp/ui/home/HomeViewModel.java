@@ -36,10 +36,11 @@ public class HomeViewModel extends ViewModel {
      *
      * @return call ready to send call
      */
-    public Call sendDataInstance(String user) {
+    public Call sendDataInstance(String user, String token) {
         SendData sendData = new SendData();
         sendData.setData(getRequests());
         sendData.setUser(user);
+        sendData.setToken(token);
 
         Call call = requestSevice.sendData(sendData);
 
