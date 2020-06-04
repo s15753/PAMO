@@ -28,14 +28,8 @@
     <string name="water">Water</string>
     <string name="maintenance">Utrzymanie</string>
 
-
-    <string name="gather_data">Gather data</string>
-    <string name="profile">My Profile</string>
-    <string name="alerts">Alerts</string>
     <string name="title">Smartarium</string>
 
-
-    <string name="home_second">Home Second</string>
     <string name="lack_of_data">Brak danych</string>
     <string name="data_to_send">Dane do wysłania</string>
     <string name="clean">Wyczyść</string>
@@ -55,6 +49,7 @@
     <string name="light_conditional">Zawsze wyłączone</string>
     <string name="from">od</string>
     <string name="to">do</string>
+
     <string-array name="light_ans_values">
         <item>Zawsze włączone od</item>
         <item>Zawsze włączone do</item>
@@ -84,6 +79,7 @@
         <item>Żarówka</item>
         <item>Wróć</item>
     </string-array>
+
     <!-- Filtr fragment-->
     <string name="cleaning">Czyszczenie</string>
 
@@ -96,24 +92,18 @@
         <item>Ceramika</item>
     </string-array>
 
-
     <!-- Weight fragment-->
     <string name="matilda">Matylda</string>
     <string name="stefanie">Stefania</string>
     <string name="matilda_key">mass_M</string>
     <string name="stefanie_key">mass_S</string>
     <string name="weight_hint">Waga w gramach</string>
+
     <!-- Water fragment-->
     <string name="water_title">Woda</string>
     <string name="change">Wymiana</string>
     <string name="refill">Dolanie</string>
-    <!--
-        <item>Wymiana</item>
-        <item>Dolanie</item>
-        <item>Wyślij</item>
-        <item>Wróć</item>-->
     <string name="water_hint">Ilość dolanej wody w litrach</string>
-
 
     <!-- Bulb fragment-->
     <string-array name="bulb_strings">
@@ -164,7 +154,6 @@
         <item>Inny</item>
     </string-array>
 
-
     <!-- water nav-->
     <string name="water_string">Parametry wody</string>
     <string name="NO2">NO2 Azotyny</string>
@@ -175,7 +164,6 @@
     <string name="KH">Stabilnosc pH</string>
 
     <!-- water parameters values-->
-
     <string-array name="water_param_strings">
         <item>"NO3 - Azotany"</item>
         <item>"NO2 - Azotyny"</item>
@@ -185,6 +173,7 @@
         <item>"Chlor"</item>
         <item>"Wróć</item>
     </string-array>
+
     <string-array name="water_param_strings_zabbix_items">
         <item>"NO3"</item>
         <item>"NO2"</item>
@@ -204,6 +193,7 @@
         <item>"500"</item>
         <item>"Wróć</item>
     </string-array>
+
     <string-array name="water_param_values_NO2">
         <item>"0"</item>
         <item>"0.5"</item>
@@ -212,6 +202,7 @@
         <item>"10"</item>
         <item>"Wróć</item>
     </string-array>
+
     <string-array name="water_param_values_GH">
         <item>"3"</item>
         <item>"4"</item>
@@ -220,6 +211,7 @@
         <item>"21"</item>
         <item>"Wróć</item>
     </string-array>
+
     <string-array name="water_param_values_KH">
         <item>"0"</item>
         <item>"3"</item>
@@ -229,6 +221,7 @@
         <item>"20"</item>
         <item>"Wróć</item>
     </string-array>
+
     <string-array name="water_param_values_pH">
         <item>"6.4"</item>
         <item>"6.8"</item>
@@ -239,6 +232,7 @@
         <item>"9"</item>
         <item>"Wróć</item>
     </string-array>
+
     <string-array name="water_param_values_Cl">
         <item>"0"</item>
         <item>"0.8"</item>
@@ -246,5 +240,4 @@
         <item>"3.0"</item>
         <item>"Wróć</item>
     </string-array>
-
 </resources>
