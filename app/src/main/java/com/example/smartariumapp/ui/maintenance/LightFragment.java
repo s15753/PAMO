@@ -83,7 +83,7 @@ public class LightFragment extends Fragment {
                                 check_set_parameters(k, myStrings[k], root);
                                 check_set_parameters(k+1, myStrings[k + 1], root);
                             }
-                            Toast.makeText(getActivity(), "Jupi!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Pomyślnie dodano dane!", Toast.LENGTH_SHORT).show();
                             Navigation.findNavController(root).navigate(R.id.nav_main_maintenance);
                             finalize();
                         }else{
