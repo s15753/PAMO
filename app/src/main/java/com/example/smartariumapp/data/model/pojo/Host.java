@@ -139,6 +139,12 @@ public class Host {
     @Expose
     private String inventoryMode;
 
+    public Host(String hostid, String host, String status) {
+        this.hostid = hostid;
+        this.host = host;
+        this.status = status;
+    }
+
     public String getHostid() {
         return hostid;
     }
