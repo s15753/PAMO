@@ -83,6 +83,14 @@ public class LastTriggerEvent {
     @Expose
     private String severity;
 
+    public LastTriggerEvent(String eventid, String objectid, String value, String name, String severity) {
+        this.eventid = eventid;
+        this.objectid = objectid;
+        this.value = value;
+        this.name = name;
+        this.severity = severity;
+    }
+
     public String getEventid() {
         return eventid;
     }

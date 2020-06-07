@@ -143,8 +143,4 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    private void getAlerts() {
-
-    }
-
 }

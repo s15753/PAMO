@@ -51,6 +51,15 @@ public class TriggerResult {
     @Expose
     private LastTriggerEvent lastEvent;
 
+    public TriggerResult(String triggerid, String description, String lastchange
+                                                    , List<Host> hosts, LastTriggerEvent lastEvent) {
+        this.triggerid = triggerid;
+        this.description = description;
+        this.lastchange = lastchange;
+        this.hosts = hosts;
+        this.lastEvent = lastEvent;
+    }
+
     public String getTriggerid() {
         return triggerid;
     }
@@ -70,5 +79,6 @@ public class TriggerResult {
     public LastTriggerEvent getLastEvent() {
         return lastEvent;
     }
+
 }
 
