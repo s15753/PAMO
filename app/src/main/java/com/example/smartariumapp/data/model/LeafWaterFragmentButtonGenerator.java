@@ -109,15 +109,15 @@ public class LeafWaterFragmentButtonGenerator {
         if(DataHolder.isKeyIn(parameter)){
             Toast.makeText(this.activity, "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_water_parameters);
-            try {
-                finalize();
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-            }
         }else{
             DataHolder.setMyData(parameter, new ZabbixData("Woda", parameter.toUpperCase(), ans));
             Toast.makeText(this.activity, parameter+ " "+ans, Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(setDestination(this.identifier));
+        }
+        try {
+            finalize();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
         }
     }
     /**

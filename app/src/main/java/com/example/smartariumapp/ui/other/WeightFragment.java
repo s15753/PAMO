@@ -87,16 +87,15 @@ public class WeightFragment extends Fragment {
         if(DataHolder.isKeyIn(parameter)){
             Toast.makeText(getActivity(), "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_other);
-            try {
-                finalize();
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-            }
         }else{
             DataHolder.setMyData(parameter, new ZabbixData("Zolwie", key, ans));
             Toast.makeText(getActivity(), parameter+ " "+ans, Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_other);
         }
-
+        try {
+            finalize();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
     }
 }
