@@ -133,6 +133,12 @@ public class LightFragment extends Fragment {
             DataHolder.setMyData(this.lightReadable[key], new ZabbixData("Oswietlenie", this.lightKeysValues[key], ans));
             Toast.makeText(getActivity(), this.lightReadable[key]+ " "+ans, Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_main_maintenance);
+            try {
+                finalize();
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
+
         }
     }
     /**
