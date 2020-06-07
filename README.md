@@ -5,8 +5,7 @@ Project subject: Mobile application for the system of monitoring living conditio
 
 A brief overview of the functionality:
 - login to the app using Zabbix Api login
-- displaying type and number of alerts
-- displaying recent values for sensors
+- displaying type of alerts
 - multiple forms with data to send to Zabbix
 
 Group: Agnieszka Rydzyk s15038, Robert Chojdak s15753
