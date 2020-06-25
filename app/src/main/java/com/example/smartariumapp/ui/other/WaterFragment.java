@@ -34,6 +34,7 @@ public class WaterFragment extends Fragment {
     private String ammountString;
     private EditText amount;
     private int change_action = 1;
+    private Double ammountOfWater;
 
     public WaterFragment() {
         // Required empty public constructor
@@ -59,10 +60,18 @@ public class WaterFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             ammountString = amount.getText().toString();
-                            if(ammountString.equals(null) || ammountString.isEmpty()){
-                                Toast.makeText(getActivity(), "Nie podano ilości wody!", Toast.LENGTH_SHORT).show();
-                            }else{
-                                check_set_parameters(change_action, root, title, ammountString);
+                            try {
+                                ammountOfWater = Double.parseDouble(ammountString);
+
+                                if (ammountString.equals(null) || ammountString.isEmpty()) {
+                                    Toast.makeText(getActivity(), "Nie podano ilości wody!", Toast.LENGTH_SHORT).show();
+                                }else if(ammountOfWater < 1.0){
+                                    Toast.makeText(getActivity(), "Podana ilość dolanej wody jest niewłaściwa!", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    check_set_parameters(change_action, root, title, ammountString);
+                                }
+                            }catch (NumberFormatException err){
+                                Toast.makeText(getActivity(), "Niewłaściwa ilości dolanej wody!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -84,10 +93,17 @@ public class WaterFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             ammountString = amount.getText().toString();
-                            if(ammountString.equals(null) || ammountString.isEmpty()){
-                                Toast.makeText(getActivity(), "Nie podano ilości wymienionej wody!", Toast.LENGTH_SHORT).show();
-                            }else{
-                                check_set_parameters(change_action-1, root, title, ammountString);
+                            try {
+                                ammountOfWater = Double.parseDouble(ammountString);
+                                if(ammountString.equals(null) || ammountString.isEmpty()){
+                                    Toast.makeText(getActivity(), "Nie podano ilości wymienionej wody!", Toast.LENGTH_SHORT).show();
+                                }else if(ammountOfWater < 1.0){
+                                    Toast.makeText(getActivity(), "Podana ilość wymienionej wody jest niewłaściwa!", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    check_set_parameters(change_action-1, root, title, ammountString);
+                                }
+                            }catch (NumberFormatException err){
+                                Toast.makeText(getActivity(), "Niewłaściwa wartość wymienionej wody!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

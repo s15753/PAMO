@@ -103,7 +103,7 @@
     <string name="water_title">Woda</string>
     <string name="change">Wymiana</string>
     <string name="refill">Dolanie</string>
-    <string name="water_hint">Ilość dolanej wody w litrach</string>
+    <string name="water_hint">Ilość wody w litrach</string>
 
     <!-- Bulb fragment-->
     <string-array name="bulb_strings">

@@ -20,6 +20,7 @@ import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Fragment for light settings.
@@ -75,17 +76,46 @@ public class LightFragment extends Fragment {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
                 if(!check_status){
                     try {
-                        if(dateFormat.parse(myStrings[3]).before(dateFormat.parse(myStrings[0])) &&
-                                dateFormat.parse(myStrings[0]).before(dateFormat.parse(myStrings[1])) &&
-                                dateFormat.parse(myStrings[1]).before(dateFormat.parse(myStrings[2])) &&
-                                dateFormat.parse(myStrings[2]).after(dateFormat.parse(myStrings[3]))) {
-                            for(int k = 0; k < myEditText.length; k += 2){
-                                check_set_parameters(k, myStrings[k], root);
-                                check_set_parameters(k+1, myStrings[k + 1], root);
+                        Date start = dateFormat.parse(myStrings[0]);
+                        Date stop = dateFormat.parse(myStrings[1]);
+                        Date start_1 = dateFormat.parse(myStrings[2]);
+                        Date stop_1 = dateFormat.parse(myStrings[3]);
+                        if(start.before(stop) && start_1.before(stop_1)){
+                            if((start.before(start_1) && (stop.before(start_1) || stop.equals(start_1))) || ((start.after(stop_1) || start.equals(stop_1)) && stop.after(stop_1))) {
+                                for(int k = 0; k < myEditText.length; k += 2){
+                                    check_set_parameters(k, myStrings[k], root);
+                                    check_set_parameters(k+1, myStrings[k + 1], root);
+                                }
+                                Toast.makeText(getActivity(), "Pomyślnie dodano dane!", Toast.LENGTH_SHORT).show();
+                                Navigation.findNavController(root).navigate(R.id.nav_main_maintenance);
+                                finalize();
+                            }else{
+                                check_status = true;
                             }
-                            Toast.makeText(getActivity(), "Pomyślnie dodano dane!", Toast.LENGTH_SHORT).show();
-                            Navigation.findNavController(root).navigate(R.id.nav_main_maintenance);
-                            finalize();
+                        }else if(start.after(stop) && start_1.before(stop_1)){
+                            if((stop_1.after(start_1) && (start_1.after(stop) || start_1.equals(stop))) && (start_1.before(stop_1) && (stop_1.before(start) || stop_1.equals(start)))){
+                                for(int k = 0; k < myEditText.length; k += 2){
+                                    check_set_parameters(k, myStrings[k], root);
+                                    check_set_parameters(k+1, myStrings[k + 1], root);
+                                }
+                                Toast.makeText(getActivity(), "Pomyślnie dodano dane!", Toast.LENGTH_SHORT).show();
+                                Navigation.findNavController(root).navigate(R.id.nav_main_maintenance);
+                                finalize();
+                            }else{
+                                check_status = true;
+                            }
+                        }else if(start_1.after(stop_1) && start.before(stop)){
+                            if((stop.after(start) && (start.after(stop_1) || start.equals(stop_1))) && (start.before(stop) && (stop.before(start_1) || stop.equals(start_1)))){
+                                for(int k = 0; k < myEditText.length; k += 2){
+                                    check_set_parameters(k, myStrings[k], root);
+                                    check_set_parameters(k+1, myStrings[k + 1], root);
+                                }
+                                Toast.makeText(getActivity(), "Pomyślnie dodano dane!", Toast.LENGTH_SHORT).show();
+                                Navigation.findNavController(root).navigate(R.id.nav_main_maintenance);
+                                finalize();
+                            }else{
+                                check_status = true;
+                            }
                         }else{
                             check_status = true;
                         }
@@ -130,9 +160,15 @@ public class LightFragment extends Fragment {
                 throwable.printStackTrace();
             }
         }else{
-            DataHolder.setMyData(this.lightReadable[key], new ZabbixData("Oswietlenie", this.lightKeysValues[key], ans));
-            Toast.makeText(getActivity(), this.lightReadable[key]+ " "+ans, Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(root).navigate(R.id.nav_main_maintenance);
+            if(ans.length() < 5){
+                DataHolder.setMyData(this.lightReadable[key], new ZabbixData("Oswietlenie", this.lightKeysValues[key], "0"+ans));
+                Toast.makeText(getActivity(), this.lightReadable[key]+ " "+ans, Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(root).navigate(R.id.nav_main_maintenance);
+            }else{
+                DataHolder.setMyData(this.lightReadable[key], new ZabbixData("Oswietlenie", this.lightKeysValues[key], ans));
+                Toast.makeText(getActivity(), this.lightReadable[key]+ " "+ans, Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(root).navigate(R.id.nav_main_maintenance);
+            }
             try {
                 finalize();
             } catch (Throwable throwable) {
