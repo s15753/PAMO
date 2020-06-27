@@ -22,7 +22,7 @@ import com.example.smartariumapp.data.model.pojo.ZabbixData;
  *
  * This fragment is used to record water replacement or addition in monitored tank.
  *
- * If action is chosen twice instead of adding it to data to send we remove it from that list.
+ * If action is chosen twice instead of adding it to data to send we remove it from that list and add new value.
  *
  * @author Agnieszka Rydzyk
  * @version 2020.1505
@@ -135,7 +135,8 @@ public class WaterFragment extends Fragment {
         if(DataHolder.isKeyIn(title)){
             DataHolder.removeByKey(title);
             Toast.makeText(getActivity(), "Usunięto " + title +" z danych do wysłania!", Toast.LENGTH_SHORT).show();
-
+            DataHolder.setMyData(title, new ZabbixData("Woda", action != 1 ? "add":"replace", val ));
+            Toast.makeText(getActivity(), "Dodano "+ title + " "+ val+ "l do danych do wysłania!", Toast.LENGTH_SHORT).show();
         }else{
             DataHolder.setMyData(title, new ZabbixData("Woda", action != 1 ? "add":"replace", val ));
             Toast.makeText(getActivity(), "Dodano "+ title + " "+ val+ "l do danych do wysłania!", Toast.LENGTH_SHORT).show();

@@ -54,8 +54,10 @@ public class WeightFragment extends Fragment {
             public void onClick(View v) {
                 massString1 = mass1.getText().toString();
                 massString2 = mass2.getText().toString();
-                if(massString1.isEmpty() && massString2.isEmpty()){
+                if(massString1.isEmpty() && massString2.isEmpty()) {
                     Toast.makeText(getActivity(), "Nie podano wagi zwierzaków!", Toast.LENGTH_SHORT).show();
+                }else if ((!massString1.isEmpty() && Double.parseDouble(massString1) < 1.0) || (!massString2.isEmpty()  && Double.parseDouble(massString2) < 1.0)){
+                    Toast.makeText(getActivity(), "Niewłąściwa masa!", Toast.LENGTH_SHORT).show();
                 }else {
                     if (!massString1.isEmpty()) {
                         check_set_parameters(getResources().getString(R.string.matilda), massString1, root, getResources().getString(R.string.matilda_key));
@@ -89,7 +91,7 @@ public class WeightFragment extends Fragment {
             Navigation.findNavController(root).navigate(R.id.nav_other);
         }else{
             DataHolder.setMyData(parameter, new ZabbixData("Zolwie", key, ans));
-            Toast.makeText(getActivity(), parameter+ " "+ans, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), parameter+ " "+ans, Toast.LENGTH_LONG).show();
             Navigation.findNavController(root).navigate(R.id.nav_other);
         }
         try {
