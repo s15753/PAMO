@@ -19,7 +19,17 @@ public class Filter {
     @Expose
     private final Integer value = 1;
 
+    /**
+     * Filter status
+     */
+    @SerializedName("status")
+    @Expose
+    private final Integer status = 0;
+
     public Integer getValue() {
         return value;
+    }
+    public Integer getStatus() {
+        return status;
     }
 }

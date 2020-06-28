@@ -71,7 +71,7 @@ public class TriggerAdapter  extends BaseAdapter {
 
         triggerHost.setText(triggerResults.get(position).getHosts().get(0).getHost()
                                             .replaceAll("_", " "));
-        triggerDesc.setText(triggerResults.get(position).getDescription());
+        triggerDesc.setText(triggerResults.get(position).getLastEvent().getName());
         switch (triggerResults.get(position).getLastEvent().getSeverity()) {
             case "2":
                 convertView.setBackgroundColor(context.getColor(R.color.color_warning));

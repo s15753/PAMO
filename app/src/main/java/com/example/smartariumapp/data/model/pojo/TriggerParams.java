@@ -21,6 +21,13 @@ public class TriggerParams {
     private final Integer minSeverity = 2;
 
     /**
+     * Maintenance info
+     */
+    @SerializedName("maintenance")
+    @Expose
+    private final String maintenance = "true";
+
+    /**
      * Additional filter values
      */
     @SerializedName("filter")
@@ -55,13 +62,22 @@ public class TriggerParams {
     @Expose
     private final String selectHosts = "extend";
 
+    /**
+     * Monitored info
+     */
+    @SerializedName("monitored")
+    @Expose
+    private final String monitored = "true";
+
     public TriggerParams(Filter filter) {
-        this.filter = filter;
+            this.filter = filter;
     }
 
     public Integer getMinSeverity() {
         return minSeverity;
     }
+
+    public String getMaintenance() { return maintenance; }
 
     public Filter getFilter() {
         return filter;
@@ -81,5 +97,9 @@ public class TriggerParams {
 
     public String getSelectHosts() {
         return selectHosts;
+    }
+
+    public String getMonitored() {
+        return monitored;
     }
 }
