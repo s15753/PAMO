@@ -48,14 +48,15 @@
                     android:textSize="30sp">
 
                 </TextView>
+
                 <EditText
                     android:id="@+id/matilda_mass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:hint="@string/weight_hint"
-                    android:inputType="numberDecimal"
-                    android:textSize="20dp"
-                    android:layout_weight="1">
+                    android:inputType="number"
+                    android:textSize="20dp">
 
                 </EditText>
             </LinearLayout>
@@ -80,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/weight_hint"
-                    android:inputType="numberDecimal"
+                    android:inputType="number"
                     android:textSize="20dp"
                     android:layout_weight="1">
 
