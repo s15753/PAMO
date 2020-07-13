@@ -1,5 +1,6 @@
 package com.example.smartariumapp.ui.maintenance;
 
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.smartariumapp.R;
@@ -20,7 +22,9 @@ import com.example.smartariumapp.data.model.pojo.ZabbixData;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+
 
 /**
  * Fragment for light settings.
@@ -39,12 +43,14 @@ public class LightFragment extends Fragment {
     private Button bt_back, bt_send;
     private String[] myStrings, lightKeysValues, lightReadable;
     private EditText[] myEditText;
+    TimePickerDialog picker;
+
     public LightFragment() {
         // Required empty public constructor
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
         final View root = inflater.inflate(R.layout.fragment_light, container, false);
         final TextView textView = root.findViewById(R.id.text_light);
         final String title = getResources().getStringArray(R.array.maintenance_main_strings)[identifier];
@@ -58,7 +64,24 @@ public class LightFragment extends Fragment {
         myEditText[1] = root.findViewById(R.id.light_on_to);
         myEditText[2] = root.findViewById(R.id.light_off_since);
         myEditText[3] = root.findViewById(R.id.light_off_to);
-
+        for (final EditText item: myEditText){
+            item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Calendar cldr = Calendar.getInstance();
+                    int hour = cldr.get(Calendar.HOUR_OF_DAY);
+                    int minutes = cldr.get(Calendar.MINUTE);
+                    // time picker dialog
+                    picker = new TimePickerDialog(root.getContext(),
+                            new TimePickerDialog.OnTimeSetListener() {
+                                @Override
+                                public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                                    item.setText(String.format("%02d:%02d", sHour, sMinute));
+                                }
+                            }, hour, minutes, true);
+                    picker.show();                }
+            });
+        }
         myStrings = new String[4];
 
         bt_send.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +96,6 @@ public class LightFragment extends Fragment {
                         check_status = true;
                     }
                 }
-                SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
                 if(!check_status){
                     try {
                         Date start = dateFormat.parse(myStrings[0]);

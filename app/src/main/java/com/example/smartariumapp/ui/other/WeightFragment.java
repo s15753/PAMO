@@ -56,7 +56,7 @@ public class WeightFragment extends Fragment {
                 massString2 = mass2.getText().toString();
                 if(massString1.isEmpty() && massString2.isEmpty()) {
                     Toast.makeText(getActivity(), "Nie podano wagi zwierzaków!", Toast.LENGTH_SHORT).show();
-                }else if ((!massString1.isEmpty() && Double.parseDouble(massString1) < 1.0) || (!massString2.isEmpty()  && Double.parseDouble(massString2) < 1.0)){
+                }else if ((!massString1.isEmpty() && Integer.parseInt(massString1) < 1) || (!massString2.isEmpty()  && Integer.parseInt(massString2) < 1)){
                     Toast.makeText(getActivity(), "Niewłąściwa masa!", Toast.LENGTH_SHORT).show();
                 }else {
                     if (!massString1.isEmpty()) {
