@@ -1,11 +1,13 @@
 package com.example.smartariumapp.data.model;
 
 import com.example.smartariumapp.data.model.pojo.LoginResponse;
+import com.example.smartariumapp.data.model.pojo.LogoutResponse;
 import com.example.smartariumapp.data.model.pojo.SendData;
 import com.example.smartariumapp.data.model.pojo.SendDataResponse;
 import com.example.smartariumapp.data.model.pojo.TriggerRequest;
 import com.example.smartariumapp.data.model.pojo.TriggerResponse;
 import com.example.smartariumapp.data.model.pojo.UserRequest;
+import com.example.smartariumapp.data.model.pojo.LogoutRequest;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -29,6 +31,15 @@ public interface ZabbixRestService {
      */
     @POST("/zabbix/api_jsonrpc.php")
     Call<LoginResponse> loginRequest(@Body UserRequest userRequest);
+
+    /**
+     * Method for logout purposes.
+     *
+     * @param logoutRequest JSON body with POST request
+     * @return Response mapped into POJO classes.
+     */
+    @POST("/zabbix/api_jsonrpc.php")
+    Call<LogoutResponse> logoutRequest(@Body LogoutRequest logoutRequest);
 
     /**
      * Method for login purposes.

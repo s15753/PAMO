@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
 
-        MainActivity activity = (MainActivity) getActivity();
+        final MainActivity activity = (MainActivity) getActivity();
 
         /*
         get token and username from MainActivity
@@ -63,6 +63,7 @@ public class HomeFragment extends Fragment {
                 Navigation.findNavController(root).navigate(R.id.nav_home);
             }
         });
+
         bt_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,5 +143,4 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
-
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
@@ -24,7 +25,10 @@
             android:id="@+id/nav_main_maintenance"
             android:icon="@drawable/ic_gavel_black_24dp"
             android:title="@string/text_maintenance" />
-
-
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_baseline_power_settings_new_24"
+            android:title="Wyloguj"/>
     </group>
+
 </menu>
