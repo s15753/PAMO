@@ -5,6 +5,7 @@ import com.example.smartariumapp.data.DataHolder;
 import com.example.smartariumapp.data.model.RestUtils;
 import com.example.smartariumapp.data.model.ZabbixRestService;
 import com.example.smartariumapp.data.model.pojo.Filter;
+import com.example.smartariumapp.data.model.pojo.LogoutRequest;
 import com.example.smartariumapp.data.model.pojo.SendData;
 import com.example.smartariumapp.data.model.pojo.TriggerParams;
 import com.example.smartariumapp.data.model.pojo.TriggerRequest;
@@ -60,6 +61,21 @@ public class HomeViewModel extends ViewModel {
         TriggerRequest triggerRequest = new TriggerRequest(triggerParams, token);
 
         Call call = requestSevice.triggerRequest(triggerRequest);
+
+        return call;
+    }
+
+    /**
+     * Method create REST call with user data, which will be send to Zabbix
+     *
+     * @param user userName provided in login activity
+     *
+     * @return call ready to send call
+     */
+    public Call logoutInstance(String token) {
+        LogoutRequest logoutRequest = new LogoutRequest(token);
+
+        Call call = requestSevice.logoutRequest(logoutRequest);
 
         return call;
     }

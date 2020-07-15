@@ -2,24 +2,7 @@ package com.example.smartariumapp.data.model.pojo;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- *  Class used by Retrofit to get response from Zabbix. Handle JSON response for login activity.
- *  Two kind of responses can be handled, success and fail. Keys returned for success:
- *  - jsonrpc
- *  - result
- *  - id
- *  Keys returned by fail:
- *  - jsonrpc
- *  - error
- *  - id
- *
- * @author Robert Chojdak
- * @version 2020.05
- * @since 1.0
- */
-
-public class LoginResponse {
-
+public class LogoutResponse {
     /**
      * jsonrpc version
      */
@@ -27,16 +10,16 @@ public class LoginResponse {
     private String jsonrpc;
 
     /**
-     * Returned token
-     */
-    @SerializedName("result")
-    private String result;
-
-    /**
      * Call id
      */
     @SerializedName("id")
     private String id;
+
+    /**
+     * True if correctly logout
+     */
+    @SerializedName("result")
+    private Boolean result;
 
     /**
      * Returned code, message and data
@@ -49,16 +32,8 @@ public class LoginResponse {
      */
     private Boolean isResult = false;
 
-    public String getJsonrpc() {
-        return jsonrpc;
-    }
-
-    public String getResult() {
+    public Boolean getResult() {
         return result;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public Error getError() {
@@ -82,15 +57,8 @@ public class LoginResponse {
      * @return TRUE if key "result" was find in response
      */
     public Boolean isResultSet() {
-        if(this.result != null) this.isResult = true;
+        if(this.result) this.isResult = true;
         return this.isResult;
     }
 
-    @Override
-    public String toString() {
-        return  "jsonrpc= " + jsonrpc +
-                ", result= " + result +
-                ", id= " + id +
-                ", error= " + error.toString();
-    }
 }
