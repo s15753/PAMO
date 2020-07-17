@@ -150,7 +150,7 @@ public class LightFragment extends Fragment {
                     }
                 }
                 if(check_status){
-                    Toast.makeText(getActivity(), "Niepoprawny format!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Podano niewłaściwe przedziały!", Toast.LENGTH_SHORT).show();
                 }
 
             }
