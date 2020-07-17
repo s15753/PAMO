@@ -80,7 +80,7 @@ public class DataHolder {
      */
     public static String myDataToString(){
         StringBuilder my_string = new StringBuilder();
-        String[] waterKeys = {"NO3", "NO2", "GH1", "KH", "pH", "Cl", "Woda"};
+        String[] waterKeys = {"NO3", "NO2", "GH", "KH", "pH", "Cl", "Woda"};
         for(String item: waterKeys){
             if(myData.containsKey(item)){
                 my_string.append(item + ": " + myData.get(item).getValue() + "\n");

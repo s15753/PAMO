@@ -93,11 +93,8 @@ public class GHFragment extends Fragment {
                 throwable.printStackTrace();
             }
         }else{
-            for(int i = 1; i <= 4; i++) {
-                String next_gh = parameter.toUpperCase()+i;
-                DataHolder.setMyData(next_gh, new ZabbixData("Woda", next_gh, ans));
-            }
-            Toast.makeText(getActivity(), parameter+ " "+ans, Toast.LENGTH_SHORT).show();
+            DataHolder.setMyData(parameter, new ZabbixData("Woda", parameter, ans));
+            Toast.makeText(getActivity(), parameter+ " " + ans, Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.action_nav_gh_to_nav_kh);
         }
 
