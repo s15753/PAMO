@@ -96,7 +96,7 @@ public class DataHolder {
                 my_string.append(entry.getKey() + ": " + entry.getValue().getValue() + "\n");
             }
         }
-        String[] otherKeys = {"Zawsze wyłączone do", "Zawsze włączone od", "Zawsze włączone do", "Zawsze wyłączone od"};
+        String[] otherKeys = {"Zawsze włączone od", "Zawsze włączone do", "Zawsze wyłączone od", "Zawsze wyłączone do"};
         for(String item: otherKeys){
             if(myData.containsKey(item)){
                 my_string.append(item + ": " + myData.get(item).getValue() + "\n");
