@@ -137,8 +137,8 @@ public class MainButtonGenerator {
                 switch (i){
                     case 0:
                         return R.id.action_nav_maintenance_main_to_nav_light;
-                    case 1:
-                        return R.id.action_nav_maintenance_main_to_nav_maintenance;
+                    /*case 1:
+                        return R.id.action_nav_maintenance_main_to_nav_maintenance;*/
                     default:
                         return R.id.nav_home;
                 }
