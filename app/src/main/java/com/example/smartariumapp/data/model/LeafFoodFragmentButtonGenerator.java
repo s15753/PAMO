@@ -49,7 +49,7 @@ public class LeafFoodFragmentButtonGenerator {
         Button[] myButtons = new Button[n];
         LinearLayout layout = this.root.findViewById(R.id.linearLayout);
         for(int i = 0; i < n; i++){
-            myButtons[i] = setMyButton(i, layout.getContext(), myArray, myColors);
+            myButtons[i] = setFoodButton(i, layout.getContext(), myArray, myColors);
         }
         return myButtons;
     }
@@ -62,7 +62,7 @@ public class LeafFoodFragmentButtonGenerator {
      * @param myColors array of strings use to create button witch certain background color
      * @return Fully functional button with working on-click listener
      */
-    private Button setMyButton(int i, Context context, final String[] myArray, int[] myColors){
+    private Button setFoodButton(int i, Context context, final String[] myArray, int[] myColors){
         Button button = new Button(context);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
