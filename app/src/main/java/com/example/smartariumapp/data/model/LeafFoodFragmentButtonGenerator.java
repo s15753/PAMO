@@ -85,7 +85,7 @@ public class LeafFoodFragmentButtonGenerator {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    check_set_parameters(ans);
+                    checkSetParameters(ans);
                 }
             });
         }
@@ -96,11 +96,10 @@ public class LeafFoodFragmentButtonGenerator {
      *
      * @param ans text visible on the button
      */
-    private void check_set_parameters(String ans){
+    private void checkSetParameters(String ans){
         if(DataHolder.isKeyIn(ans)){
             DataHolder.removeByKey(ans);
             Toast.makeText(activity, "Usunięto "+ans+" z danych do wysłania!", Toast.LENGTH_SHORT).show();
-
         }else{
             String[] myFoodNames = root.getResources().getStringArray(R.array.food_zabbix_name);
             int counter = 0;
@@ -117,7 +116,8 @@ public class LeafFoodFragmentButtonGenerator {
             finalize();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
+        } finally{
+            Navigation.findNavController(root).navigate(R.id.nav_food);
         }
-        Navigation.findNavController(root).navigate(R.id.nav_food);
     }
 }
