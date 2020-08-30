@@ -56,7 +56,7 @@ public class LeafWaterFragmentButtonGenerator {
         Button[] myButtons = new Button[n];
         LinearLayout layout = this.root.findViewById(R.id.linearLayout);
         for(int i = 0; i < n; i++){
-            myButtons[i] = setMyButton(i, layout.getContext(), myArray, myColors);
+            myButtons[i] = setButton(i, layout.getContext(), myArray, myColors);
         }
         return myButtons;
     }
@@ -70,7 +70,7 @@ public class LeafWaterFragmentButtonGenerator {
      * @param myColors array of strings use to create button witch certain background color
      * @return Fully functional button with working on-click listener
      */
-    private Button setMyButton(int i, Context context, final String[] myArray, int[] myColors){
+    private Button setButton(int i, Context context, final String[] myArray, int[] myColors){
         Button button = new Button(context);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -93,7 +93,7 @@ public class LeafWaterFragmentButtonGenerator {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    check_water_set_parameters(parameter, ans);
+                    checkWaterSetParameters(parameter, ans);
                 }
             });
         }
@@ -105,7 +105,7 @@ public class LeafWaterFragmentButtonGenerator {
      * @param parameter parameter that we set
      * @param ans text visible on the button (value for this water parameter)
      */
-    private void check_water_set_parameters(String parameter, String ans){
+    private void checkWaterSetParameters(String parameter, String ans){
         if(DataHolder.isKeyIn(parameter)){
             Toast.makeText(this.activity, "Najpierw należy wysłać już zgromadzone dane!", Toast.LENGTH_SHORT).show();
             Navigation.findNavController(root).navigate(R.id.nav_water_parameters);
